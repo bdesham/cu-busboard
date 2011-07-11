@@ -8,6 +8,8 @@
 
 var stops;
 
+var updateDisplayInterval;
+
 // color scheme
 
 var colors = {
@@ -46,6 +48,12 @@ Object.size = function(obj) {
 function load()
 {
     dashcode.setupParts();
+	
+	read_preferences();
+	
+	startTimer();
+	
+	//update_data();
 }
 
 //
@@ -54,9 +62,9 @@ function load()
 //
 function remove()
 {
-    // Stop any timers to prevent CPU usage
-    // Remove any preferences as needed
-    // widget.setPreferenceForKey(null, dashcode.createInstancePreferenceKey("your-key"));
+	widget.setPreferenceForKey(null, dashcode.createInstancePreferenceKey("stop_id"));
+	
+	stopTimer();
 }
 
 //
@@ -65,7 +73,7 @@ function remove()
 //
 function hide()
 {
-    // Stop any timers to prevent CPU usage
+    stopTimer();
 }
 
 //
@@ -76,7 +84,8 @@ function show()
 {
     // Restart any timers that were stopped on hide
 	read_preferences();
-	update_data();
+	//update_data();
+	startTimer();
 }
 
 //
@@ -142,6 +151,27 @@ function showFront(event)
 	update_data();
 }
 
+
+
+function startTimer()
+{
+    update_data();
+
+    if (!updateDisplayInterval)
+        updateDisplayInterval = setInterval(update_data, 1000*30);
+}
+
+function stopTimer()
+{
+    if (updateDisplayInterval) {
+        clearInterval(updateDisplayInterval);
+        updateDisplayInterval = null;
+    }
+}
+
+
+
+
 function update_preferences()
 {
 	// set the stop code
@@ -163,7 +193,7 @@ function read_preferences()
 	config = {
 		"time": 50,
 		"stop_code": stop_code,
-		"stop_id": get_stop_id(stop_code),
+		"stop_id": get_intersection_id(stop_code),
 		"stop_verbose": get_verbose_stop_name_from_code(stop_code),
 		"key": "afea17046e244cda8f56b5e1fe5f2019"
 	};
@@ -211,16 +241,34 @@ function get_stop_id(stop)
 {
 	if (stop in stops)
 		return stops[stop]["id"];
-	else
+	else {
+		window.console.log("No stop_id found for \"" + stop + "\"");
 		return "";
+	}
 }
+
+
+function get_intersection_id(stop)
+{
+	if (stop in stops) {
+		var id = stops[stop]["id"];
+		return id.replace(/:\d+/, "");
+	}
+	else {
+		window.console.log("No stop_id found for \"" + stop + "\"");
+		return "";
+	}
+}
+
 
 function get_verbose_stop_name_from_code(stop)
 {
 	if (stop in stops)
 		return stops[stop]["verbose"];
-	else
+	else {
+		window.console.log("No verbose name found for \"" + stop + "\"");
 		return "";
+	}
 }
 
 function get_verbose_stop_name_from_id(id)
@@ -230,6 +278,7 @@ function get_verbose_stop_name_from_id(id)
 			return stops[key]["verbose"];
 	}
 	
+	window.console.log("No verbose name found for \"" + id + "\"");	
 	return "";
 }
 
@@ -285,7 +334,7 @@ function convert_date(date)
 {
 	var regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
 	var pieces = regex.exec(date);
-	var result = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " " + pieces[4] + " GMT-0600");
+	var result = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " " + pieces[4] + " GMT-0500");
 	
 	return result.getTime();
 }
@@ -297,7 +346,7 @@ function sort_departures(a, b)
 
 function process_json(json)
 {
-	var result = {"stop": "Green and Cedar", "departures": []};
+	var result = {"stop": config.stop_verbose, "departures": []};
 	var departures = json['departures'];
 	var now = Date.now();
 	
@@ -328,17 +377,19 @@ function update_data()
 {
 	window.console.log("in update_data()");
 	$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
-		{'key': config['key'],
-		 'stop_id': config['stop_id'],
-		 'pt': config['time']},
+		{'key': config.key,
+		 'stop_id': config.stop_id,
+		 'pt': config.time},
 		function success_callback(json)
 		{
-			window.console.log("successfully got data");
-			//window.console.log("stat = " + json["stat"]);
-			//window.console.log("# of departures = " + json["departures"].length);
+			if (json.stat == "ok") {
+				window.console.log("successfully got data, stat = ok");
 			
-			var data = process_json(json);
-			refresh_ui_from_data(data);
+				var data = process_json(json);
+				refresh_ui_from_data(data);
+			} else {
+				window.console.log("got data from server, but stat = " + stat);
+			}
 		});
 	
 	/*window.console.log("putting in some fake data...");
