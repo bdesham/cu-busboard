@@ -24,7 +24,7 @@ var colors = {
 
 var config = {
 	"time": 30,
-	"stop": "IT",
+	"stop": "IT:1",
 	"stop_verbose": "Green and Cedar",
 	"key": "afea17046e244cda8f56b5e1fe5f2019"
 };
@@ -75,6 +75,7 @@ function hide()
 function show()
 {
     // Restart any timers that were stopped on hide
+	read_preferences();
 	update_data();
 }
 
@@ -138,26 +139,32 @@ function showFront(event)
     }
 	
 	update_preferences();
+	update_data();
 }
 
 function update_preferences()
 {
 	// set the stop code
 	
-	var key = "stop";
-	var value = document.getElementById("field_stop").content;
+	var key = "stop_code";
+	var value = document.getElementById("field_stop").value;
+	
+	window.console.log("value is " + value);
+	
 	widget.setPreferenceForKey(value, widget.identifier + "-" + key);
+	
+	read_preferences();
 }
 
 function read_preferences()
 {
-	var stop = widget.preferenceForKey(widget.identifier + "-" + "stop");
+	var stop_code = widget.preferenceForKey(widget.identifier + "-" + "stop_code");
 
 	config = {
 		"time": 50,
-		"stop": stop,
-		"stop_id": get_stop_id(stop),
-		"stop_verbose": get_verbose_stop_name_from_code(stop),
+		"stop_code": stop_code,
+		"stop_id": get_stop_id(stop_code),
+		"stop_verbose": get_verbose_stop_name_from_code(stop_code),
 		"key": "afea17046e244cda8f56b5e1fe5f2019"
 	};
 }
@@ -202,12 +209,18 @@ function get_current_time()
 
 function get_stop_id(stop)
 {
-	return stops[stop]["id"];
+	if (stop in stops)
+		return stops[stop]["id"];
+	else
+		return "";
 }
 
 function get_verbose_stop_name_from_code(stop)
 {
-	return stops[stop]["verbose"];
+	if (stop in stops)
+		return stops[stop]["verbose"];
+	else
+		return "";
 }
 
 function get_verbose_stop_name_from_id(id)
@@ -314,7 +327,7 @@ function process_json(json)
 function update_data()
 {
 	window.console.log("in update_data()");
-	/*$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
+	$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
 		{'key': config['key'],
 		 'stop_id': config['stop_id'],
 		 'pt': config['time']},
@@ -326,9 +339,9 @@ function update_data()
 			
 			var data = process_json(json);
 			refresh_ui_from_data(data);
-		});*/
+		});
 	
-	window.console.log("putting in some fake data...");
+	/*window.console.log("putting in some fake data...");
 	refresh_ui_from_data(process_json({
 		"stat" : "ok",
 		"departures" : [
@@ -375,7 +388,7 @@ function update_data()
 				"route" : "2S Red"
 			},
 		]
-	}));
+	}));*/
 }
 
 if (window.widget) {

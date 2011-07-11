@@ -9,13 +9,13 @@
 	<key>CFBundleDisplayName</key>
 	<string>Untitled</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bdesham.widget.Untitled</string>
+	<string>info.bdesham.widget.cu-buses</string>
 	<key>CFBundleName</key>
 	<string>Untitled</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.5</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>0.5</string>
 	<key>CloseBoxInsetX</key>
 	<integer>15</integer>
 	<key>CloseBoxInsetY</key>
