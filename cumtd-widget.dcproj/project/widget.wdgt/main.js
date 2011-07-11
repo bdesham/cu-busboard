@@ -4,6 +4,29 @@
  according to the license.txt file included in the project.
  */
 
+// global variables
+
+// color scheme
+
+var colors = {
+	"black": "#1b1d1e",
+	"red_bg": "#d10000",
+	"red_fg": "#ffffff",
+	"yellow_bg": "#ffc400",
+	"yellow_fg": "#000000",
+	"green_bg": "#007f00",
+	"green_fg": "#ffffff"
+};
+
+// default configuration
+
+var config = {
+	"time": 30,
+	"stop": "IT",
+	"stop_verbose": "Green and Cedar",
+	"key": "afea17046e244cda8f56b5e1fe5f2019"
+};
+
 //
 // Function: load()
 // Called by HTML body element's onload event when the widget is ready to start
@@ -40,7 +63,7 @@ function hide()
 function show()
 {
     // Restart any timers that were stopped on hide
-	populate_list()
+	update_data();
 }
 
 //
@@ -103,10 +126,198 @@ function showFront(event)
     }
 }
 
-function populate_list()
+function set_title(text)
 {
-	var list = document.getElementById("list");
+	document.getElementById("top_text").innerText = text;
+}
+
+function set_status(text)
+{
+	document.getElementById("status_text").innerText = text;
+}
+
+function array_of_spaces(len)
+{
+	var arr = [];
+	for (var i = 0; i < len; i++) {
+		arr[i] = " ";
+	}
+	return arr;
+}
+
+function get_current_time()
+{
+	var now = new Date();
+	var hour = now.getHours();
+	var minutes = now.getMinutes();
 	
+	if (minutes < 10)
+		minutes = "0" + minutes;
+	
+	if (hour <= 11)
+		return hour + ":" + minutes + " AM";
+	else if (hour == 12)
+		return "12:" + minutes + " PM";
+	else
+		return (hour - 12) + ":" + minutes + " PM";
+
+}
+
+function refresh_ui_from_data(data)
+{
+	var list = document.getElementById("list").object;
+
+	var departures = data.departures;
+	var dummy = array_of_spaces(departures.length);
+	list.setDataArray(dummy);
+	
+	//
+	// departure rows
+	//
+		
+	for (i = 0; i < departures.length; i++) {
+		var row = list.rows[i].object;
+		var departure = departures[i];
+		
+		var time = departure.time;
+				
+		row.templateElements.route_text.innerText = departure.route;
+		
+		if (time > 0)
+			row.templateElements.arrival_time_text.innerText = time + " min";
+		else
+			row.templateElements.arrival_time_text.innerText = "DUE";
+			
+		row.templateElements.route_text.setAttribute("title", "Route ends at " + departure.ending);
+		
+		if (time <= 5) {
+			row.templateElements.arrival_time_text.style.setProperty("background-color", colors["red_bg"]);
+			row.templateElements.arrival_time_text.style.setProperty("color", colors["red_fg"]);
+		} else if (time > 5 && time <= 10) {
+			row.templateElements.arrival_time_text.style.setProperty("background-color", colors["yellow_bg"]);
+			row.templateElements.arrival_time_text.style.setProperty("color", colors["yellow_fg"]);
+		} else {
+			row.templateElements.arrival_time_text.style.setProperty("background-color", colors["green_bg"]);
+			row.templateElements.arrival_time_text.style.setProperty("color", colors["green_fg"]);
+		}
+	}
+	
+	//
+	// top and bottom labels
+	//
+	
+	set_title(config["stop_verbose"]);
+	set_status("Updated at " + get_current_time());
+}
+
+function convert_date(date)
+{
+	var regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
+	var pieces = regex.exec(date);
+	var result = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " " + pieces[4] + " GMT-0600");
+	
+	return result.getTime();
+}
+
+function sort_departures(a, b)
+{
+	return a.time_millis - b.time_millis;
+}
+
+function process_json(json)
+{
+	var result = {"stop": "Green and Cedar", "departures": []};
+	var departures = json['departures'];
+	var now = Date.now();
+	
+	window.console.log(departures.length + " departures");
+	
+	for (var i = 0; i < departures.length; i++) {
+		var depart = departures[i];
+		
+		var expected = convert_date(depart["expected"]);
+		var time = Math.floor((expected - now)/(1000*60));
+		
+		result["departures"][i] = {
+			"route": depart["route"],
+			"ending": depart["destination"]["stop_id"],
+			"time_millis": expected - now,
+			"time": time
+		};
+		
+		//window.console.log("route = " + depart["route"] + "; time = " + time);
+	}
+	
+	result.departures.sort(sort_departures);
+	
+	return result;
+}
+
+function update_data()
+{
+	window.console.log("in update_data()");
+	/*$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
+		{'key': config['key'],
+		 'stop_id': config['stop'],
+		 'pt': config['time']},
+		function success_callback(json)
+		{
+			window.console.log("successfully got data");
+			//window.console.log("stat = " + json["stat"]);
+			//window.console.log("# of departures = " + json["departures"].length);
+			
+			var data = process_json(json);
+			refresh_ui_from_data(data);
+		});*/
+	
+	window.console.log("putting in some fake data...");
+	refresh_ui_from_data(process_json({
+		"stat" : "ok",
+		"departures" : [
+			{
+				"destination" : {
+					"stop_id" : "LSE:2"
+				},
+				"expected" : "2011-07-10 20:16:18",
+				"route" : "6E OrangeHOPPER"
+			},
+			{
+				"destination" : {"stop_id":"PKLN:1"},
+				"expected" : "2011-07-10 20:21:22",
+				"route" : "9A Brown"
+			},
+			{
+				"destination" : {"stop_id":"PKLN:1"},
+				"expected" : "2011-07-10 20:06:22",
+				"route" : "2S Red"
+			},
+			{
+				"destination" : {"stop_id":"PKLN:1"},
+				"expected" : "2011-07-10 20:31:22",
+				"route" : "120E Teal"
+			},
+			{
+				"destination" : {"stop_id":"PKLN:1"},
+				"expected" : "2011-07-10 20:13:22",
+				"route" : "6W OrangeHOPPER"
+			},
+			{
+				"destination" : {"stop_id":"PKLN:1"},
+				"expected" : "2011-07-10 20:41:22",
+				"route" : "50W GreenHOPPER"
+			},
+			{
+				"destination" : {"stop_id":"PKLN:1"},
+				"expected" : "2011-07-10 20:21:22",
+				"route" : "9A Brown"
+			},
+			{
+				"destination" : {"stop_id":"PKLN:1"},
+				"expected" : "2011-07-10 20:06:22",
+				"route" : "2S Red"
+			},
+		]
+	}));
 }
 
 if (window.widget) {
@@ -116,18 +327,8 @@ if (window.widget) {
     widget.onsync = sync;
 }
 
-
-transformer_departures = Class.create(DC.ValueTransformer,{
-    transformedValue: function(value){
-        // Insert Code Here
-		return value.route;
-    }
-    // Uncomment to support a reverse transformation
-    /*
-    ,
-    reverseTransformedValue: function(value){
-        return value;
-    }
-   */
-});
-
+function stop_code_button_handler(event)
+{
+    widget.openURL("http://www.cumtd.com/maps-and-schedules/bus-stops");
+	return;
+}

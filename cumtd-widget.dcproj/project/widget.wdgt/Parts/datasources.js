@@ -4,6 +4,5 @@
  however it is recommended to first turn off the Dashcode 
  code generator otherwise the changes will be lost.
  */
-var dashcodeDataSources = {
-    "MtdDataSource": { "Class": "DC.AjaxController", "propertyValues": { "url": "http://developer.cumtd.com/api/v1.0/json/departures.getListByStop?", "dataModel": { "cacheSample": true, "uuid": "BEE86D02-4112-4FF3-B8C7-38FCD221C885", "url": null, "dataType": "json", "version": 1, "root": "", "model": { "departures": [{ "destination": { "stop_id": "" }, "direction": "", "expected": "", "location": { "lat": 1, "lon": 1 }, "monitored": true, "origin": { "stop_id": "" }, "route": "", "route_id": "", "route_number": "", "scheduled": "", "shape_id": "", "stop_id": "", "trip_id": "", "vehicle_id": "" }], "stat": "" } }, "parameters": { "key": "afea17046e244cda8f56b5e1fe5f2019", "stop_id": "LSE:2" } } }
-};
+var dashcodeDataSources = {};
+

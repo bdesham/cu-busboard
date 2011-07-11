@@ -5,13 +5,24 @@
  code generator otherwise the changes will be lost.
  */
 var dashcodePartSpecs = {
+    "arrival_time_text": { "text": "12 min", "view": "DC.Text" },
+    "button_look_up_code": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "stop_code_button_handler", "rightImageWidth": 5, "text": "Look up my stop code" },
+    "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "stop_code_button_handler", "rightImageWidth": 5, "text": "Get the newest version!" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
-    "helloText": { "text": "Hello, World!", "view": "DC.Text" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
-    "list": { "allowsEmptySelection": true, "dataArray": ["Item 1", "Item 2", "Item 3"], "labelElementId": "rowLabel", "listStyle": "List.DESKTOP_LIST", "propertyValues": { "dataArrayBinding": { "keypath": "MtdDataSource.content.departures", "transformer": "transformer_departures" } }, "sampleRows": 3, "selectionEnabled": true, "useDataSource": true, "view": "DC.List" },
-    "rowLabel": { "text": "Item", "view": "DC.Text" },
+    "list": { "allowsEmptySelection": true, "dataArray": ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8"], "dataSourceName": "test_data", "labelElementId": "route_text", "listStyle": "List.DESKTOP_LIST", "sampleRows": 3, "selectionEnabled": true, "view": "DC.List" },
+    "route_text": { "text": "Item", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
-    "text": { "text": "12 min", "view": "DC.Text" },
-    "text1": { "text": "Data provided by CUMTD", "view": "DC.Text" }
+    "status_text": { "text": "Data provided by CUMTD", "view": "DC.Text" },
+    "text_author": { "text": "Benjamin Esham, © 2011", "view": "DC.Text" },
+    "text_code_explanation": { "text": "Enter the four-digit code for your stop. If you don’t know this code, visit the CUMTD website:", "view": "DC.Text" },
+    "text_stop_label": { "text": "Your bus stop:", "view": "DC.Text" },
+    "text_thanks": { "text": "Data provided by CUMTD", "view": "DC.Text" },
+    "text_version": { "text": "CU Buses v0.5", "view": "DC.Text" },
+    "top_text": { "text": "Hello, World!", "view": "DC.Text" }
 };
+
+
+
+
 
