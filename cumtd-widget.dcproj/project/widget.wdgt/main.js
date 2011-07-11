@@ -6,6 +6,8 @@
 
 // global variables
 
+var stops;
+
 // color scheme
 
 var colors = {
@@ -25,6 +27,16 @@ var config = {
 	"stop": "IT",
 	"stop_verbose": "Green and Cedar",
 	"key": "afea17046e244cda8f56b5e1fe5f2019"
+};
+
+// work around the fact that associative arrays (objects) don't support .length
+
+Object.size = function(obj) {
+	var size = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) size++;
+	}
+	return size;
 };
 
 //
@@ -124,7 +136,32 @@ function showFront(event)
     if (window.widget) {
         setTimeout('widget.performTransition();', 0);
     }
+	
+	update_preferences();
 }
+
+function update_preferences()
+{
+	// set the stop code
+	
+	var key = "stop";
+	var value = document.getElementById("field_stop").content;
+	widget.setPreferenceForKey(value, widget.identifier + "-" + key);
+}
+
+function read_preferences()
+{
+	var stop = widget.preferenceForKey(widget.identifier + "-" + "stop");
+
+	config = {
+		"time": 50,
+		"stop": stop,
+		"stop_id": get_stop_id(stop),
+		"stop_verbose": get_verbose_stop_name_from_code(stop),
+		"key": "afea17046e244cda8f56b5e1fe5f2019"
+	};
+}
+
 
 function set_title(text)
 {
@@ -163,6 +200,26 @@ function get_current_time()
 
 }
 
+function get_stop_id(stop)
+{
+	return stops[stop]["id"];
+}
+
+function get_verbose_stop_name_from_code(stop)
+{
+	return stops[stop]["verbose"];
+}
+
+function get_verbose_stop_name_from_id(id)
+{
+	for (key in stops) {
+		if (stops[key]["id"] == id)
+			return stops[key]["verbose"];
+	}
+	
+	return "";
+}
+
 function refresh_ui_from_data(data)
 {
 	var list = document.getElementById("list").object;
@@ -188,7 +245,8 @@ function refresh_ui_from_data(data)
 		else
 			row.templateElements.arrival_time_text.innerText = "DUE";
 			
-		row.templateElements.route_text.setAttribute("title", "Route ends at " + departure.ending);
+		var terminus = get_verbose_stop_name_from_id(departure.ending);
+		row.templateElements.route_text.setAttribute("title", "Route ends at " + terminus);
 		
 		if (time <= 5) {
 			row.templateElements.arrival_time_text.style.setProperty("background-color", colors["red_bg"]);
@@ -258,7 +316,7 @@ function update_data()
 	window.console.log("in update_data()");
 	/*$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
 		{'key': config['key'],
-		 'stop_id': config['stop'],
+		 'stop_id': config['stop_id'],
 		 'pt': config['time']},
 		function success_callback(json)
 		{
@@ -278,42 +336,42 @@ function update_data()
 				"destination" : {
 					"stop_id" : "LSE:2"
 				},
-				"expected" : "2011-07-10 20:16:18",
+				"expected" : "2011-07-10 22:16:18",
 				"route" : "6E OrangeHOPPER"
 			},
 			{
 				"destination" : {"stop_id":"PKLN:1"},
-				"expected" : "2011-07-10 20:21:22",
+				"expected" : "2011-07-10 22:21:22",
 				"route" : "9A Brown"
 			},
 			{
 				"destination" : {"stop_id":"PKLN:1"},
-				"expected" : "2011-07-10 20:06:22",
+				"expected" : "2011-07-10 23:06:22",
 				"route" : "2S Red"
 			},
 			{
 				"destination" : {"stop_id":"PKLN:1"},
-				"expected" : "2011-07-10 20:31:22",
+				"expected" : "2011-07-10 22:31:22",
 				"route" : "120E Teal"
 			},
 			{
 				"destination" : {"stop_id":"PKLN:1"},
-				"expected" : "2011-07-10 20:13:22",
+				"expected" : "2011-07-10 22:13:22",
 				"route" : "6W OrangeHOPPER"
 			},
 			{
 				"destination" : {"stop_id":"PKLN:1"},
-				"expected" : "2011-07-10 20:41:22",
+				"expected" : "2011-07-10 22:41:22",
 				"route" : "50W GreenHOPPER"
 			},
 			{
 				"destination" : {"stop_id":"PKLN:1"},
-				"expected" : "2011-07-10 20:21:22",
+				"expected" : "2011-07-10 22:21:22",
 				"route" : "9A Brown"
 			},
 			{
 				"destination" : {"stop_id":"PKLN:1"},
-				"expected" : "2011-07-10 20:06:22",
+				"expected" : "2011-07-10 22:06:22",
 				"route" : "2S Red"
 			},
 		]
@@ -327,8 +385,15 @@ if (window.widget) {
     widget.onsync = sync;
 }
 
-function stop_code_button_handler(event)
+function button_look_up_code_handler(event)
 {
     widget.openURL("http://www.cumtd.com/maps-and-schedules/bus-stops");
+	return;
+}
+
+
+function button_update_handler(event)
+{
+    widget.openURL("https://github.com/bdesham/cu-buses");
 	return;
 }

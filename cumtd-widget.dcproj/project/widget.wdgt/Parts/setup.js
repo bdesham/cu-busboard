@@ -6,8 +6,8 @@
  */
 var dashcodePartSpecs = {
     "arrival_time_text": { "text": "12 min", "view": "DC.Text" },
-    "button_look_up_code": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "stop_code_button_handler", "rightImageWidth": 5, "text": "Look up my stop code" },
-    "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "stop_code_button_handler", "rightImageWidth": 5, "text": "Get the newest version!" },
+    "button_look_up_code": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_look_up_code_handler", "rightImageWidth": 5, "text": "Look up my stop code" },
+    "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_update_handler", "rightImageWidth": 5, "text": "Get the newest version!" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
     "list": { "allowsEmptySelection": true, "dataArray": ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8"], "dataSourceName": "test_data", "labelElementId": "route_text", "listStyle": "List.DESKTOP_LIST", "sampleRows": 3, "selectionEnabled": true, "view": "DC.List" },
