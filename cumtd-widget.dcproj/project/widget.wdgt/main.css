@@ -349,3 +349,25 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     bottom: 21px;
     height: auto;
 }
+
+#text_message {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    font-family: 'Helvetica Neue';
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    left: 38px;
+    text-shadow: rgb(0, 0, 0) 1px 1px 1px;
+    top: 95px;
+    right: 38px;
+    width: auto;
+    bottom: 94px;
+    height: auto;
+}
+
+.selected #text_message {
+    color: white;
+}

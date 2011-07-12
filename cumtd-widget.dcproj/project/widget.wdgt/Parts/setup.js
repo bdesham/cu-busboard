@@ -16,11 +16,13 @@ var dashcodePartSpecs = {
     "status_text": { "text": "Data provided by CUMTD", "view": "DC.Text" },
     "text_author": { "text": "Benjamin Esham, © 2011", "view": "DC.Text" },
     "text_code_explanation": { "text": "Enter the four-digit code for your stop. If you don’t know this code, visit the CUMTD website:", "view": "DC.Text" },
+    "text_message": { "view": "DC.Text" },
     "text_stop_label": { "text": "Your bus stop:", "view": "DC.Text" },
     "text_thanks": { "text": "Data provided by CUMTD", "view": "DC.Text" },
     "text_version": { "text": "CU Buses v0.5", "view": "DC.Text" },
     "top_text": { "text": "Hello, World!", "view": "DC.Text" }
 };
+
 
 
 
