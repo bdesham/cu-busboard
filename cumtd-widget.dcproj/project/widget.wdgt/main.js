@@ -63,13 +63,13 @@ function json_success_callback(json)
 	json_success = true;
 	
 	if (json.stat == "ok") {
-		window.console.log("successfully got data, stat = ok");
+		//window.console.log("successfully got data, stat = ok");
 	
 		var data = process_json(json);
 		refresh_ui_from_data(data);
 	} else {
 		display_message("Sorry, but the CUMTD server seems to be having problems.");
-		window.console.log("got data from server, but stat = \"" + json.stat + "\"");
+		window.console.log("Got JSON from the server, but stat = \"" + json.stat + "\"");
 	}
 }
 
@@ -127,7 +127,7 @@ function process_json(json)
 	var departures = json['departures'];
 	var now = Date.now();
 	
-	window.console.log(departures.length + " departures");
+	//window.console.log(departures.length + " departures");
 	
 	for (var i = 0; i < departures.length; i++) {
 		var depart = departures[i];
@@ -197,7 +197,7 @@ function get_stop_id(stop)
 	if (stop in stops)
 		return stops[stop]["id"];
 	else {
-		window.console.log("No stop_id found for \"" + stop + "\"");
+		//window.console.log("No stop_id found for \"" + stop + "\"");
 		return "";
 	}
 }
@@ -208,7 +208,7 @@ function get_intersection_id(stop)
 		return id_basename(stops[stop]["id"]);
 	}
 	else {
-		window.console.log("No stop_id found for \"" + stop + "\"");
+		//window.console.log("No stop_id found for \"" + stop + "\"");
 		return "";
 	}
 }
@@ -218,7 +218,7 @@ function get_verbose_stop_name_from_code(stop)
 	if (stop in stops)
 		return stops[stop]["verbose"];
 	else {
-		window.console.log("No verbose name found for \"" + stop + "\"");
+		//window.console.log("No verbose name found for \"" + stop + "\"");
 		return "";
 	}
 }
@@ -239,7 +239,7 @@ function get_verbose_stop_name_from_id(id)
 			return stops[key]["verbose"];
 	}
 	
-	window.console.log("No verbose name found for \"" + id + "\"");	
+	//window.console.log("No verbose name found for \"" + id + "\"");	
 	return "";
 }
 
@@ -252,6 +252,9 @@ function prettify_route_name(name)
 	name = wrap_in_span(name, "OPPER", "font-size: 85%");
 	name = wrap_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
 	name = wrap_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
+	
+	if (name.match(/Air Bus/))
+		name = "&#x2708; " + name;
 	
 	if (name.match(/Teal Orchard Downs/i)) {
 		name = name.replace(/^(.+ Teal) Orchard Downs/,
@@ -270,12 +273,12 @@ function update_preferences()
 {
 	// set the stop code
 	var stop = document.getElementById("field_stop").value;
-	window.console.log("stop code is " + stop);
+	//window.console.log("stop code is " + stop);
 	widget.setPreferenceForKey(stop, dashcode.createInstancePreferenceKey("stop_code"));
 	
 	// set the time
 	var time = document.getElementById("popup_lookahead").value;
-	window.console.log("time is " + time);
+	//window.console.log("time is " + time);
 	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey("time"));
 
 	return read_preferences();

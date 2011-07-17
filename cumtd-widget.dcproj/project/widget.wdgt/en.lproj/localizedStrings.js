@@ -5,8 +5,9 @@
  code generator otherwise the changes will be lost.
  */
 var localizedStrings = {
-    "Done": "Done",
-    "Hello, World!": "CU Buses"
+    "CU Buses": "CU Buses",
+    "Done": "Done"
 };
+
 
 

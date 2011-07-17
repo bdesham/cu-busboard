@@ -7,8 +7,8 @@
 ## Things we need
 
 * make sure that all route names look okay
-* make sure we handle daylight saving correctly
 
 ## Things we want
 
 * note the user's offset from UTC or whatever and store the value
+* make sure we handle daylight saving correctly
