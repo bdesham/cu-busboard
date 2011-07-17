@@ -17,20 +17,20 @@
 </head>
 <body onload="load();" apple-part="com.apple.Dashcode.part.StackLayout">
     <div id="front">
-        <img id="frontImg" src="Parts/Images/front.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.frontimage" apple-style="image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.211603701,0.227068454,0.237106413,1; image-bottom-color: 0,0,0,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.105882353,0.11372549,0.117647059,1; image-border-width: 1; shine-on: 0; shine-strength: 0.40; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 1; shadow-offset: -1.00,-6.00; shadow-color: 0,0,0,0.3333;">
+        <img id="frontImg" src="Parts/Images/front.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.frontimage" apple-style="image-theme: 1; image-shape: 3; image-opacity: 1.00; image-top-color: 0.211603701,0.227068454,0.237106413,1; image-bottom-color: 0,0,0,1; image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.678269088,0.678396642,0.678236485,1; image-border-width: 1; shine-on: 0; shine-strength: 0.40; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 1; shadow-offset: -1.00,-6.00; shadow-color: 0,0,0,0.3333;">
         <div class="apple-no-children" id="info" apple-part="com.apple.Dashcode.part.infobutton" apple-default-image-visibility="hidden"></div>
-        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="top_text" apple-group="text" apple-default-image-visibility="hidden"></div>
-        <div id="text_message" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis"></div>
-        <div id="scrollArea" apple-part="com.apple.Dashcode.part.scrollarea" apple-group="scrollArea">
-            <div id="content" class="content" apple-group="scrollArea" style="position: absolute; left: 0px; top: 0px; right: 22px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; ">
-                <ul id="list" apple-part="com.apple.Dashcode.part.widgetList" class="">
-                    <li id="listRowTemplate" apple-template="true" class="listRowTemplate_template first" style="">
-                        <div id="route_text" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children route_text_template" apple-text-overflow="ellipsis"></div>
+        <div apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" id="top_text" apple-group="text"></div>
+        <div id="text_message" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis"></div>
+        <div id="scrollArea" apple-part="com.apple.Dashcode.part.scrollarea" apple-group="scrollArea" apple-default-image-visibility="hidden">
+            <div id="content" class="content" apple-group="scrollArea" style="position: absolute; left: 0px; top: 0px; right: 22px; bottom: 0px; overflow-x: hidden; overflow-y: hidden; " apple-default-image-visibility="hidden">
+                <ul id="list" apple-part="com.apple.Dashcode.part.widgetList" class="" apple-default-image-visibility="hidden">
+                    <li id="listRowTemplate" apple-template="true" class="listRowTemplate_template first last" style="" apple-default-image-visibility="hidden">
+                        <div id="route_text" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children route_text_template" apple-text-overflow="ellipsis" apple-default-image-visibility="hidden"></div>
                         <div id="arrival_time_text" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children arrival_time_text_template" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis"></div>
                     </li>
                 </ul>
             </div></div>
-        <div id="status_text" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis"></div>
+        <div id="status_text" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-text-overflow="ellipsis"></div>
     </div>
     <div id="back">
         <img id="backImg" src="Parts/Images/back.png" alt="" apple-locked="true" apple-part="com.apple.Dashcode.part.backimage" apple-style=" image-radius: 12,12,12,12; image-border: 1; image-border-color: 0.1500,0.1500,0.1500; image-border-width: 3; shadow-include-shadow: 1; shadow-blur: 9.00; shadow-offset: -1.00,-6.00; shadow-color: 0.0000,0.0000,0.0000,0.3333;">
@@ -39,10 +39,17 @@
         <div id="text_thanks" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
         <div id="text_author" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
         <div id="text_stop_label" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
-        <input id="field_stop" type="text" name="" value="8888" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" maxlength="4">
+        <input id="field_stop" type="text" name="" value="" class="apple-textfield apple-no-children" apple-part="com.apple.Dashcode.part.textfield" maxlength="4">
         <div id="text_code_explanation" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis"></div>
         <div id="button_look_up_code" apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 0.409793824,0.409870893,0.409774154,1; image-bottom-color: 0.134116501,0.134141728,0.134110063,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0.105882353,0.11372549,0.117647059,1; image-border-width: 1; shine-on: 0; shine-strength: 0.40; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;"></div>
-        <div id="button_update" apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 0.114559956,0.258706063,0,1; image-bottom-color: 0.0504751317,0.0984250531,0.0349532627,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0.105882353,0.11372549,0.117647059,1; image-border-width: 1; shine-on: 0; shine-strength: 0.40; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;"></div>
+        <div id="button_update" apple-part="com.apple.Dashcode.part.roundedtextbutton" class="apple-no-children" apple-style="image-theme: 1; image-shape: 3; image-button-type: 0; image-opacity: 1.00; image-top-color: 0.146067023,0.290955842,0,1; image-bottom-color: 0.077546142,0.120585576,0.0229127258,1; image-radius: 5,5,5,5; image-border: 1; image-border-color: 0.396395683,0.689299166,0,1; image-border-width: 1; shine-on: 0; shine-strength: 0.40; shine-alpha-level: 0.67; shine-height: 0.50; glass-arc-height: 0.06; embossed-on: 0; embossed-depth: 1; embossed-shadow: 0.68; embossed-highlight: 0.3; shadow-include-shadow: 0;"></div>
+        <div id="text_lookahead" apple-part="com.apple.Dashcode.part.text" class="apple-text apple-no-children" apple-default-image-visibility="hidden" apple-text-overflow="ellipsis" apple-style="part-height-dependent: true;part-width-dependent: true;"></div>
+        <select id="popup_lookahead" apple-part="com.apple.Dashcode.part.backpopupbutton" apple-group="popup" name="" onchange="lookahead_change_handler(event)">
+            <option class="apple-hidden" value="15">15 minutes</option>
+            <option class="apple-hidden" id="option" value="30">30 minutes</option>
+            <option class="apple-hidden" id="option1" selected="selected" value="45">45 minutes</option>
+            <option class="apple-hidden" id="option2" value="60">60 minutes</option>
+        </select>
     </div>
 </body>
 </html>

@@ -12,26 +12,47 @@
 
 var updateDisplayInterval;
 
+var bad_stop_code = "";
+
 var api_key = "afea17046e244cda8f56b5e1fe5f2019";
 
 var json_success;
 
-// time between refreshes (in milliseconds)
-var refresh_interval = 1000*60;
-
-// default configuration
-
-/*var config = {
-	"time": 30,
-	"stop": "IT:1",
-	"stop_verbose": "Green and Cedar"
+var config = {
+	"time": 45,
+	"stop_code": "",
+	"stop_id": "",
+	"stop_verbose": ""
 };
-*/
+
+var widget_version_major = 1;
+var widget_version_minor = 0;
+var widget_version = widget_version_major + "." + widget_version_minor;
+
+// we store the old value of the stop code before showing the preferences. if it
+// hasn't changed when we flip back to the front, don't refresh the data. we
+// initialize this to the empty string so that we don't double-refresh when the
+// widget is first launched
+
+var old_stop_code = "";
+
+// time between refreshes (in milliseconds)
+
+var refresh_interval = 1000*60;
 
 
 //
 // # Backend application logic
 //
+
+//
+// ## Miscellaneous utility functions
+//
+
+function id_basename(id)
+{
+	return id.replace(/:.+/, "");
+}
 
 //
 // ## Network stuff
@@ -54,6 +75,9 @@ function json_success_callback(json)
 
 function update_data()
 {
+	if (!config.stop_code || config.stop_code == "")
+		return;
+
 	var args = {
 		'key': api_key,
 		'stop_id': config.stop_id,
@@ -65,12 +89,13 @@ function update_data()
 	$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
 		args, json_success_callback);
 	
-	// give the request five seconds to complete and show an error if it's not done by then.
-	// (the JSON request is asynchronous so if we make the request and immediately check its
-	// status, it almost certainly won't be done yet and we'll incorrectly show the user an
-	// error message.) if the request *does* go through but it takes more than five seconds,
-	// we'll show an (incorrect) error for a little while but then the data will be displayed
-	// properly.
+	// give the request five seconds to complete and show an error if it's not
+	// done by then.  (the JSON request is asynchronous so if we make the
+	// request and immediately check its status, it almost certainly won't be
+	// done yet and we'll incorrectly show the user an error message.) if the
+	// request *does* go through but it takes more than five seconds, we'll show
+	// an (incorrect) error for a little while but then the data will be
+	// displayed properly.
 	setTimeout(check_json_success, 1000*5);
 	
 	
@@ -85,7 +110,7 @@ function update_data()
 		"departures": []
 	};
 	
-	json_success_callback(fake_data_no_buses);
+	json_success_callback(fake_data_not_okay);
 	*/
 }
 
@@ -107,12 +132,12 @@ function process_json(json)
 	for (var i = 0; i < departures.length; i++) {
 		var depart = departures[i];
 		
-		var expected = convert_date(depart["expected"]);
+		var expected = convert_date(depart.expected);
 		var time = Math.floor((expected - now)/(1000*60));
 		
 		result["departures"][i] = {
-			"route": depart["route"],
-			"ending": depart["destination"]["stop_id"],
+			"route": depart.route,
+			"ending": depart.destination.stop_id,
 			"time_millis": expected - now,
 			"time": time
 		};
@@ -127,7 +152,7 @@ function process_json(json)
 // ## Date and time utility functions
 //
 
-// returns the time in the 12-hour format "HH:MM {AM,PM}"
+// returns the time in the format "01:46 PM"
 
 function get_current_time()
 {
@@ -138,7 +163,9 @@ function get_current_time()
 	if (minutes < 10)
 		minutes = "0" + minutes;
 	
-	if (hour <= 11)
+	if (hour == 0)
+		return "12:" + minutes + " AM";
+	else if (hour <= 11)
 		return hour + ":" + minutes + " AM";
 	else if (hour == 12)
 		return "12:" + minutes + " PM";
@@ -150,7 +177,8 @@ function convert_date(date)
 {
 	var regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
 	var pieces = regex.exec(date);
-	var result = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " " + pieces[4] + " GMT-0500");
+	var result = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " "
+			+ pieces[4] + " GMT-0500");
 	
 	return result.getTime();
 }
@@ -177,8 +205,7 @@ function get_stop_id(stop)
 function get_intersection_id(stop)
 {
 	if (stop in stops) {
-		var id = stops[stop]["id"];
-		return id.replace(/:\d+/, "");
+		return id_basename(stops[stop]["id"]);
 	}
 	else {
 		window.console.log("No stop_id found for \"" + stop + "\"");
@@ -203,6 +230,15 @@ function get_verbose_stop_name_from_id(id)
 			return stops[key]["verbose"];
 	}
 	
+	// if that didn't work, try to match the base of the id (the part before
+	// the colon)
+	id = id_basename(id);
+	
+	for (key in stops) {
+		if (id_basename(stops[key]["id"]) == id)
+			return stops[key]["verbose"];
+	}
+	
 	window.console.log("No verbose name found for \"" + id + "\"");	
 	return "";
 }
@@ -214,12 +250,12 @@ function get_verbose_stop_name_from_id(id)
 function prettify_route_name(name)
 {
 	name = wrap_in_span(name, "OPPER", "font-size: 85%");
-//	name = wrap_in_span(name, "Orchard Downs", "font-size: 80%");
 	name = wrap_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
+	name = wrap_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
 	
 	if (name.match(/Teal Orchard Downs/i)) {
-		name = name.replace("Orchard Downs", "Orch. Downs");
-		name = "<span style='font-size: 85%'>" + name + "</span>";
+		name = name.replace(/^(.+ Teal) Orchard Downs/,
+			"$1 <span style='font-weight: normal; font-size: 80%'>Orch. Downs</span>");
 	}
 	
 	return name;
@@ -233,43 +269,95 @@ function prettify_route_name(name)
 function update_preferences()
 {
 	// set the stop code
+	var stop = document.getElementById("field_stop").value;
+	window.console.log("stop code is " + stop);
+	widget.setPreferenceForKey(stop, dashcode.createInstancePreferenceKey("stop_code"));
 	
-	var key = "stop_code";
-	var value = document.getElementById("field_stop").value;
-	
-	window.console.log("value is " + value);
-	
-	widget.setPreferenceForKey(value, widget.identifier + "-" + key);
-	
-	read_preferences();
+	// set the time
+	var time = document.getElementById("popup_lookahead").value;
+	window.console.log("time is " + time);
+	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey("time"));
+
+	return read_preferences();
 }
 
-// read the preferences from the plist. returns 0 on success or 1 otherwise--presumably
-// this would mean there aren't yet preferences
+// read the preferences from the plist. returns 0 if the preference was actually
+// set, 1 if it wasn't (i.e. this is the first run of this invocation of the
+// widget), or 2 if there was a preference but the stop code is invalid
 
 function read_preferences()
 {
-	var stop_code = widget.preferenceForKey(widget.identifier + "-" + "stop_code");
+	var retcode = -1;
+	var time = widget.preferenceForKey(dashcode.createInstancePreferenceKey("time"));
+	
+	if (time) {
+		config.time = time;
+		retcode = 0;
+	} else {
+		config.time = 45;
+		retcode = 1;
+	}
+	
+	document.getElementById("popup_lookahead").setAttribute("value", time);
+
+	var stop_code = widget.preferenceForKey(dashcode.createInstancePreferenceKey("stop_code"));
 	
 	if (stop_code) {
-		config = {
-			"time": 30,
-			"stop_code": stop_code,
-			"stop_id": get_intersection_id(stop_code),
-			"stop_verbose": get_verbose_stop_name_from_code(stop_code)
-		};
+		if (!(stop_code in stops)) {
+			bad_stop_code = stop_code;
+
+			set_title("CU Buses");
+			display_message("&ldquo;" + bad_stop_code +
+					"&rdquo; isn&rsquo;t a stop. Please double-check your code.");
+					
+			config.stop_code = "";
+			config.stop_id = "";
+			config.stop_verbose = "";
+				
+			document.getElementById("field_stop").setAttribute("value", stop_code);
+				
+			retcode = 2;
+		}
 		
-		return 0;
+		bad_stop_code = "";
+
+		config.stop_code = stop_code;
+		config.stop_id = get_intersection_id(stop_code);
+		config.stop_verbose = get_verbose_stop_name_from_code(stop_code);
+				
+		document.getElementById("field_stop").setAttribute("value", stop_code);
 	} else {
-		stop_code = "0156";
-		config = {
-			"time": 30,
-			"stop_code": stop_code,
-			"stop_id": get_intersection_id(stop_code),
-			"stop_verbose": get_verbose_stop_name_from_code(stop_code)
-		};
-		
-		return 1;
+		display_message("Please click the"
+				+ " <span style='font-style: italic; font-family: \"Times New Roman\"; font-weight: bold'>i</span>"
+				+ " button at the bottom-right of this widget and enter a stop code.");
+		retcode = 1;
+	}
+	
+	return retcode;
+}
+
+//
+// # Updating
+//
+
+function check_for_updates()
+{
+	$.getJSON('https://github.com/bdesham/cu-buses/raw/master/version.js',
+			{}, check_for_updates_callback);
+}
+
+function check_for_updates_callback(json)
+{
+	var major = parseInt(json.latest_version_major);
+	var minor = parseInt(json.latest_version_minor);
+
+	if ((major > widget_version_major) ||
+			((major == widget_version_major) && (minor > widget_version_minor))) {
+		//alert('New version available: ' + major + '.' + minor);
+		document.getElementById('button_update').style.visibility = "visible";
+	} else {
+		//alert('We have the newest version: ' + major + '.' + minor);
+		document.getElementById('button_update').style.visibility = "hidden";
 	}
 }
 
@@ -298,6 +386,9 @@ var colors = {
 
 function refresh_ui_from_data(data)
 {
+	if (bad_stop_code)
+		return;
+	
 	var list = document.getElementById("list").object;
 
 	var departures = data.departures;
@@ -311,13 +402,14 @@ function refresh_ui_from_data(data)
 	set_title(config["stop_verbose"]);
 	set_status("Updated at " + get_current_time());
 
-	
-	// handle the case where there are no departures. (we assume here that we got a valid
-	// response from the server, but it contained no departures. the error-checking to make
-	// sure that we did get a valid response is somewhere else.)
+	// handle the case where there are no departures. (we assume here that we
+	// got a valid response from the server, but it contained no departures. the
+	// error-checking to make sure that we did get a valid response is somewhere
+	// else.)
 	
 	if (departures.length == 0) {
-		display_message("There are no buses coming in the next " + config.time + " minutes.");
+		display_message("There are no buses coming in the next " + config.time +
+				" minutes.");
 		return;
 	}
 	
@@ -341,7 +433,8 @@ function refresh_ui_from_data(data)
 			row.templateElements.arrival_time_text.innerText = "DUE";
 			
 		var terminus = get_verbose_stop_name_from_id(departure.ending);
-		row.templateElements.route_text.setAttribute("title", "Route ends at " + terminus);
+		row.templateElements.route_text.setAttribute("title", "Route ends at "
+				+ terminus);
 
 		var time_style = row.templateElements.arrival_time_text.style;
 		
@@ -362,7 +455,7 @@ function refresh_ui_from_data(data)
 // ## Timer functions
 //
 
-function startTimer()
+function start_timer()
 {
     update_data();
 
@@ -370,7 +463,7 @@ function startTimer()
         updateDisplayInterval = setInterval(update_data, refresh_interval);
 }
 
-function stopTimer()
+function stop_timer()
 {
     if (updateDisplayInterval) {
         clearInterval(updateDisplayInterval);
@@ -411,7 +504,8 @@ function set_status(text)
 
 function wrap_in_span(text, words, style)
 {
-	return text.replace(words, "<span style='" + style + "'>" + words + "</span>");
+	return text.replace(words, "<span style='" + style + "'>" + words
+			+ "</span>");
 }
 
 function array_of_spaces(len)
@@ -436,12 +530,40 @@ function array_of_spaces(len)
 function load()
 {
     dashcode.setupParts();
+
+	// start the update timer
 	
-	read_preferences();
+	check_for_updates();
+    var update_timer_interval = setInterval(check_for_updates, 1000*60*60*36);
 	
-	startTimer();
+	// things that have to be done programatically
+
+	document.getElementById("text_version").innerText = "CU Buses v" + widget_version;
+	document.getElementById("text_thanks").title = "They provide the buses too.";
+			
+	// "restore" the message text to the style we want
 	
-	//update_data();
+	var message = document.getElementById("text_message");
+	message.innerText = "";
+	message.style.setProperty("font-family", "'Helvetica Neue'");
+	message.style.setProperty("font-size", "16px");
+	message.style.setProperty("font-style", "normal");
+	
+	// clear the list to avoid the unsightly flash of example content
+	
+	document.getElementById("list").object.setDataArray([]);
+
+	// check to see whether this is a new instance of this widget
+
+	var prefs = read_preferences();
+	
+	if (prefs == 1) {
+		showBack(null);
+	}
+	
+	// set up refreshing
+	
+	start_timer();
 }
 
 // Called when the widget has been removed from the Dashboard
@@ -450,24 +572,22 @@ function remove()
 {
 	widget.setPreferenceForKey(null, dashcode.createInstancePreferenceKey("stop_id"));
 	
-	stopTimer();
+	stop_timer();
 }
 
 // Called when the widget has been hidden
 
 function hide()
 {
-    stopTimer();
+    stop_timer();
 }
 
 // Called when the widget has been shown
 
 function show()
 {
-    // Restart any timers that were stopped on hide
-	read_preferences();
-	//update_data();
-	startTimer();
+	if (read_preferences() == 0)
+		start_timer();
 }
 
 // Called when the widget has been synchronized with .Mac
@@ -482,6 +602,8 @@ function sync()
 
 function showBack(event)
 {
+	// Apple stuff
+	
     var front = document.getElementById("front");
     var back = document.getElementById("back");
 
@@ -495,6 +617,13 @@ function showBack(event)
     if (window.widget) {
         setTimeout('widget.performTransition();', 0);
     }
+	
+	// my stuff
+	
+	if (config && config.stop_code)
+		old_stop_code = config.stop_code;
+	else
+		old_stop_code = "dummy";
 }
 
 // Called when the done button is clicked from the back of the widget
@@ -503,6 +632,8 @@ function showBack(event)
 
 function showFront(event)
 {
+	// Apple stuff
+	
     var front = document.getElementById("front");
     var back = document.getElementById("back");
 
@@ -517,8 +648,14 @@ function showFront(event)
         setTimeout('widget.performTransition();', 0);
     }
 	
-	update_preferences();
-	update_data();
+	// my stuff
+
+	if (update_preferences() == 0) {
+		if (config.stop_code != old_stop_code) {
+			set_title(get_verbose_stop_name_from_code(config.stop_code));
+			update_data();
+		}
+	}
 }
 
 // 
@@ -534,6 +671,14 @@ function button_look_up_code_handler(event)
 function button_update_handler(event)
 {
     widget.openURL("https://github.com/bdesham/cu-buses");
+	return;
+}
+
+function lookahead_change_handler(event)
+{
+	var time = parseInt(document.getElementById("popup_lookahead").value);
+    config.time = time;
+	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey("time"));
 	return;
 }
 

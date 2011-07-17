@@ -1,0 +1,14 @@
+# Questions
+
+* is showFront called when the widget first launches, or just when the user flips from the back of the widget? if it's not called the first time, then don't worry about the initial value of old_stop_code
+
+# Things to implement
+
+## Things we need
+
+* make sure that all route names look okay
+* make sure we handle daylight saving correctly
+
+## Things we want
+
+* note the user's offset from UTC or whatever and store the value

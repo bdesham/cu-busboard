@@ -6,6 +6,7 @@
  */
 var localizedStrings = {
     "Done": "Done",
-    "Hello, World!": "Bus Stop Information"
+    "Hello, World!": "CU Buses"
 };
+
 

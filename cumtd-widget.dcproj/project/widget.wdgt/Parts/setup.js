@@ -10,18 +10,21 @@ var dashcodePartSpecs = {
     "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_update_handler", "rightImageWidth": 5, "text": "Get the newest version!" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
-    "list": { "allowsEmptySelection": true, "dataArray": ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8"], "dataSourceName": "test_data", "labelElementId": "route_text", "listStyle": "List.DESKTOP_LIST", "sampleRows": 3, "selectionEnabled": true, "view": "DC.List" },
+    "list": { "allowsEmptySelection": true, "dataArray": ["Item 8"], "dataSourceName": "test_data", "labelElementId": "route_text", "listStyle": "List.DESKTOP_LIST", "sampleRows": 3, "selectionEnabled": true, "view": "DC.List" },
     "route_text": { "text": "Item", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
     "status_text": { "text": "Data provided by CUMTD", "view": "DC.Text" },
     "text_author": { "text": "Benjamin Esham, © 2011", "view": "DC.Text" },
     "text_code_explanation": { "text": "Enter the four-digit code for your stop. If you don’t know this code, visit the CUMTD website:", "view": "DC.Text" },
-    "text_message": { "view": "DC.Text" },
+    "text_lookahead": { "text": "Look ahead:", "view": "DC.Text" },
+    "text_message": { "text": "Loading…", "view": "DC.Text" },
     "text_stop_label": { "text": "Your bus stop:", "view": "DC.Text" },
     "text_thanks": { "text": "Data provided by CUMTD", "view": "DC.Text" },
     "text_version": { "text": "CU Buses v0.5", "view": "DC.Text" },
     "top_text": { "text": "Hello, World!", "view": "DC.Text" }
 };
+
+
 
 
 
