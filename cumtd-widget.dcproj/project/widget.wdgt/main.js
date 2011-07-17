@@ -542,6 +542,8 @@ function load()
 	// things that have to be done programatically
 
 	document.getElementById("text_version").innerText = "CU Buses v" + widget_version;
+	document.getElementById("text_version").style.setProperty("text-decoration", "underline");
+	
 	document.getElementById("text_thanks").title = "They provide the buses too.";
 			
 	// "restore" the message text to the style we want
@@ -682,6 +684,12 @@ function lookahead_change_handler(event)
 	var time = parseInt(document.getElementById("popup_lookahead").value);
     config.time = time;
 	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey("time"));
+	return;
+}
+
+function text_version_handler(event)
+{
+    widget.openURL("https://github.com/bdesham/cu-buses");
 	return;
 }
 

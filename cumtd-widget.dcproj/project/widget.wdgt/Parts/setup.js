@@ -20,9 +20,10 @@ var dashcodePartSpecs = {
     "text_message": { "text": "Loading…", "view": "DC.Text" },
     "text_stop_label": { "text": "Your bus stop:", "view": "DC.Text" },
     "text_thanks": { "text": "Data provided by CUMTD", "view": "DC.Text" },
-    "text_version": { "text": "CU Buses v0.5", "view": "DC.Text" },
+    "text_version": { "text": "CU Buses <version>", "view": "DC.Text" },
     "top_text": { "text": "CU Buses", "view": "DC.Text" }
 };
+
 
 
 
