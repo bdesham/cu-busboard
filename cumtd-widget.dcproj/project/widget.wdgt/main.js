@@ -249,9 +249,15 @@ function get_verbose_stop_name_from_id(id)
 
 function prettify_route_name(name)
 {
-	name = wrap_in_span(name, "OPPER", "font-size: 85%");
 	name = wrap_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
 	name = wrap_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
+	
+	if (name.match(/YellowHOPPER Gerty/i)) {
+		name = name.replace(/HOPPER Gerty/,
+			"H<span style='font-size: 85%'>OP.</span>"
+			+ " <span style='font-weight: normal; font-size: 80%'>Gerty</span>");
+	} else if (name.match(/HOPPER/))
+		name = wrap_in_span(name, "OPPER", "font-size: 85%");
 	
 	if (name.match(/Air Bus/))
 		name = "&#x2708; " + name;
@@ -356,10 +362,10 @@ function check_for_updates_callback(json)
 
 	if ((major > widget_version_major) ||
 			((major == widget_version_major) && (minor > widget_version_minor))) {
-		//alert('New version available: ' + major + '.' + minor);
+		//window.console.log('New version available: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = "visible";
 	} else {
-		//alert('We have the newest version: ' + major + '.' + minor);
+		//window.console.log('We have the newest version: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = "hidden";
 	}
 }
@@ -427,7 +433,7 @@ function refresh_ui_from_data(data)
 		var departure = departures[i];
 		
 		var time = departure.time;
-				
+		
 		row.templateElements.route_text.innerHTML = prettify_route_name(departure.route);
 		
 		if (time > 0)
@@ -543,7 +549,8 @@ function load()
 
 	document.getElementById("text_version").innerText = "CU Buses v" + widget_version;
 	document.getElementById("text_version").style.setProperty("text-decoration", "underline");
-	
+	document.getElementById("text_version").style.setProperty("cursor", "pointer");
+
 	document.getElementById("text_thanks").title = "They provide the buses too.";
 			
 	// "restore" the message text to the style we want
@@ -657,6 +664,7 @@ function showFront(event)
 
 	if (update_preferences() == 0) {
 		if (config.stop_code != old_stop_code) {
+			display_message("Loading&hellip;");
 			set_title(get_verbose_stop_name_from_code(config.stop_code));
 			update_data();
 		}
@@ -675,7 +683,7 @@ function button_look_up_code_handler(event)
 
 function button_update_handler(event)
 {
-    widget.openURL("https://github.com/bdesham/cu-buses");
+    widget.openURL("https://bdesham.github.com/cu-buses/index.html#download");
 	return;
 }
 
@@ -689,7 +697,7 @@ function lookahead_change_handler(event)
 
 function text_version_handler(event)
 {
-    widget.openURL("https://github.com/bdesham/cu-buses");
+    widget.openURL("https://bdesham.github.com/cu-buses");
 	return;
 }
 

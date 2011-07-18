@@ -220,11 +220,13 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 14px;
-    font-family: 'Helvetica Neue';
     left: 23px;
-    top: 207px;
+    font-size: 12px;
+    top: 213px;
+    font-family: HelveticaNeue-Medium;
+    right: 133px;
     width: auto;
+    bottom: 59px;
     height: auto;
 }
 
@@ -238,12 +240,12 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 14px;
     font-family: 'Helvetica Neue';
     left: 23px;
     top: 249px;
     width: auto;
     height: auto;
+    font-size: 12px;
 }
 
 .selected #text_thanks {
@@ -256,11 +258,13 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     position: absolute;
     margin-top: 0px;
     color: rgb(255, 255, 255);
-    font-size: 14px;
     font-family: 'Helvetica Neue';
     left: 23px;
-    top: 228px;
+    font-size: 12px;
+    top: 231px;
+    right: 133px;
     width: auto;
+    bottom: 41px;
     height: auto;
 }
 
@@ -345,11 +349,10 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-family: 'Helvetica Neue';
     width: 157px;
     opacity: 1;
-    top: 174px;
     left: 23px;
-    bottom: 87px;
+    top: 178px;
+    bottom: 83px;
     height: auto;
-    visibility: hidden;
 }
 
 #text_message {

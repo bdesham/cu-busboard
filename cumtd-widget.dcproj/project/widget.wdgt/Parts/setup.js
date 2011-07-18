@@ -10,7 +10,7 @@ var dashcodePartSpecs = {
     "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_update_handler", "rightImageWidth": 5, "text": "Get the newest version!" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
-    "list": { "allowsEmptySelection": true, "dataArray": ["Item 8"], "dataSourceName": "test_data", "labelElementId": "route_text", "listStyle": "List.DESKTOP_LIST", "sampleRows": 3, "selectionEnabled": true, "view": "DC.List" },
+    "list": { "allowsEmptySelection": true, "dataArray": ["Item 8"], "dataSourceName": "test_data", "labelElementId": "route_text", "listStyle": "List.DESKTOP_LIST", "sampleRows": 3, "view": "DC.List" },
     "route_text": { "text": "Item", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
     "status_text": { "text": "Data provided by CUMTD", "view": "DC.Text" },
@@ -23,6 +23,7 @@ var dashcodePartSpecs = {
     "text_version": { "text": "CU Buses <version>", "view": "DC.Text" },
     "top_text": { "text": "CU Buses", "view": "DC.Text" }
 };
+
 
 
 
