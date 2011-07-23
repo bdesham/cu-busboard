@@ -687,7 +687,7 @@ function button_look_up_code_handler(event)
 
 function button_update_handler(event)
 {
-    widget.openURL("https://bdesham.github.com/cu-buses/index.html#download");
+    widget.openURL("http://bdesham.github.com/cu-buses/index.html#download");
 	return;
 }
 
@@ -701,7 +701,7 @@ function lookahead_change_handler(event)
 
 function text_version_handler(event)
 {
-    widget.openURL("https://bdesham.github.com/cu-buses");
+    widget.openURL("http://bdesham.github.com/cu-buses");
 	return;
 }
 
