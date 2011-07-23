@@ -1,0 +1,257 @@
+//
+// Mixins
+//
+
+@mixin round($radius) {
+	-moz-border-radius: $radius $radius $radius $radius;
+	-webkit-border-radius: $radius $radius $radius $radius;
+	border-radius: $radius $radius $radius $radius;
+}
+
+@mixin shadow($color, $radius) {
+	-webkit-box-shadow: $color $radius $radius $radius;
+	-moz-box-shadow: $color $radius $radius $radius;
+	box-shadow: $color $radius $radius $radius;
+}
+
+@mixin change-type($text, $bg, $fg) {
+	background-color: $bg;
+	@include round(4px);
+	content: $text;
+	text-transform: uppercase;
+	font-size: 70%;
+	color: $fg;
+	margin-right: 0.6em;
+	padding: 0.4em;
+}
+
+@mixin green-gradient {
+	background: #00bd00; // Old browsers
+	background: -moz-linear-gradient(top, #00bd00 0%, #007f00 100%); // FF3.6+
+	background: -webkit-gradient(linear, left top, left bottom,
+		color-stop(0%,#00bd00), color-stop(100%,#007f00)); // Chrome,Safari4+
+	background: -webkit-linear-gradient(top, #00bd00 0%,#007f00 100%);
+		// Chrome10+,Safari5.1+
+	background: -o-linear-gradient(top, #00bd00 0%,#007f00 100%); // Opera11.10+
+	background: -ms-linear-gradient(top, #00bd00 0%,#007f00 100%); // IE10+
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00bd00',
+		endColorstr='#007f00', GradientType=0); // IE6-9
+	background: linear-gradient(top, #00bd00 0%,#007f00 100%); // W3C
+}	
+
+//
+// Colors
+//
+
+$back-background: black;
+$background:	#35393c;
+$text:			#eee8d5; // base2 from solarized
+$brighter-text:	#fdf6e3; // base3 from solarized
+$orange:		#ff6916;
+$blue:			#268bd2; // blue from solarized
+
+$red-bg:		#d10000;
+$yellow-bg:		#ffc400;
+$green-bg:		#007f00;
+
+//
+// Styles
+//
+
+body {
+	background-color: $back-background;
+	color: $text;
+	max-width: 800px;
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	margin: 0px auto;
+
+	::selection,
+	::-moz-selection,
+	::-webkit-selection {
+		background-color: $orange;
+		color: $text;
+	}
+
+	a:link {
+		color: lighten($blue, 20%);
+	}
+
+	a:visited {
+		color: $blue;
+	}
+
+	a:hover {
+		color: $brighter-text;
+	}
+
+	abbr {
+		font-size: 85%;
+	}
+
+	hgroup {
+		text-align: center;
+		color: $text;
+		margin-top: 1em;
+		margin-bottom: 0px;
+		padding-top: 0.8em;
+		padding-bottom: 0.8em;
+
+		h1 {
+			text-shadow: black 3px 3px 3px;
+			font-size: 3em;
+			margin-bottom: 0em;
+		}
+
+		h2 {
+			text-shadow: black 1px 1px 2px;
+			font-weight: 200;
+			font-size: 1.5em;
+		}
+	}
+
+	nav ul {
+		list-style-type: none;
+		text-align: center;
+		margin: 0em;
+		padding: 0em;
+
+		li {
+			padding: 0em;
+			margin-right: -1px;
+			display: inline;
+		}
+
+		li + li {
+			padding-left: 2em;
+		}
+	}
+
+	div#content {
+		@include round(28px);
+		background-color: $background;
+
+		div#main-content {
+			margin: 0px;
+			padding: 2em;
+
+			> section > h2 {
+				text-shadow: black 1px 1px 2px;
+				font-weight: 400;
+			}
+
+			> section > h3 {
+				text-shadow: black 1px 1px 2px;
+				font-weight: 400;
+				font-style: italic;
+			}
+
+			// a semi-kludge to make sure that this style is applied to
+			// everything that is really "body text"
+			p, ul li {
+				font-weight: 200;
+				line-height: 1.3em;
+
+				strong {
+					font-weight: normal;
+				}
+			}
+
+			img.screenshot {
+				float: right;
+				padding-left: 2em;
+			}
+
+			ul.tips {
+				list-style: none;
+				padding-left: 1.8em;
+
+				li {
+					text-indent: -1.8em;
+				}
+
+				li + li{
+					margin-top: 1em;
+				}
+				
+				li:before {
+					content: "\2192\00A0\00A0\00A0";
+				}
+			}
+
+
+			p.download-button {
+				margin: 2em;
+
+				a:link,
+				a:visited,
+				a:hover
+				{
+					@include green-gradient;
+					color: $brighter-text;
+					padding: 1em;
+					text-transform: uppercase;
+					font-size: 85%;
+					font-weight: bold;
+				}
+
+				a:link {
+					border: 3px solid $background;
+					text-decoration: none;
+				}
+
+				a:hover {
+					@include round(4px);
+					border: 3px solid $brighter-text;
+					text-decoration: underline;
+				}
+			}
+
+			dl.versions {
+				dd {
+					margin-left: 0em;
+
+					ul {
+						list-style-type: none;
+
+						li {
+							margin-left: 0em;
+						}
+
+						li + li {
+							margin-top: 0.3em;
+						}
+
+						li.new:before {
+							@include change-type("New", $green-bg, white);
+						}
+
+						li.changed:before {
+							@include change-type("Changed", $yellow-bg, black);
+						}
+
+						li.bugfix:before {
+							@include change-type("Bug fix", $red-bg, white);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	footer {
+		text-align: center;
+		color: $text;
+		font-size: small;
+		padding-top: 0.8em;
+		padding-bottom: 0.8em;
+		margin-bottom: 2em;
+
+		p {
+			width: 80%;
+			margin: 0em auto;
+			//font-weight: 200;
+			line-height: 1.5em;
+		}
+	}
+}
+// vim: tw=80 cc=+1

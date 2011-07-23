@@ -1,0 +1,156 @@
+body {
+  background-color: black;
+  color: #eee8d5;
+  max-width: 800px;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  margin: 0px auto; }
+  body ::selection,
+  body ::-moz-selection,
+  body ::-webkit-selection {
+    background-color: #ff6916;
+    color: #eee8d5; }
+  body a:link {
+    color: #78b9e6; }
+  body a:visited {
+    color: #268bd2; }
+  body a:hover {
+    color: #fdf6e3; }
+  body abbr {
+    font-size: 85%; }
+  body hgroup {
+    text-align: center;
+    color: #eee8d5;
+    margin-top: 1em;
+    margin-bottom: 0px;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em; }
+    body hgroup h1 {
+      text-shadow: black 3px 3px 3px;
+      font-size: 3em;
+      margin-bottom: 0em; }
+    body hgroup h2 {
+      text-shadow: black 1px 1px 2px;
+      font-weight: 200;
+      font-size: 1.5em; }
+  body nav ul {
+    list-style-type: none;
+    text-align: center;
+    margin: 0em;
+    padding: 0em; }
+    body nav ul li {
+      padding: 0em;
+      margin-right: -1px;
+      display: inline; }
+    body nav ul li + li {
+      padding-left: 2em; }
+  body div#content {
+    -moz-border-radius: 28px 28px 28px 28px;
+    -webkit-border-radius: 28px 28px 28px 28px;
+    border-radius: 28px 28px 28px 28px;
+    background-color: #35393c; }
+    body div#content div#main-content {
+      margin: 0px;
+      padding: 2em; }
+      body div#content div#main-content > section > h2 {
+        text-shadow: black 1px 1px 2px;
+        font-weight: 400; }
+      body div#content div#main-content > section > h3 {
+        text-shadow: black 1px 1px 2px;
+        font-weight: 400;
+        font-style: italic; }
+      body div#content div#main-content p, body div#content div#main-content ul li {
+        font-weight: 200;
+        line-height: 1.3em; }
+        body div#content div#main-content p strong, body div#content div#main-content ul li strong {
+          font-weight: normal; }
+      body div#content div#main-content img.screenshot {
+        float: right;
+        padding-left: 2em; }
+      body div#content div#main-content ul.tips {
+        list-style: none;
+        padding-left: 1.8em; }
+        body div#content div#main-content ul.tips li {
+          text-indent: -1.8em; }
+        body div#content div#main-content ul.tips li + li {
+          margin-top: 1em; }
+        body div#content div#main-content ul.tips li:before {
+          content: "\2192\00A0\00A0\00A0"; }
+      body div#content div#main-content p.download-button {
+        margin: 2em; }
+        body div#content div#main-content p.download-button a:link,
+        body div#content div#main-content p.download-button a:visited,
+        body div#content div#main-content p.download-button a:hover {
+          background: #00bd00;
+          background: -moz-linear-gradient(top, #00bd00 0%, #007f00 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00bd00), color-stop(100%, #007f00));
+          background: -webkit-linear-gradient(top, #00bd00 0%, #007f00 100%);
+          background: -o-linear-gradient(top, #00bd00 0%, #007f00 100%);
+          background: -ms-linear-gradient(top, #00bd00 0%, #007f00 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00bd00', 		endColorstr='#007f00', GradientType=0);
+          background: linear-gradient(top, #00bd00 0%, #007f00 100%);
+          color: #fdf6e3;
+          padding: 1em;
+          text-transform: uppercase;
+          font-size: 85%;
+          font-weight: bold; }
+        body div#content div#main-content p.download-button a:link {
+          border: 3px solid #35393c;
+          text-decoration: none; }
+        body div#content div#main-content p.download-button a:hover {
+          -moz-border-radius: 4px 4px 4px 4px;
+          -webkit-border-radius: 4px 4px 4px 4px;
+          border-radius: 4px 4px 4px 4px;
+          border: 3px solid #fdf6e3;
+          text-decoration: underline; }
+      body div#content div#main-content dl.versions dd {
+        margin-left: 0em; }
+        body div#content div#main-content dl.versions dd ul {
+          list-style-type: none; }
+          body div#content div#main-content dl.versions dd ul li {
+            margin-left: 0em; }
+          body div#content div#main-content dl.versions dd ul li + li {
+            margin-top: 0.3em; }
+          body div#content div#main-content dl.versions dd ul li.new:before {
+            background-color: #007f00;
+            -moz-border-radius: 4px 4px 4px 4px;
+            -webkit-border-radius: 4px 4px 4px 4px;
+            border-radius: 4px 4px 4px 4px;
+            content: "New";
+            text-transform: uppercase;
+            font-size: 70%;
+            color: white;
+            margin-right: 0.6em;
+            padding: 0.4em; }
+          body div#content div#main-content dl.versions dd ul li.changed:before {
+            background-color: #ffc400;
+            -moz-border-radius: 4px 4px 4px 4px;
+            -webkit-border-radius: 4px 4px 4px 4px;
+            border-radius: 4px 4px 4px 4px;
+            content: "Changed";
+            text-transform: uppercase;
+            font-size: 70%;
+            color: black;
+            margin-right: 0.6em;
+            padding: 0.4em; }
+          body div#content div#main-content dl.versions dd ul li.bugfix:before {
+            background-color: #d10000;
+            -moz-border-radius: 4px 4px 4px 4px;
+            -webkit-border-radius: 4px 4px 4px 4px;
+            border-radius: 4px 4px 4px 4px;
+            content: "Bug fix";
+            text-transform: uppercase;
+            font-size: 70%;
+            color: white;
+            margin-right: 0.6em;
+            padding: 0.4em; }
+  body footer {
+    text-align: center;
+    color: #eee8d5;
+    font-size: small;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    margin-bottom: 2em; }
+    body footer p {
+      width: 80%;
+      margin: 0em auto;
+      line-height: 1.5em; }
