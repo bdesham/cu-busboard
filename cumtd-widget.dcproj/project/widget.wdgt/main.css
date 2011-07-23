@@ -64,7 +64,6 @@ body {
     width: 269px;
     top: 16px;
     font-weight: bold;
-    font-family: Helvetica;
     right: 12px;
     margin-left: auto;
     left: 11px;
@@ -73,6 +72,7 @@ body {
     height: auto;
     cursor: default;
     -khtml-user-select: none;
+    font-family: 'Helvetica Neue';
 }
 
 #scrollArea {
@@ -353,6 +353,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 178px;
     bottom: 83px;
     height: auto;
+    visibility: hidden;
 }
 
 #text_message {

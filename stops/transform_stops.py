@@ -33,8 +33,7 @@ except IOError, e:
 try:
 	stops = json.loads(in_file.read())
 except ValueError, e:
-	print >> sys.stderr, "transform_stops.py: error parsing JSON. " + \
-			"Did you enter the right password?"
+	print >> sys.stderr, "transform_stops.py: error parsing JSON. "
 	print >> sys.stderr, e
 	sys.exit(1)
 
@@ -48,8 +47,10 @@ for stop in stops["stops"]:
 	result[code[3:]] = {"id": stop["stop_id"],
 			"verbose": stop["stop_name"]}
 
+result["7411"] = {"id": "PLAZA", "verbose": "Transit Plaza"}
+
 out_file.write("var stops = ")
-json.dump(result, out_file, indent = 1)
+json.dump(result, out_file, indent = 0)
 out_file.write(";")
 
 out_file.close()

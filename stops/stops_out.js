@@ -4447,6 +4447,10 @@ var stops = {
   "id": "VINOR:4", 
   "verbose": "Vine & Oregon"
  }, 
+ "7411": {
+  "id": "PLAZA", 
+  "verbose": "Transit Plaza"
+ }, 
  "0462": {
   "id": "CCRAPTS:2", 
   "verbose": "Country Club Rd. at Apts."
