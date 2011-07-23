@@ -33,6 +33,8 @@ var widget_version_major = 1;
 var widget_version_minor = 0;
 var widget_version = widget_version_major + "." + widget_version_minor;
 
+var new_version_available = false;
+
 // we store the old value of the stop code before showing the preferences. if it
 // hasn't changed when we flip back to the front, don't refresh the data. we
 // initialize this to the empty string so that we don't double-refresh when the
@@ -156,7 +158,7 @@ function process_json(json)
 // ## Date and time utility functions
 //
 
-// returns the time in the format "01:46 PM"
+// returns the time in the format "1:46 PM"
 
 function get_current_time()
 {
@@ -355,7 +357,7 @@ function read_preferences()
 
 function check_for_updates()
 {
-	$.getJSON('https://github.com/bdesham/cu-buses/raw/master/version.js',
+	$.getJSON('http://bdesham.github.com/cu-buses/version.js',
 			{}, check_for_updates_callback);
 }
 
@@ -368,9 +370,11 @@ function check_for_updates_callback(json)
 			((major == widget_version_major) && (minor > widget_version_minor))) {
 		//window.console.log('New version available: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = "visible";
+		new_version_available = true;
 	} else {
 		//window.console.log('We have the newest version: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = "hidden";
+		new_version_available = false;
 	}
 }
 
@@ -508,7 +512,10 @@ function set_title(text)
 
 function set_status(text)
 {
-	document.getElementById("status_text").innerText = text;
+	if (new_version_available)
+		document.getElementById("status_text").innerText = "Flip to the back for a software update!";
+	else
+		document.getElementById("status_text").innerText = text;
 }
 
 //
