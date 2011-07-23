@@ -42,6 +42,8 @@ var new_version_available = false;
 
 var old_stop_code = "";
 
+var old_time = 45;
+
 // time between refreshes (in milliseconds)
 
 var refresh_interval = 1000*60;
@@ -613,12 +615,6 @@ function show()
 		start_timer();
 }
 
-// Called when the widget has been synchronized with .Mac
-
-function sync()
-{
-}
-
 // Called when the info button is clicked to show the back of the widget
 //
 // event: onClick event from the info button
@@ -647,6 +643,11 @@ function showBack(event)
 		old_stop_code = config.stop_code;
 	else
 		old_stop_code = "dummy";
+	
+	if (config && config.time)
+		old_time = config.time;
+	else
+		old_time = 45;
 }
 
 // Called when the done button is clicked from the back of the widget
@@ -664,8 +665,8 @@ function showFront(event)
         widget.prepareForTransition("ToFront");
     }
 
-    front.style.display="block";
-    back.style.display="none";
+    front.style.display = "block";
+    back.style.display = "none";
 
     if (window.widget) {
         setTimeout('widget.performTransition();', 0);
@@ -677,6 +678,14 @@ function showFront(event)
 		if (config.stop_code != old_stop_code) {
 			display_message("Loading&hellip;");
 			set_title(get_verbose_stop_name_from_code(config.stop_code));
+			update_data();
+		} else if (config.time > old_time) {
+			// This is an "else if" because if the stop changed, the data will
+			// be refetched using the newly-chosen time anyway so we don't need
+			// to do anything extra. We don't bother to do anything if the
+			// newly-selected time is *less* than the previous time; it'll be
+			// fixed within a minute anyway.
+
 			update_data();
 		}
 	}
@@ -721,5 +730,6 @@ if (window.widget) {
     widget.onremove = remove;
     widget.onhide = hide;
     widget.onshow = show;
-    widget.onsync = sync;
 }
+
+// vim: tw=80 cc=+1
