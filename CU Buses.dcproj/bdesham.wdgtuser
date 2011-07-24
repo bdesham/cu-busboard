@@ -32,8 +32,10 @@
 		<string>cumtd-widget</string>
 		<key>Save</key>
 		<true/>
+		<key>SavePath</key>
+		<string>/Users/bdesham/Sites/CU Buses</string>
 		<key>WidgetDeployName</key>
-		<string>CU Buses</string>
+		<string>CU Buses.wdgt</string>
 		<key>enableSimulation</key>
 		<true/>
 		<key>simulatedHost</key>

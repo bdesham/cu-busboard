@@ -717,7 +717,7 @@ function lookahead_change_handler(event)
 
 function text_version_handler(event)
 {
-    widget.openURL("http://bdesham.github.com/cu-buses");
+    widget.openURL("http://bdesham.github.com/cu-buses/");
 	return;
 }
 
