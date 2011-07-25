@@ -139,6 +139,12 @@ body {
 				font-weight: 400;
 			}
 
+			/*> section:target > h2:after {
+					content: "\0020\2190";
+					font-family: "Lucida Grande", sans-serif;
+					color: $orange;
+			}*/
+
 			> section > h3 {
 				text-shadow: black 1px 1px 2px;
 				font-weight: 400;
