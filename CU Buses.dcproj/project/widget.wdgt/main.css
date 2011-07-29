@@ -38,9 +38,9 @@ body {
     display: block;
     top: 0px;
     left: 0px;
-    bottom: 0px;
     right: 0px;
     width: auto;
+    bottom: 0px;
     height: auto;
 }
 
@@ -407,4 +407,457 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     width: 102px;
     opacity: 1;
     left: 113px;
+}
+
+#route_selection {
+    width: 100%;
+    min-height: 100px;
+    display: none;
+    position: relative;
+}
+
+#backImg1 {
+    position: absolute;
+    display: block;
+    width: 292px;
+    height: 286px;
+    top: 0px;
+    left: 0px;
+}
+
+#text_stop_label1 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    top: 25px;
+    left: 23px;
+    color: rgb(255, 255, 255);
+    font-family: 'Helvetica Neue';
+    font-size: 14px;
+    width: auto;
+    height: auto;
+}
+
+.selected #text_stop_label1 {
+    color: white;
+}
+
+#checkbox {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 54px;
+    left: 23px;
+}
+
+#div {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox1 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 77px;
+    left: 23px;
+}
+
+#div1 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox2 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 101px;
+    left: 23px;
+}
+
+#div2 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    width: auto;
+    right: -13px;
+    height: auto;
+    bottom: -14px;
+}
+
+#checkbox3 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 124px;
+    left: 23px;
+}
+
+#div3 {
+    position: absolute;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    top: 0px;
+    left: 23px;
+    right: 8px;
+    width: auto;
+    bottom: 3px;
+    height: auto;
+}
+
+#checkbox4 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 148px;
+    left: 23px;
+}
+
+#div4 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox5 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 172px;
+    left: 23px;
+}
+
+#div5 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox6 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 196px;
+    left: 23px;
+}
+
+#div6 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox13 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 149px;
+    left: 147px;
+}
+
+#div13 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox7 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 221px;
+    left: 23px;
+}
+
+#div7 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox12 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 125px;
+    left: 147px;
+}
+
+#div12 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox10 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 77px;
+    left: 147px;
+}
+
+#div10 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox8 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 244px;
+    left: 23px;
+}
+
+#div8 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox11 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 101px;
+    left: 147px;
+}
+
+#div11 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox9 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 54px;
+    left: 147px;
+}
+
+#div9 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox16 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 219px;
+    left: 147px;
+}
+
+#div16 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox17 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 242px;
+    left: 147px;
+}
+
+#div17 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    right: -34px;
+    width: auto;
+    bottom: -14px;
+    height: auto;
+}
+
+#checkbox15 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 195px;
+    left: 147px;
+}
+
+#div15 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#checkbox14 {
+    width: 80px;
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    top: 172px;
+    left: 147px;
+}
+
+#div14 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+}
+
+#glassButton {
+    cursor: default;
+    -khtml-user-select: none;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    left: 205px;
+    top: 18px;
 }
