@@ -691,6 +691,55 @@ function showFront(event)
 	}
 }
 
+// Show the route selection pane
+//
+// event: onClick event from the done button
+
+function showRoutes(event)
+{
+	// Apple stuff
+	
+    var routes = document.getElementById("route_selection");
+    var back = document.getElementById("back");
+
+    if (window.widget) {
+        widget.prepareForTransition("ToRoutes");
+    }
+
+    routes.style.display = "block";
+    back.style.display = "none";
+
+    if (window.widget) {
+        setTimeout('widget.performTransition();', 0);
+    }
+}
+
+// Called when the info button is clicked to show the back of the widget
+//
+// event: onClick event from the info button
+
+function showBackFromRoutes(event)
+{
+	// Apple stuff
+	
+    var routes = document.getElementById("route_selection");
+    var back = document.getElementById("back");
+
+    if (window.widget) {
+        widget.prepareForTransition("ToBack");
+    }
+
+    routes.style.display = "none";
+    back.style.display = "block";
+
+    if (window.widget) {
+        setTimeout('widget.performTransition();', 0);
+    }
+}
+
+
+
+
 // 
 // ### My event handlers
 //
