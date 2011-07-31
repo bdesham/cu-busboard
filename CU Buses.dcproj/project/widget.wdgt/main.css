@@ -443,7 +443,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: white;
 }
 
-#checkbox {
+#checkbox_1 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -456,7 +456,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     width: 119px;
 }
 
-#div {
+#div_1 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -482,7 +482,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox1 {
+#checkbox_2 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -495,7 +495,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 76px;
 }
 
-#div1 {
+#div_2 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -504,7 +504,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox2 {
+#checkbox_3 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -517,7 +517,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 99px;
 }
 
-#div2 {
+#div_3 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -526,7 +526,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox3 {
+#checkbox_4 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -539,7 +539,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 122px;
 }
 
-#div3 {
+#div_4 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -548,7 +548,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox4 {
+#checkbox_5 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -561,7 +561,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 145px;
 }
 
-#div4 {
+#div_5 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -570,7 +570,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox5 {
+#checkbox_6 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -583,7 +583,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 167px;
 }
 
-#div5 {
+#div_6 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -592,7 +592,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox6 {
+#checkbox_7 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -605,7 +605,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     left: 23px;
 }
 
-#div6 {
+#div_7 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -614,7 +614,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox7 {
+#checkbox_8 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -627,7 +627,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 213px;
 }
 
-#div7 {
+#div_8 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -636,7 +636,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox8 {
+#checkbox_9 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -649,7 +649,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 236px;
 }
 
-#div8 {
+#div_9 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -658,7 +658,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox12 {
+#checkbox_13 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -671,7 +671,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 99px;
 }
 
-#div12 {
+#div_13 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -680,7 +680,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox14 {
+#checkbox_22 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -693,7 +693,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 145px;
 }
 
-#div14 {
+#div_22 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -702,7 +702,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox18 {
+#checkbox_280 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -715,7 +715,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 236px;
 }
 
-#div18 {
+#div_280 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -724,7 +724,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox15 {
+#checkbox_27 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -737,7 +737,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 167px;
 }
 
-#div15 {
+#div_27 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -746,7 +746,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox16 {
+#checkbox_180 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -759,7 +759,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 190px;
 }
 
-#div16 {
+#div_180 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -768,7 +768,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox11 {
+#checkbox_12 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -781,7 +781,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 76px;
 }
 
-#div11 {
+#div_12 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -790,7 +790,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox10 {
+#checkbox_10 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -803,7 +803,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 54px;
 }
 
-#div10 {
+#div_10 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -812,7 +812,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox13 {
+#checkbox_14 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -825,7 +825,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 122px;
 }
 
-#div13 {
+#div_14 {
     position: absolute;
     top: 2px;
     left: 18px;
@@ -834,7 +834,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
 }
 
-#checkbox17 {
+#checkbox_190 {
     font-family: HelveticaNeue;
     font-size: 10pt;
     height: 18px;
@@ -847,11 +847,22 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     top: 213px;
 }
 
-#div17 {
+#div_190 {
     position: absolute;
     top: 2px;
     left: 18px;
     text-align: left;
     vertical-align: middle;
     color: rgb(255, 255, 255);
+}
+
+#glassButton {
+    cursor: default;
+    -khtml-user-select: none;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    left: 214px;
+    top: 21px;
 }

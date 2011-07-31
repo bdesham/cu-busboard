@@ -770,6 +770,14 @@ function text_version_handler(event)
 	return;
 }
 
+function toggleCheckbox(event)
+{
+    var route = event.toElement.innerText.replace(/ .+/, "");
+	var checkbox = document.getElementById("input_" + route);
+	checkbox.checked = !checkbox.checked;
+	return;
+}
+
 
 //
 // # Code that will actually run! (i.e., not functions)
@@ -782,3 +790,5 @@ if (window.widget) {
 }
 
 // vim: tw=80 cc=+1
+
+
