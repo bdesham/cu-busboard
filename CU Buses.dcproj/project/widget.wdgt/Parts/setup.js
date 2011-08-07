@@ -6,9 +6,9 @@
  */
 var dashcodePartSpecs = {
     "arrival_time_text": { "text": "12 min", "view": "DC.Text" },
-    "button": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showRoutes", "rightImageWidth": 5, "text": "Routes" },
     "button_look_up_code": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_look_up_code_handler", "rightImageWidth": 5, "text": "Look up my stop code" },
-    "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_update_handler", "rightImageWidth": 5, "text": "Get the newest version!" },
+    "button_look_up_code1": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "showRoutes", "rightImageWidth": 5, "text": "Choose…" },
+    "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_update_handler", "rightImageWidth": 5, "text": "Update" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "showFront", "text": "Done" },
     "glassButton": { "creationFunction": "CreateGlassButton", "onclick": "showBackFromRoutes", "text": "Back" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "showBack" },
@@ -19,6 +19,7 @@ var dashcodePartSpecs = {
     "text_author": { "text": "Benjamin Esham, © 2011", "view": "DC.Text" },
     "text_code_explanation": { "text": "Enter the four-digit code for your stop. If you don’t know this code, visit the CUMTD website:", "view": "DC.Text" },
     "text_lookahead": { "text": "Look ahead:", "view": "DC.Text" },
+    "text_lookahead1": { "text": "Show only certain routes:", "view": "DC.Text" },
     "text_message": { "text": "Loading…", "view": "DC.Text" },
     "text_stop_label": { "text": "Your bus stop:", "view": "DC.Text" },
     "text_stop_label1": { "text": "Routes to show:", "view": "DC.Text" },
@@ -26,6 +27,7 @@ var dashcodePartSpecs = {
     "text_version": { "text": "CU Buses <version>", "view": "DC.Text" },
     "top_text": { "text": "CU Buses", "view": "DC.Text" }
 };
+
 
 
 

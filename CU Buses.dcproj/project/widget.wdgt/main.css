@@ -13,6 +13,7 @@ body {
     display: block;
     top: 0px;
     left: 0px;
+    opacity: 1;
     right: 0px;
     width: auto;
     bottom: 0px;
@@ -347,13 +348,12 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
     font-size: 13px;
     font-family: 'Helvetica Neue';
-    width: 157px;
     opacity: 1;
-    left: 23px;
-    top: 178px;
-    bottom: 83px;
+    width: 87px;
+    left: 184px;
+    top: 207px;
+    bottom: 54px;
     height: auto;
-    visibility: hidden;
 }
 
 #text_message {
@@ -462,23 +462,6 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     left: 18px;
     text-align: left;
     vertical-align: middle;
-    color: rgb(255, 255, 255);
-}
-
-#button {
-    font-family: HelveticaNeue-Bold;
-    font-size: 12px;
-    text-align: center;
-    width: 60px;
-    cursor: default;
-    -khtml-user-select: none;
-    position: absolute;
-    right: auto;
-    margin-top: 0px;
-    bottom: 86px;
-    height: auto;
-    top: 178px;
-    left: 193px;
     color: rgb(255, 255, 255);
 }
 
@@ -865,4 +848,39 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     left: 214px;
     top: 21px;
+}
+
+#button_look_up_code1 {
+    text-align: center;
+    cursor: default;
+    -khtml-user-select: none;
+    position: absolute;
+    right: auto;
+    margin-top: 0px;
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    font-family: 'Helvetica Neue';
+    left: 192px;
+    width: 73px;
+    top: 179px;
+    bottom: 82px;
+    height: auto;
+}
+
+#text_lookahead1 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 0px;
+    color: rgb(255, 255, 255);
+    font-family: 'Helvetica Neue';
+    font-size: 14px;
+    left: 23px;
+    top: 183px;
+    width: auto;
+    height: auto;
+}
+
+.selected #text_lookahead1 {
+    color: white;
 }

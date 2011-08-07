@@ -14,12 +14,17 @@
 
 //var stops;
 
+var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 22, 27, 180, 190, 280];
+
 var config = {
 	"time": 45,
 	"stop_code": "",
 	"stop_id": "",
-	"stop_verbose": ""
+	"stop_verbose": "",
+	routes: all_routes
 };
+
+var latest_json = {};
 
 var updateDisplayInterval;
 
@@ -30,7 +35,7 @@ var api_key = "afea17046e244cda8f56b5e1fe5f2019";
 var json_success;
 
 var widget_version_major = 1;
-var widget_version_minor = 0;
+var widget_version_minor = 5;
 var widget_version = widget_version_major + "." + widget_version_minor;
 
 var new_version_available = false;
@@ -43,6 +48,8 @@ var new_version_available = false;
 var old_stop_code = "";
 
 var old_time = 45;
+
+var old_routes = [];
 
 // time between refreshes (in milliseconds)
 
@@ -69,15 +76,17 @@ function id_basename(id)
 function json_success_callback(json)
 {
 	json_success = true;
+	latest_json = json;
 	
 	if (json.stat == "ok") {
-		//window.console.log("successfully got data, stat = ok");
-	
 		var data = process_json(json);
 		refresh_ui_from_data(data);
+	} else if (json.stat == "fail") {
+		display_message("Sorry, but the CUMTD server seems to be having problems.");
+		window.console.log("API error " + json.err.code + ": \"" + json.err.msg + "\"");
 	} else {
 		display_message("Sorry, but the CUMTD server seems to be having problems.");
-		window.console.log("Got JSON from the server, but stat = \"" + json.stat + "\"");
+		window.console.log("API error, stat = \"" + json.stat + "\"");
 	}
 }
 
@@ -108,8 +117,8 @@ function update_data()
 	
 	
 	// set and pass some fake data for testing
-	/*
-	var fake_data_not_okay = {
+	
+	/*var fake_data_not_okay = {
 		"stat": "server is on fire"
 	};
 	
@@ -119,7 +128,13 @@ function update_data()
 	};
 	
 	json_success_callback(fake_data_not_okay);
-	*/
+	
+	refresh_ui_from_data({"stop": "whatever", "departures": [
+		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
+		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
+		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
+		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3}
+		]});*/
 }
 
 function check_json_success()
@@ -134,8 +149,6 @@ function process_json(json)
 	var result = {"stop": config.stop_verbose, "departures": []};
 	var departures = json['departures'];
 	var now = Date.now();
-	
-	//window.console.log(departures.length + " departures");
 	
 	for (var i = 0; i < departures.length; i++) {
 		var depart = departures[i];
@@ -154,6 +167,24 @@ function process_json(json)
 	result.departures.sort(sort_departures);
 	
 	return result;
+}
+
+//
+// ## Route-handling functions
+//
+
+function get_canonical_route_number(n)
+{
+	if (all_routes.indexOf(n) > -1)
+		return n;
+	else if (n == 100) // stupid yellow
+		return 1;
+	else if (n % 10 == 0 && all_routes.indexOf(n/10) > -1)
+		return n/10;
+	else {
+		window.console.log("Unrecognized route number: " + n);
+		return n;
+	}
 }
 
 //
@@ -258,6 +289,7 @@ function get_verbose_stop_name_from_id(id)
 function prettify_route_name(name)
 {
 	name = wrap_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
+	name = wrap_in_span(name, "Express", "font-size: 85%; text-transform: uppercase");
 	name = wrap_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
 	
 	if (name.match(/YellowHOPPER Gerty/i)) {
@@ -278,22 +310,26 @@ function prettify_route_name(name)
 	return name;
 }
 
-
 //
 // # Preference handling
 //
 
 function update_preferences()
 {
-	// set the stop code
-	var stop = document.getElementById("field_stop").value;
-	//window.console.log("stop code is " + stop);
-	widget.setPreferenceForKey(stop, dashcode.createInstancePreferenceKey("stop_code"));
+	// time
 	
-	// set the time
 	var time = document.getElementById("popup_lookahead").value;
-	//window.console.log("time is " + time);
 	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey("time"));
+
+	// routes
+	
+	var routes_string = config.routes.join(",");
+	widget.setPreferenceForKey(routes_string, dashcode.createInstancePreferenceKey("routes"));
+
+	// stop code
+	
+	var stop = document.getElementById("field_stop").value;
+	widget.setPreferenceForKey(stop, dashcode.createInstancePreferenceKey("stop_code"));
 
 	return read_preferences();
 }
@@ -305,6 +341,9 @@ function update_preferences()
 function read_preferences()
 {
 	var retcode = -1;
+
+	// time
+	
 	var time = widget.preferenceForKey(dashcode.createInstancePreferenceKey("time"));
 	
 	if (time) {
@@ -316,6 +355,24 @@ function read_preferences()
 	}
 	
 	document.getElementById("popup_lookahead").setAttribute("value", time);
+
+	// routes
+
+	var routes = widget.preferenceForKey(dashcode.createInstancePreferenceKey("routes"));
+	
+	if (routes) {
+		config.routes = routes.split(",").map(function(x) {
+			return parseInt(x);
+		});
+		retcode = 0;
+	} else {
+		config.routes = all_routes;
+		retcode = 1;
+	}
+	
+	update_routes_checkboxes_from_list(config.routes);
+
+	// stop code
 
 	var stop_code = widget.preferenceForKey(dashcode.createInstancePreferenceKey("stop_code"));
 	
@@ -411,8 +468,7 @@ function refresh_ui_from_data(data)
 	var list = document.getElementById("list").object;
 
 	var departures = data.departures;
-	var dummy = array_of_spaces(departures.length);
-	list.setDataArray(dummy);
+	list.setDataArray(array_of_spaces(departures.length));
 	
 	//
 	// top and bottom labels
@@ -420,6 +476,18 @@ function refresh_ui_from_data(data)
 	
 	set_title(config["stop_verbose"]);
 	set_status("Updated at " + get_current_time());
+	
+	// find out how many of these departures we're actually going to show
+	
+	var is_desired_route = function(departure) {
+		//window.console.log("route: " + departure.route);
+		var raw_route = departure.route.replace(/(\d+).+/, "$1");
+		var canonical_route = get_canonical_route_number(parseInt(raw_route))
+		return (config.routes.indexOf(canonical_route) > -1);
+	}
+	
+	departures = departures.filter(is_desired_route);
+	list.setDataArray(array_of_spaces(departures.length));
 
 	// handle the case where there are no departures. (we assume here that we
 	// got a valid response from the server, but it contained no departures. the
@@ -441,8 +509,8 @@ function refresh_ui_from_data(data)
 	for (i = 0; i < departures.length; i++) {
 		var row = list.rows[i].object;
 		var departure = departures[i];
-		
 		var time = departure.time;
+		
 		
 		row.templateElements.route_text.innerHTML = prettify_route_name(departure.route);
 		
@@ -519,6 +587,18 @@ function set_status(text)
 	else
 		document.getElementById("status_text").innerText = text;
 }
+
+function update_routes_checkboxes_from_list(routes)
+{
+	for (r in all_routes) {
+		var route = parseInt(all_routes[r]);
+		if (routes.indexOf(route) > -1)
+			$("#input_" + route).selected = true;
+		else 
+			$("#input_" + route).selected = false;
+	}
+}
+
 
 //
 // ## Miscellaneous UI utility functions
@@ -648,6 +728,11 @@ function showBack(event)
 		old_time = config.time;
 	else
 		old_time = 45;
+	
+	if (config && config.routes)
+		old_routes = config.routes;
+	else
+		old_routes = all_routes;
 }
 
 // Called when the done button is clicked from the back of the widget
@@ -702,16 +787,8 @@ function showRoutes(event)
     var routes = document.getElementById("route_selection");
     var back = document.getElementById("back");
 
-    if (window.widget) {
-        widget.prepareForTransition("ToRoutes");
-    }
-
     routes.style.display = "block";
     back.style.display = "none";
-
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }
 }
 
 // Called when the info button is clicked to show the back of the widget
@@ -725,16 +802,8 @@ function showBackFromRoutes(event)
     var routes = document.getElementById("route_selection");
     var back = document.getElementById("back");
 
-    if (window.widget) {
-        widget.prepareForTransition("ToBack");
-    }
-
     routes.style.display = "none";
     back.style.display = "block";
-
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }
 }
 
 
@@ -770,12 +839,29 @@ function text_version_handler(event)
 	return;
 }
 
+function checkbox_change_handler(event)
+{
+	var route = parseInt(event.target.id.replace(/.+_/, ""));
+	var state = document.getElementById(event.target.id).checked;
+	var index = config.routes.indexOf(route);
+	
+	if (index > -1 && state == false)
+		config.routes.splice(index, 1);
+	else if (index == -1 && state == true)
+		config.routes.push(route);
+	else if (index > -1 && state == true)
+		window.console.log("Trying to add route " + route + " to config.routes but already present");
+	else if (index == -1 && state == false)
+		window.console.log("Trying to remove route " + route + " from config.routes but not present");
+	else
+		window.console.log("Something weird happened in checkbox_change_handler");
+}
+
 function toggleCheckbox(event)
 {
     var route = event.toElement.innerText.replace(/ .+/, "");
-	var checkbox = document.getElementById("input_" + route);
-	checkbox.checked = !checkbox.checked;
-	return;
+	var old_state = document.getElementById("input_" + route).checked;
+	document.getElementById("input_" + route).checked = !old_state;
 }
 
 
@@ -790,5 +876,3 @@ if (window.widget) {
 }
 
 // vim: tw=80 cc=+1
-
-
