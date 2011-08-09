@@ -6,8 +6,10 @@
  */
 var dashcodePartSpecs = {
     "arrival_time_text": { "text": "12 min", "view": "DC.Text" },
+    "button_deselectall": { "creationFunction": "CreateGlassButton", "onclick": "button_deselectall_handler", "text": "Deselect All" },
     "button_look_up_code": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_look_up_code_handler", "rightImageWidth": 5, "text": "Look up my stop code" },
     "button_look_up_code1": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "animate_back_to_routes", "rightImageWidth": 5, "text": "Choose…" },
+    "button_selectall": { "creationFunction": "CreateGlassButton", "onclick": "button_selectall_handler", "text": "Select All" },
     "button_update": { "creationFunction": "CreateButton", "leftImageWidth": 5, "onclick": "button_update_handler", "rightImageWidth": 5, "text": "Get the latest version" },
     "done": { "creationFunction": "CreateGlassButton", "onclick": "animate_back_to_front", "text": "Done" },
     "glassButton": { "creationFunction": "CreateGlassButton", "onclick": "animate_routes_to_back", "text": "Back" },
@@ -27,6 +29,7 @@ var dashcodePartSpecs = {
     "text_version": { "text": "CU Buses <version>", "view": "DC.Text" },
     "top_text": { "text": "CU Buses", "view": "DC.Text" }
 };
+
 
 
 

@@ -16,7 +16,7 @@
 // ## Constants
 //
 
-var debugging = true;
+var debugging = false;
 
 var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 	22, 27, 180, 190, 280];
@@ -368,7 +368,7 @@ function read_preferences()
 
 		config.routes = routes_arr;
 	} else
-		config.routes = all_routes;
+		config.routes = all_routes.slice();
 	
 	update_routes_checkboxes_from_list(config.routes);
 
@@ -833,6 +833,23 @@ function checkbox_text_handler(event)
 	$("#input_" + route).click();
 }
 
+function button_selectall_handler(event)
+{
+	all_routes.forEach(function(route, idx) {
+		var state = document.getElementById("input_" + route).checked;
+		if (!state)
+			$("#input_" + route).click();
+	});
+}
+
+function button_deselectall_handler(event)
+{
+	all_routes.forEach(function(route, idx) {
+		var state = document.getElementById("input_" + route).checked;
+		if (state)
+			$("#input_" + route).click();
+	});
+}
 
 //
 // # Code that will actually run! (i.e., not functions)

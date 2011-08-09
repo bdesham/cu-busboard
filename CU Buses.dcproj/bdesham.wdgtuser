@@ -16,8 +16,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1012, 0}}</string>
-			<string>{{0, 10}, {1012, 917}}</string>
+			<string>{{0, 0}, {1012, 329}}</string>
+			<string>{{0, 339}, {1012, 588}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -152,12 +152,7 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array>
-			<array>
-				<integer>0</integer>
-				<integer>0</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Opened Steps</key>
 		<array>
 			<integer>0</integer>
@@ -170,7 +165,7 @@
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>view1</string>
-			<string>front</string>
+			<string>route_selection</string>
 		</array>
 	</dict>
 </dict>
