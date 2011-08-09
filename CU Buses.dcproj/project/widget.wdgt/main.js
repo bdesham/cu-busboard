@@ -29,7 +29,7 @@ var widget_version = widget_version_major + "." + widget_version_minor;
 
 // time between refreshes (in milliseconds)
 
-var refresh_interval = 1000*60;
+var refresh_delay_time = 1000*60;
 
 //
 // ## Others
@@ -39,7 +39,7 @@ var config = {};
 
 var latest_json = {};
 
-var updateDisplayInterval;
+var refresh_interval;
 
 var bad_stop_code = "";
 
@@ -558,15 +558,15 @@ function start_timer()
 {
     update_data();
 
-    if (!updateDisplayInterval)
-        updateDisplayInterval = setInterval(update_data, refresh_interval);
+    if (!refresh_interval)
+        refresh_interval = setInterval(update_data, refresh_delay_time);
 }
 
 function stop_timer()
 {
-    if (updateDisplayInterval) {
-        clearInterval(updateDisplayInterval);
-        updateDisplayInterval = null;
+    if (refresh_interval) {
+        clearInterval(refresh_interval);
+        refresh_interval = null;
     }
 }
 
@@ -842,4 +842,3 @@ if (window.widget) {
 }
 
 // vim: tw=80 cc=+1
-
