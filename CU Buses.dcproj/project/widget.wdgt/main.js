@@ -605,13 +605,13 @@ function set_status(text)
 
 function update_routes_checkboxes_from_list(routes)
 {
-	for (r in all_routes) {
-		var route = parseInt(all_routes[r]);
+	all_routes.forEach(function(val, idx) {
+		var route = parseInt(val);
 		if (routes.indexOf(route) > -1)
 			$("#input_" + route).selected = true;
 		else 
 			$("#input_" + route).selected = false;
-	}
+	});
 }
 
 
