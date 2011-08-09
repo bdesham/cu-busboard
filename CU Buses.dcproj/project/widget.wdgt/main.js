@@ -294,6 +294,9 @@ function prettify_route_name(name)
 		name = name.replace(/HOPPER Gerty/,
 			"H<span style='font-size: 85%'>OP.</span>"
 			+ " <span style='font-weight: normal; font-size: 80%'>Gerty</span>");
+	} else if (name.match(/YellowHOPPER E-14/i)) {
+		name = name.replace(/HOPPER E-14/,
+			"H<span style='font-size: 85%'>OP.</span> E-14");
 	} else if (name.match(/HOPPER/))
 		name = wrap_in_span(name, "OPPER", "font-size: 85%");
 	
