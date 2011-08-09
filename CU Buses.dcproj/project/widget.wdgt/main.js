@@ -12,17 +12,30 @@
 // # Global variables
 //
 
-//var stops;
+//
+// ## Constants
+//
 
-var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 22, 27, 180, 190, 280];
+var debugging = true;
 
-var config = {
-	"time": 45,
-	"stop_code": "",
-	"stop_id": "",
-	"stop_verbose": "",
-	routes: all_routes
-};
+var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
+	22, 27, 180, 190, 280];
+
+var api_key = "afea17046e244cda8f56b5e1fe5f2019";
+
+var widget_version_major = 1;
+var widget_version_minor = 5;
+var widget_version = widget_version_major + "." + widget_version_minor;
+
+// time between refreshes (in milliseconds)
+
+var refresh_interval = 1000*60;
+
+//
+// ## Others
+//
+
+var config = {};
 
 var latest_json = {};
 
@@ -30,30 +43,11 @@ var updateDisplayInterval;
 
 var bad_stop_code = "";
 
-var api_key = "afea17046e244cda8f56b5e1fe5f2019";
-
 var json_success;
-
-var widget_version_major = 1;
-var widget_version_minor = 5;
-var widget_version = widget_version_major + "." + widget_version_minor;
 
 var new_version_available = false;
 
-// we store the old value of the stop code before showing the preferences. if it
-// hasn't changed when we flip back to the front, don't refresh the data. we
-// initialize this to the empty string so that we don't double-refresh when the
-// widget is first launched
-
-var old_stop_code = "";
-
-var old_time = 45;
-
-var old_routes = [];
-
-// time between refreshes (in milliseconds)
-
-var refresh_interval = 1000*60;
+var old_config = {};
 
 
 //
@@ -63,6 +57,12 @@ var refresh_interval = 1000*60;
 //
 // ## Miscellaneous utility functions
 //
+
+function debug(text)
+{
+	if (debugging)
+		window.console.log(text);
+}
 
 function id_basename(id)
 {
@@ -139,9 +139,8 @@ function update_data()
 
 function check_json_success()
 {
-	if (json_success == false) {
+	if (json_success == false)
 		display_message("There was an error getting information from the CUMTD server.");
-	}
 }	
 
 function process_json(json)
@@ -236,18 +235,17 @@ function get_stop_id(stop)
 	if (stop in stops)
 		return stops[stop]["id"];
 	else {
-		//window.console.log("No stop_id found for \"" + stop + "\"");
+		debug("No stop_id found for code \"" + stop + "\"");
 		return "";
 	}
 }
 
 function get_intersection_id(stop)
 {
-	if (stop in stops) {
+	if (stop in stops)
 		return id_basename(stops[stop]["id"]);
-	}
 	else {
-		//window.console.log("No stop_id found for \"" + stop + "\"");
+		debug("No intersection id found for code \"" + stop + "\"");
 		return "";
 	}
 }
@@ -257,7 +255,7 @@ function get_verbose_stop_name_from_code(stop)
 	if (stop in stops)
 		return stops[stop]["verbose"];
 	else {
-		//window.console.log("No verbose name found for \"" + stop + "\"");
+		debug("No verbose name found for code \"" + stop + "\"");
 		return "";
 	}
 }
@@ -278,7 +276,7 @@ function get_verbose_stop_name_from_id(id)
 			return stops[key]["verbose"];
 	}
 	
-	//window.console.log("No verbose name found for \"" + id + "\"");	
+	debug("No verbose name found for id \"" + id + "\"");	
 	return "";
 }
 
@@ -314,67 +312,66 @@ function prettify_route_name(name)
 // # Preference handling
 //
 
+function get_preference(name)
+{
+	return widget.preferenceForKey(dashcode.createInstancePreferenceKey(name));
+}
+
+function set_preference(name, value)
+{
+	widget.setPreferenceForKey(value, dashcode.createInstancePreferenceKey(name));
+}
+
 function update_preferences()
 {
-	// time
-	
-	var time = document.getElementById("popup_lookahead").value;
-	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey("time"));
-
-	// routes
-	
-	var routes_string = config.routes.join(",");
-	widget.setPreferenceForKey(routes_string, dashcode.createInstancePreferenceKey("routes"));
-
-	// stop code
-	
-	var stop = document.getElementById("field_stop").value;
-	widget.setPreferenceForKey(stop, dashcode.createInstancePreferenceKey("stop_code"));
+	set_preference("time", document.getElementById("popup_lookahead").value);
+	set_preference("routes", config.routes.join(","));
+	set_preference("stop_code", document.getElementById("field_stop").value);
 
 	return read_preferences();
 }
 
-// read the preferences from the plist. returns 0 if the preference was actually
-// set, 1 if it wasn't (i.e. this is the first run of this invocation of the
-// widget), or 2 if there was a preference but the stop code is invalid
+// Reads the preferences from the plist and updates `config`. Where no
+// preference is set, reasonable defaults are set--except for the stop code.
+// This function returns 0 if an acceptable stop code is set, 1 if none is set,
+// or 2 if a stop code is set but it is not a valid one.
 
 function read_preferences()
 {
-	var retcode = -1;
-
 	// time
 	
-	var time = widget.preferenceForKey(dashcode.createInstancePreferenceKey("time"));
+	var time = get_preference("time");
+	var time_int = parseInt(time);
 	
-	if (time) {
-		config.time = time;
-		retcode = 0;
-	} else {
+	if (time && [15, 30, 45, 60].indexOf(time_int) > -1)
+		config.time = time_int;
+	else
 		config.time = 45;
-		retcode = 1;
-	}
 	
-	document.getElementById("popup_lookahead").setAttribute("value", time);
+	document.getElementById("popup_lookahead").setAttribute("value", config.time);
 
 	// routes
 
-	var routes = widget.preferenceForKey(dashcode.createInstancePreferenceKey("routes"));
+	var routes = get_preference("routes");
 	
 	if (routes) {
-		config.routes = routes.split(",").map(function(x) {
-			return parseInt(x);
+		var routes_arr = routes.split(',');
+		routes_arr = routes_arr.map(function(e) {
+			return parseInt(e);
 		});
-		retcode = 0;
-	} else {
+		routes_arr = routes_arr.filter(function(e) {
+			return (all_routes.indexOf(e) > -1);
+		});
+
+		config.routes = routes_arr;
+	} else
 		config.routes = all_routes;
-		retcode = 1;
-	}
 	
 	update_routes_checkboxes_from_list(config.routes);
 
 	// stop code
 
-	var stop_code = widget.preferenceForKey(dashcode.createInstancePreferenceKey("stop_code"));
+	var stop_code = get_preference("stop_code");
 	
 	if (stop_code) {
 		if (!(stop_code in stops)) {
@@ -390,24 +387,29 @@ function read_preferences()
 				
 			document.getElementById("field_stop").setAttribute("value", stop_code);
 				
-			retcode = 2;
-		}
-		
-		bad_stop_code = "";
+			return 2;
+		} else {
+			bad_stop_code = "";
 
-		config.stop_code = stop_code;
-		config.stop_id = get_intersection_id(stop_code);
-		config.stop_verbose = get_verbose_stop_name_from_code(stop_code);
-				
-		document.getElementById("field_stop").setAttribute("value", stop_code);
+			config.stop_code = stop_code;
+			config.stop_id = get_intersection_id(stop_code);
+			config.stop_verbose = get_verbose_stop_name_from_code(stop_code);
+					
+			document.getElementById("field_stop").setAttribute("value", stop_code);
+
+			return 0;
+		}
 	} else {
 		display_message("Please click the"
 				+ " <span style='font-style: italic; font-family: \"Times New Roman\"; font-weight: bold'>i</span>"
 				+ " button at the bottom-right of this widget and enter a stop code.");
-		retcode = 1;
+				
+		config.stop_code = "";
+		config.stop_id = "";
+		config.stop_verbose = "";
+
+		return 1;
 	}
-	
-	return retcode;
 }
 
 //
@@ -422,16 +424,26 @@ function check_for_updates()
 
 function check_for_updates_callback(json)
 {
+	if (!("latest_version_major" in json
+				&& "latest_version_minor" in json)) {
+		window.console.log('In check_for_updates_callback but got bad JSON');
+
+		document.getElementById('button_update').style.visibility = "hidden";
+		new_version_available = false;
+
+		return;
+	}
+
 	var major = parseInt(json.latest_version_major);
 	var minor = parseInt(json.latest_version_minor);
 
 	if ((major > widget_version_major) ||
 			((major == widget_version_major) && (minor > widget_version_minor))) {
-		//window.console.log('New version available: ' + major + '.' + minor);
+		debug('New version available: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = "visible";
 		new_version_available = true;
 	} else {
-		//window.console.log('We have the newest version: ' + major + '.' + minor);
+		debug('We have the newest version: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = "hidden";
 		new_version_available = false;
 	}
@@ -480,7 +492,7 @@ function refresh_ui_from_data(data)
 	// find out how many of these departures we're actually going to show
 	
 	var is_desired_route = function(departure) {
-		//window.console.log("route: " + departure.route);
+		debug("is_desired_route: route: " + departure.route);
 		var raw_route = departure.route.replace(/(\d+).+/, "$1");
 		var canonical_route = get_canonical_route_number(parseInt(raw_route))
 		return (config.routes.indexOf(canonical_route) > -1);
@@ -613,9 +625,9 @@ function wrap_in_span(text, words, style)
 function array_of_spaces(len)
 {
 	var arr = [];
-	for (var i = 0; i < len; i++) {
+	for (var i = 0; i < len; i++)
 		arr[i] = " ";
-	}
+	
 	return arr;
 }
 
@@ -640,31 +652,23 @@ function load()
 	
 	// things that have to be done programatically
 
-	document.getElementById("text_version").innerText = "CU Buses v" + widget_version;
-	document.getElementById("text_version").style.setProperty("text-decoration", "underline");
-	document.getElementById("text_version").style.setProperty("cursor", "pointer");
+	var version = document.getElementById("text_version");
+	version.innerText = "CU Buses v" + widget_version;
+	version.style.setProperty("text-decoration", "underline");
+	version.style.setProperty("cursor", "pointer");
+
+	document.getElementById("text_version").title = "Click to visit the CU Buses website";
 
 	document.getElementById("text_thanks").title = "They provide the buses too.";
 			
-	// "restore" the message text to the style we want
-	
-	var message = document.getElementById("text_message");
-	message.innerText = "";
-	message.style.setProperty("font-family", "'Helvetica Neue'");
-	message.style.setProperty("font-size", "16px");
-	message.style.setProperty("font-style", "normal");
-	
 	// clear the list to avoid the unsightly flash of example content
 	
 	document.getElementById("list").object.setDataArray([]);
 
 	// check to see whether this is a new instance of this widget
 
-	var prefs = read_preferences();
-	
-	if (prefs == 1) {
-		showBack(null);
-	}
+	if (read_preferences() == 1)
+		animate_front_to_back(null);
 	
 	// set up refreshing
 	
@@ -675,7 +679,9 @@ function load()
 
 function remove()
 {
-	widget.setPreferenceForKey(null, dashcode.createInstancePreferenceKey("stop_id"));
+	set_preference("time", null);
+	set_preference("routes", null);
+	set_preference("stop_code", null);
 	
 	stop_timer();
 }
@@ -695,119 +701,78 @@ function show()
 		start_timer();
 }
 
-// Called when the info button is clicked to show the back of the widget
 //
-// event: onClick event from the info button
+// ### Pane-to-pane transitions
+//
 
-function showBack(event)
+function animate_front_to_back(event)
 {
-	// Apple stuff
+	// store our preferences so we can see later if anything changed
+	
+	old_config.stop_code = config.stop_code;
+	old_config.stop_id = config.stop_id;
+	old_config.stop_verbose = config.stop_verbose;
+	old_config.time = config.time;
+	old_config.routes = config.routes.slice();
+	
+	debug('animate_front_to_back: old stop code is "' + old_config.stop_code + '"');
+	debug('animate_front_to back: old routes were ' + old_config.routes.toString());
+
+	// do the actual animation
 	
     var front = document.getElementById("front");
     var back = document.getElementById("back");
 
-    if (window.widget) {
-        widget.prepareForTransition("ToBack");
-    }
+	widget.prepareForTransition("ToBack");
 
     front.style.display = "none";
     back.style.display = "block";
 
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }
-	
-	// my stuff
-	
-	if (config && config.stop_code)
-		old_stop_code = config.stop_code;
-	else
-		old_stop_code = "dummy";
-	
-	if (config && config.time)
-		old_time = config.time;
-	else
-		old_time = 45;
-	
-	if (config && config.routes)
-		old_routes = config.routes;
-	else
-		old_routes = all_routes;
+	setTimeout('widget.performTransition();', 0);
 }
 
-// Called when the done button is clicked from the back of the widget
-//
-// event: onClick event from the done button
-
-function showFront(event)
+function animate_back_to_front(event)
 {
-	// Apple stuff
+	// my stuff
+
+	if (update_preferences() == 0) {
+		debug('animate_back_to_front: old stop code was "' + old_config.stop_code
+				+ '" and new is "' + config.stop_code + '"');
+				
+		if (config.stop_code != old_config.stop_code) {
+			display_message("Loading&hellip;");
+			set_title(get_verbose_stop_name_from_code(config.stop_code));
+			update_data();
+		} else if ((config.time != old_config.time)
+				|| (config.routes != old_config.routes)) {
+			update_data();
+		}
+	}
+
+	// do the actual animation
 	
     var front = document.getElementById("front");
     var back = document.getElementById("back");
 
-    if (window.widget) {
-        widget.prepareForTransition("ToFront");
-    }
+	widget.prepareForTransition("ToFront");
 
     front.style.display = "block";
     back.style.display = "none";
 
-    if (window.widget) {
-        setTimeout('widget.performTransition();', 0);
-    }
-	
-	// my stuff
-
-	if (update_preferences() == 0) {
-		if (config.stop_code != old_stop_code) {
-			display_message("Loading&hellip;");
-			set_title(get_verbose_stop_name_from_code(config.stop_code));
-			update_data();
-		} else if (config.time > old_time) {
-			// This is an "else if" because if the stop changed, the data will
-			// be refetched using the newly-chosen time anyway so we don't need
-			// to do anything extra. We don't bother to do anything if the
-			// newly-selected time is *less* than the previous time; it'll be
-			// fixed within a minute anyway.
-
-			update_data();
-		}
-	}
+	setTimeout('widget.performTransition();', 0);
 }
 
-// Show the route selection pane
-//
-// event: onClick event from the done button
-
-function showRoutes(event)
+function animate_back_to_routes(event)
 {
-	// Apple stuff
-	
-    var routes = document.getElementById("route_selection");
-    var back = document.getElementById("back");
-
-    routes.style.display = "block";
-    back.style.display = "none";
+	$("#back").fadeOut(500);
+	$("#route_selection").fadeIn(500);
 }
 
-// Called when the info button is clicked to show the back of the widget
-//
-// event: onClick event from the info button
-
-function showBackFromRoutes(event)
+function animate_routes_to_back(event)
 {
-	// Apple stuff
-	
-    var routes = document.getElementById("route_selection");
-    var back = document.getElementById("back");
-
-    routes.style.display = "none";
-    back.style.display = "block";
+	$("#route_selection").fadeOut(500);
+	$("#back").fadeIn(500);
 }
-
-
-
 
 // 
 // ### My event handlers
@@ -845,6 +810,8 @@ function checkbox_change_handler(event)
 	var state = document.getElementById(event.target.id).checked;
 	var index = config.routes.indexOf(route);
 	
+	debug('checkbox_change_handler: toggling ' + route);
+	
 	if (index > -1 && state == false)
 		config.routes.splice(index, 1);
 	else if (index == -1 && state == true)
@@ -857,11 +824,10 @@ function checkbox_change_handler(event)
 		window.console.log("Something weird happened in checkbox_change_handler");
 }
 
-function toggleCheckbox(event)
+function checkbox_text_handler(event)
 {
     var route = event.toElement.innerText.replace(/ .+/, "");
-	var old_state = document.getElementById("input_" + route).checked;
-	document.getElementById("input_" + route).checked = !old_state;
+	$("#input_" + route).click();
 }
 
 
@@ -876,3 +842,4 @@ if (window.widget) {
 }
 
 // vim: tw=80 cc=+1
+

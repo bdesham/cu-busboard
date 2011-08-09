@@ -309,11 +309,11 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     color: rgb(255, 255, 255);
     font-family: 'Helvetica Neue';
-    top: 55px;
     left: 46px;
-    right: 39px;
+    top: 52px;
+    right: 18px;
     width: auto;
-    bottom: 183px;
+    bottom: 216px;
     height: auto;
 }
 
@@ -333,8 +333,8 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-size: 13px;
     font-family: 'Helvetica Neue';
     width: 146px;
-    top: 110px;
-    bottom: 151px;
+    top: 74px;
+    bottom: 187px;
     height: auto;
 }
 
@@ -349,11 +349,12 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-size: 13px;
     font-family: 'Helvetica Neue';
     opacity: 1;
-    width: 87px;
-    left: 184px;
-    top: 207px;
-    bottom: 54px;
+    top: 174px;
+    left: 23px;
+    width: 138px;
+    bottom: 87px;
     height: auto;
+    visibility: hidden;
 }
 
 #text_message {
@@ -364,15 +365,14 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
     text-align: center;
     text-shadow: rgb(0, 0, 0) 1px 1px 1px;
-    font-size: 18px;
     left: 37px;
     top: 122px;
     right: 39px;
     width: auto;
     bottom: 79px;
     height: auto;
-    font-style: italic;
-    font-family: 'Bodoni SvtyTwo ITC TT';
+    font-size: 16px;
+    font-family: 'Helvetica Neue';
 }
 
 .selected #text_message {
@@ -388,7 +388,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-family: 'Helvetica Neue';
     font-size: 14px;
     left: 23px;
-    top: 148px;
+    top: 111px;
     width: auto;
     height: auto;
 }
@@ -403,10 +403,10 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     right: auto;
     bottom: auto;
     margin-top: 0px;
-    top: 148px;
     width: 102px;
     opacity: 1;
     left: 113px;
+    top: 111px;
 }
 
 #route_selection {
@@ -862,8 +862,8 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-family: 'Helvetica Neue';
     left: 192px;
     width: 73px;
-    top: 179px;
-    bottom: 82px;
+    top: 142px;
+    bottom: 119px;
     height: auto;
 }
 
@@ -876,7 +876,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-family: 'Helvetica Neue';
     font-size: 14px;
     left: 23px;
-    top: 183px;
+    top: 146px;
     width: auto;
     height: auto;
 }

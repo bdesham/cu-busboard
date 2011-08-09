@@ -5,7 +5,7 @@
 	<key>Breakpoints</key>
 	<dict/>
 	<key>CYLastWindowPosition</key>
-	<string>{1387, 486}</string>
+	<string>{1380, 478}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -16,8 +16,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1012, 362}}</string>
-			<string>{{0, 372}, {1012, 555}}</string>
+			<string>{{0, 0}, {1012, 259}}</string>
+			<string>{{0, 269}, {1012, 658}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
