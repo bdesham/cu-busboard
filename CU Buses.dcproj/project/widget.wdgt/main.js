@@ -83,10 +83,10 @@ function json_success_callback(json)
 		refresh_ui_from_data(data);
 	} else if (json.stat == "fail") {
 		display_message("Sorry, but the CUMTD server seems to be having problems.");
-		window.console.log("API error " + json.err.code + ": \"" + json.err.msg + "\"");
+		window.console.log('API error ' + json.err.code + ': "' + json.err.msg + '"');
 	} else {
 		display_message("Sorry, but the CUMTD server seems to be having problems.");
-		window.console.log("API error, stat = \"" + json.stat + "\"");
+		window.console.log('API error, stat = "' + json.stat + '"');
 	}
 }
 
@@ -235,7 +235,7 @@ function get_stop_id(stop)
 	if (stop in stops)
 		return stops[stop]["id"];
 	else {
-		debug("No stop_id found for code \"" + stop + "\"");
+		debug('No stop_id found for code "' + stop + '"');
 		return "";
 	}
 }
@@ -245,7 +245,7 @@ function get_intersection_id(stop)
 	if (stop in stops)
 		return id_basename(stops[stop]["id"]);
 	else {
-		debug("No intersection id found for code \"" + stop + "\"");
+		debug('No intersection id found for code "' + stop + '"');
 		return "";
 	}
 }
@@ -255,7 +255,7 @@ function get_verbose_stop_name_from_code(stop)
 	if (stop in stops)
 		return stops[stop]["verbose"];
 	else {
-		debug("No verbose name found for code \"" + stop + "\"");
+		debug('No verbose name found for code "' + stop + '"');
 		return "";
 	}
 }
@@ -276,7 +276,7 @@ function get_verbose_stop_name_from_id(id)
 			return stops[key]["verbose"];
 	}
 	
-	debug("No verbose name found for id \"" + id + "\"");	
+	debug('No verbose name found for id "' + id + '"');	
 	return "";
 }
 
