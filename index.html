@@ -10,6 +10,9 @@
 
 	<title>CU Buses</title>
 
+	<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="slideshow.js"></script>
+
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-24697270-1']);
@@ -27,7 +30,7 @@
 	</script>
 </head>
 
-<body>
+<body onload="start_slideshow()">
 	
 <div id="content">
 
@@ -53,7 +56,14 @@
 
 <h2>What’s this?</h2>
 
-<img class="screenshot" src="screenshot.png" width="292" height="286" alt="Screenshot"/>
+<ul class="slideshow">
+	<li class="show"><img src="screenshots/1.png" width="292" height="286" alt="Screenshot"/></li>
+	<li><img src="screenshots/2.png" width="292" height="286"/></li>
+	<li><img src="screenshots/3.png" width="292" height="286"/></li>
+	<li><img src="screenshots/4.png" width="292" height="286"/></li>
+	<li><img src="screenshots/5.png" width="292" height="286"/></li>
+	<li><img src="screenshots/6.png" width="292" height="286"/></li>
+</ul>
 
 <p>CU Buses is a small application that tells you when buses will be arriving at a certain stop on the Champaign–Urbana Mass Transit District (<abbr>CUMTD</abbr>) bus system. CU Buses runs in Dashboard, which is part of Mac OS X—you’ll need a Mac to use this widget.</p>
 

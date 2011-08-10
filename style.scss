@@ -162,6 +162,33 @@ body {
 				}
 			}
 
+			ul.slideshow {
+				list-style: none;
+				width: 294px;
+				height: 286px;
+				float: right;
+				overflow: hidden;
+				position: relative;
+				margin: 0;
+				padding: 0;
+				padding-left: 0.5em;
+
+				li {
+					position: absolute;
+					left: 0;
+					right: 0;
+					opacity: 0.0;
+				}
+
+				li:first-child {
+					opacity: 1.0;
+				}
+
+				li.show {
+					z-index: 500;
+				}
+			}
+
 			img.screenshot {
 				float: right;
 				padding-left: 2em;
