@@ -69,6 +69,11 @@ function id_basename(id)
 	return id.replace(/:.+/, "");
 }
 
+function contain_same_elements(array1, array2)
+{
+	return (array1.sort().join(',') == array2.sort().join(','));
+}
+
 //
 // ## Network stuff
 //
@@ -327,8 +332,9 @@ function set_preference(name, value)
 
 function update_preferences()
 {
+	debug('update_preferences: config.routes is ' + config.routes.toString());
 	set_preference("time", document.getElementById("popup_lookahead").value);
-	set_preference("routes", config.routes.join(","));
+	set_preference("routes", '[' + config.routes.join(",") + ']');
 	set_preference("stop_code", document.getElementById("field_stop").value);
 
 	return read_preferences();
@@ -358,13 +364,16 @@ function read_preferences()
 	var routes = get_preference("routes");
 	
 	if (routes) {
-		var routes_arr = routes.split(',');
+		var routes_arr = routes.replace(/\[(.+)\]/g, "$1").split(',');
+
 		routes_arr = routes_arr.map(function(e) {
 			return parseInt(e);
 		});
 		routes_arr = routes_arr.filter(function(e) {
 			return (all_routes.indexOf(e) > -1);
 		});
+		
+		debug('read_preferences: in "if (routes)" and routes_arr = ' + routes_arr.toString());
 
 		config.routes = routes_arr;
 	} else
@@ -495,7 +504,7 @@ function refresh_ui_from_data(data)
 	// find out how many of these departures we're actually going to show
 	
 	var is_desired_route = function(departure) {
-		debug("is_desired_route: route: " + departure.route);
+		//debug("is_desired_route: route: " + departure.route);
 		var raw_route = departure.route.replace(/(\d+).+/, "$1");
 		var canonical_route = get_canonical_route_number(parseInt(raw_route))
 		return (config.routes.indexOf(canonical_route) > -1);
@@ -739,15 +748,19 @@ function animate_back_to_front(event)
 	// my stuff
 
 	if (update_preferences() == 0) {
-		debug('animate_back_to_front: old stop code was "' + old_config.stop_code
-				+ '" and new is "' + config.stop_code + '"');
+		debug('animate_back_to_front: new stop code is "' + config.stop_code + '"');
+		debug('animate_back_to_front back: new routes are ' + config.routes.toString());
+
+//		debug('animate_back_to_front: old stop code was "' + old_config.stop_code
+//				+ '" and new is "' + config.stop_code + '"');
 				
 		if (config.stop_code != old_config.stop_code) {
 			display_message("Loading&hellip;");
 			set_title(get_verbose_stop_name_from_code(config.stop_code));
 			update_data();
 		} else if ((config.time != old_config.time)
-				|| (config.routes != old_config.routes)) {
+				|| !contain_same_elements(config.routes, old_config.routes)) {
+			debug('animate_back_to_front: time or routes changed');
 			update_data();
 		}
 	}
@@ -773,6 +786,7 @@ function animate_back_to_routes(event)
 
 function animate_routes_to_back(event)
 {
+	debug('animate_routes_to_back: config.routes is ' + config.routes.join(','));
 	$("#route_selection").fadeOut(500);
 	$("#back").fadeIn(500);
 }
@@ -825,6 +839,8 @@ function checkbox_change_handler(event)
 		window.console.log("Trying to remove route " + route + " from config.routes but not present");
 	else
 		window.console.log("Something weird happened in checkbox_change_handler");
+	
+	debug('config.routes is ' + config.routes.join(','));
 }
 
 function checkbox_text_handler(event)
