@@ -7,11 +7,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Untitled</string>
+	<string>CU Buses</string>
 	<key>CFBundleIdentifier</key>
 	<string>info.bdesham.widget.cu-buses</string>
 	<key>CFBundleName</key>
-	<string>Untitled</string>
+	<string>CU Buses</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.5</string>
 	<key>CFBundleVersion</key>
