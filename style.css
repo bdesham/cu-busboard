@@ -178,3 +178,7 @@ body {
       width: 80%;
       margin: 0em auto;
       line-height: 1.5em; }
+
+@media only screen and (max-device-width: 480px) {
+  body {
+    background-color: #35393c; } }

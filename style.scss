@@ -287,4 +287,11 @@ body {
 		}
 	}
 }
+
+@media only screen and (max-device-width: 480px) {
+	body {
+		background-color: $background;
+	}
+}
+
 // vim: tw=80 cc=+1
