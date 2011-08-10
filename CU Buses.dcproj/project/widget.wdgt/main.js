@@ -617,9 +617,9 @@ function update_routes_checkboxes_from_list(routes)
 	all_routes.forEach(function(val, idx) {
 		var route = parseInt(val);
 		if (routes.indexOf(route) > -1)
-			$("#input_" + route).selected = true;
+			document.getElementById("input_" + route).checked = true;
 		else 
-			$("#input_" + route).selected = false;
+			document.getElementById("input_" + route).checked = false;
 	});
 }
 
@@ -751,16 +751,12 @@ function animate_back_to_front(event)
 		debug('animate_back_to_front: new stop code is "' + config.stop_code + '"');
 		debug('animate_back_to_front back: new routes are ' + config.routes.toString());
 
-//		debug('animate_back_to_front: old stop code was "' + old_config.stop_code
-//				+ '" and new is "' + config.stop_code + '"');
-				
 		if (config.stop_code != old_config.stop_code) {
 			display_message("Loading&hellip;");
 			set_title(get_verbose_stop_name_from_code(config.stop_code));
 			update_data();
 		} else if ((config.time != old_config.time)
 				|| !contain_same_elements(config.routes, old_config.routes)) {
-			debug('animate_back_to_front: time or routes changed');
 			update_data();
 		}
 	}
