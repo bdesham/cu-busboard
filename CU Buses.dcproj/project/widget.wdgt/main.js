@@ -24,7 +24,7 @@ var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 var api_key = "afea17046e244cda8f56b5e1fe5f2019";
 
 var widget_version_major = 1;
-var widget_version_minor = 5;
+var widget_version_minor = 6;
 var widget_version = widget_version_major + "." + widget_version_minor;
 
 // time between refreshes (in milliseconds)
@@ -294,6 +294,7 @@ function prettify_route_name(name)
 	name = wrap_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
 	name = wrap_in_span(name, "Express", "font-size: 85%; text-transform: uppercase");
 	name = wrap_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
+	name = wrap_in_span(name, "It", "font-size: 85%; text-transform: uppercase");
 	
 	if (name.match(/YellowHOPPER Gerty/i)) {
 		name = name.replace(/HOPPER Gerty/,
