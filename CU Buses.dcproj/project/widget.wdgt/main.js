@@ -291,28 +291,42 @@ function get_verbose_stop_name_from_id(id)
 
 function prettify_route_name(name)
 {
-	name = wrap_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
-	name = wrap_in_span(name, "Express", "font-size: 85%; text-transform: uppercase");
-	name = wrap_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
-	name = wrap_in_span(name, "It", "font-size: 85%; text-transform: uppercase");
+	debug('prettify_route_name: got name "' + name + '"');
+
+	// general route-name modifiers
+
+	name = wrap_word_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
+	name = wrap_word_in_span(name, "Express", "font-size: 85%; text-transform: uppercase");
+	name = wrap_word_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
+	name = wrap_word_in_span(name, "It", "font-size: 85%; text-transform: uppercase");
+
+	// specific names that are too long as-is
+
+	// TODO: use 'font-family: "HelveticaNeue-CondensedBold"' whenever possible
+
+	name = wrap_word_in_span(name, "Ikenberry", "font-weight: normal; font-size: 80%");
 	
 	if (name.match(/YellowHOPPER Gerty/i)) {
 		name = name.replace(/HOPPER Gerty/,
-			"H<span style='font-size: 85%'>OP.</span>"
+			"H<span style='font-size: 85%'>OP</span>."
 			+ " <span style='font-weight: normal; font-size: 80%'>Gerty</span>");
 	} else if (name.match(/YellowHOPPER E-14/i)) {
 		name = name.replace(/HOPPER E-14/,
 			"H<span style='font-size: 85%'>OP</span>. E-14");
 	} else if (name.match(/HOPPER/))
-		name = wrap_in_span(name, "OPPER", "font-size: 85%");
-	
-	if (name.match(/Air Bus/))
-		name = "&#x2708; " + name;
+		name = name.replace("HOPPER", "H<span style='font-size: 85%'>OPPER</span>");
 	
 	if (name.match(/Teal Orchard Downs/i)) {
 		name = name.replace(/^(.+ Teal) Orchard Downs/,
 			"$1 <span style='font-weight: normal; font-size: 80%'>Orch. Downs</span>");
 	}
+	
+	// playing around
+		
+	if (name.match(/Air Bus/))
+		name = "&#x2708; " + name;
+
+	debug('prettify_route_name: returning "' + name + '"');
 	
 	return name;
 }
@@ -629,10 +643,10 @@ function update_routes_checkboxes_from_list(routes)
 // ## Miscellaneous UI utility functions
 //
 
-function wrap_in_span(text, words, style)
+function wrap_word_in_span(text, word, style)
 {
-	return text.replace(words, "<span style='" + style + "'>" + words
-			+ "</span>");
+	var regex = new RegExp('\\b' + word + '\\b', '');
+	return text.replace(regex, "<span style='" + style + "'>" + word + "</span>");
 }
 
 function array_of_spaces(len)

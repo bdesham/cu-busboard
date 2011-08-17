@@ -16,8 +16,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1012, 0}}</string>
-			<string>{{0, 10}, {1012, 917}}</string>
+			<string>{{0, 0}, {1012, 294}}</string>
+			<string>{{0, 304}, {1012, 623}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
