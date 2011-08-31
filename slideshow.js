@@ -1,6 +1,6 @@
 var slideshow_on = true;
 var slideshow_speed = 1000;
-var slideshow_delay = 4000;
+var slideshow_delay = 5000;
 
 function start_slideshow()
 {
