@@ -5,7 +5,7 @@
 	<key>Breakpoints</key>
 	<dict/>
 	<key>CYLastWindowPosition</key>
-	<string>{1380, 478}</string>
+	<string>{1385, 457}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -78,10 +78,6 @@
 			</array>
 			<array>
 				<integer>0</integer>
-				<integer>0</integer>
-			</array>
-			<array>
-				<integer>0</integer>
 				<integer>1</integer>
 				<integer>8</integer>
 			</array>
@@ -144,11 +140,11 @@
 			</array>
 			<array>
 				<integer>0</integer>
-				<integer>2</integer>
+				<integer>1</integer>
 			</array>
 			<array>
 				<integer>0</integer>
-				<integer>1</integer>
+				<integer>0</integer>
 			</array>
 		</array>
 		<key>Objects view last selections</key>
@@ -165,7 +161,7 @@
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>view1</string>
-			<string>route_selection</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>

@@ -121,7 +121,7 @@ function update_data()
 	setTimeout(check_json_success, 1000*5);
 	
 	
-	// set and pass some fake data for testing
+	// uncomment this to simulate an error
 	
 	/*var fake_data_not_okay = {
 		"stat": "server is on fire"
@@ -132,13 +132,18 @@ function update_data()
 		"departures": []
 	};
 	
-	json_success_callback(fake_data_not_okay);
+	json_success_callback(fake_data_not_okay);*/
 	
-	refresh_ui_from_data({"stop": "whatever", "departures": [
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3}
+	// uncomment this to fake an entire departure list
+	
+	/*refresh_ui_from_data({"stop": "whatever", "departures": [
+		{'route': '9B BROWN', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
+		{'route': '9B BROWN ALTERNATE', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
+		{'route': '9A BROWN ALTERNATE', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
+		{'route': '9A BROWN', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
+		{'route': '9A BROWN IT', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
+		{'route': '9A BROWN ALT', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
+		{'route': '8W BRONZE YANKEE RIDGE', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
 		]});*/
 }
 
@@ -292,43 +297,21 @@ function get_verbose_stop_name_from_id(id)
 function prettify_route_name(name)
 {
 	debug('prettify_route_name: got name "' + name + '"');
-
-	// general route-name modifiers
-
-	name = wrap_word_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
-	name = wrap_word_in_span(name, "Express", "font-size: 85%; text-transform: uppercase");
-	name = wrap_word_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
-	name = wrap_word_in_span(name, "It", "font-size: 85%; text-transform: uppercase");
-
-	// specific names that are too long as-is
-
-	// TODO: use 'font-family: "HelveticaNeue-CondensedBold"' whenever possible
-
-	name = wrap_word_in_span(name, "Ikenberry", "font-weight: normal; font-size: 80%");
 	
-	if (name.match(/YellowHOPPER Gerty/i)) {
-		name = name.replace(/HOPPER Gerty/,
-			"H<span style='font-size: 85%'>OP</span>."
-			+ " <span style='font-weight: normal; font-size: 80%'>Gerty</span>");
-	} else if (name.match(/YellowHOPPER E-14/i)) {
-		name = name.replace(/HOPPER E-14/,
-			"H<span style='font-size: 85%'>OP</span>. E-14");
-	} else if (name.match(/HOPPER/))
-		name = name.replace("HOPPER", "H<span style='font-size: 85%'>OPPER</span>");
+	// uppercase the route name and remove the initial "12E " or whatever
+	var upper = name.toUpperCase().replace(/^\S+ (.+?)\s*$/, "$1");
 	
-	if (name.match(/Teal Orchard Downs/i)) {
-		name = name.replace(/^(.+ Teal) Orchard Downs/,
-			"$1 <span style='font-weight: normal; font-size: 80%'>Orch. Downs</span>");
+	var result = name.replace(/^(\S+ ).+/, "$1");
+	if (upper in formatted_route_names)
+		result += formatted_route_names[upper];
+	else {
+		debug('prettify_route_name: "' + upper + '" not found in formatted_route_names');
+		result += upper;
 	}
 	
-	// playing around
-		
-	if (name.match(/Air Bus/))
-		name = "&#x2708; " + name;
-
-	debug('prettify_route_name: returning "' + name + '"');
+	debug('prettify_route_name: returning "' + result + '"');
 	
-	return name;
+	return result;
 }
 
 //
@@ -642,12 +625,6 @@ function update_routes_checkboxes_from_list(routes)
 //
 // ## Miscellaneous UI utility functions
 //
-
-function wrap_word_in_span(text, word, style)
-{
-	var regex = new RegExp('\\b' + word + '\\b', '');
-	return text.replace(regex, "<span style='" + style + "'>" + word + "</span>");
-}
 
 function array_of_spaces(len)
 {
