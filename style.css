@@ -156,7 +156,7 @@ body {
             color: black;
             margin-right: 0.6em;
             padding: 0.4em; }
-          body div#content div#main-content dl.versions dd ul li.bugfix:before {
+          body div#content div#main-content dl.versions dd ul li.fixed:before {
             background-color: #d10000;
             -moz-border-radius: 4px 4px 4px 4px;
             -webkit-border-radius: 4px 4px 4px 4px;

@@ -262,7 +262,7 @@ body {
 							@include change-type("Changed", $yellow-bg, black);
 						}
 
-						li.bugfix:before {
+						li.fixed:before {
 							@include change-type("Fixed", $red-bg, white);
 						}
 					}
