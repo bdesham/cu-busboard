@@ -13,17 +13,19 @@
 
 	<link rel="icon" type="image/png" href="http://bdesham.github.com/cu-buses/favicon.png"/>
 	<link rel="canonical" href="http://bdesham.github.com/cu-buses/"/>
+
+	<script src="https://www.google.com/jsapi?key=ABQIAAAAWYhb7TU829hPPlek6KaFAhT6a8gGfXHykoFIgMD5zTZ6gE0LNBQEpNdpt9SEEwHLN24sbasPSsWc2A" type="text/javascript"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 	
-	<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
 	<script type="text/javascript" src="slideshow.js"></script>
 
 	<script type="text/javascript">
+		// start the slideshow when the page loads
 		$(document).ready(function() {
-			start_slideshow();
+			slideshow_start();
 		});
-	</script>		
 
-	<script type="text/javascript">
+		// ping google analytics
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-24697270-1']);
 		_gaq.push(['_trackPageview']);

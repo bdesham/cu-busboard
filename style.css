@@ -83,13 +83,9 @@ body {
           left: 0;
           right: 0;
           opacity: 0.0; }
-        body div#content div#main-content ul.slideshow li:first-child {
-          opacity: 1.0; }
         body div#content div#main-content ul.slideshow li.show {
-          z-index: 500; }
-      body div#content div#main-content img.screenshot {
-        float: right;
-        padding-left: 2em; }
+          z-index: 500;
+          opacity: 1.0; }
       body div#content div#main-content ul.tips {
         list-style: none;
         padding-left: 1.8em; }
