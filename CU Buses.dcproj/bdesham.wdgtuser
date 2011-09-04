@@ -161,7 +161,7 @@
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>view1</string>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>

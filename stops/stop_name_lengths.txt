@@ -1,0 +1,1256 @@
+03	ARC
+03	FAR
+03	ISR
+03	LAR
+03	PAR
+04	Aldi
+05	ANTVP
+07	Bradley
+07	Carroll
+07	Eastern
+07	Halifax
+07	Oak St.
+07	PAPAR:2
+07	PKWRT:2
+07	Vet-Med
+07	Walmart
+08	4THARY:6
+08	Big Lots
+08	Fairlawn
+08	I.E.T.C.
+08	Krannert
+08	Lot E-14
+08	Parkview
+08	Rockwell
+08	Solo Cup
+09	Plastipak
+09	Queensway
+10	Church St.
+10	Elm & Park
+10	John & Elm
+10	John & New
+10	MTD Garage
+10	Race & Elm
+10	Save A Lot
+10	Sunnycrest
+10	Vine & Elm
+10	WDSRMYRA:9
+11	ANTGOODWILL
+11	Ambucs Park
+11	Atrium Apts
+11	Fox & State
+11	Fox at SURS
+11	Japan House
+11	John & Fair
+11	John & Lynn
+11	John & Pine
+11	Kerr & Ward
+11	Kirby & Oak
+11	Main & Lynn
+11	Main & Vine
+11	Neil & Hill
+11	Neil & Vine
+11	Oak & Gerty
+11	Penn & Race
+11	Penn & Vine
+11	Race & Iowa
+11	Race & Main
+11	St. Mathews
+11	Steer Place
+11	Vine & Lynn
+11	Vine & Main
+11	Ward & Kerr
+11	Windsor Rd.
+12	Ashton Woods
+12	Brady & High
+12	Church & Elm
+12	Church & New
+12	Colbert Park
+12	Coler & Park
+12	Country Fair
+12	Daniels Hall
+12	Fifth & Vine
+12	First & E-14
+12	Fox at Remax
+12	Galen & Ross
+12	Ginger Creek
+12	Green & Lynn
+12	Green & Neil
+12	Green & Race
+12	Green at ISR
+12	Illini Union
+12	Indigo Place
+12	John & Edwin
+12	John & Foley
+12	John & James
+12	Kinch & Easy
+12	Kirby & Alma
+12	Kirby & Neil
+12	Kirby & Rose
+12	Logan & Neil
+12	Main & Brady
+12	Main & Dewey
+12	Main & Ennis
+12	Main & Grove
+12	Main & Maple
+12	Main & Smith
+12	Market Place
+12	Neil & North
+12	Neil & White
+12	Penn & Busey
+12	Penn & Carle
+12	Penn & Kinch
+12	Penn & Sixth
+12	Penn & Wiley
+12	Race & Bliss
+12	Race & Green
+12	State & Ells
+12	State & Hill
+12	State & John
+12	State & Park
+12	State & Vine
+12	Viking North
+12	Viking South
+12	Vine & Green
+12	Vine & Water
+12	Water Survey
+12	Williamsburg
+13	1st & Stadium
+13	Amber & Philo
+13	Bradley & Elm
+13	Church & Fair
+13	Church & Lynn
+13	Church & Neil
+13	Country Brook
+13	Fifth & Grove
+13	Fox & Windsor
+13	Green & Birch
+13	Green & Busey
+13	Green & Cedar
+13	Green & Coler
+13	Green & Grove
+13	Green & Maple
+13	Green & Sixth
+13	Green & State
+13	Gregory & Oak
+13	Heritage Park
+13	John & Draper
+13	John & Duncan
+13	John & Mattis
+13	John & Victor
+13	John & Willis
+13	Kirby & Arrow
+13	Kirby & Dodds
+13	Kirby & First
+13	Kirby & Ridge
+13	Kirby & State
+13	Logan & First
+13	Logan & Water
+13	Main & Dodson
+13	Main & Glover
+13	Main & Hartle
+13	Main & Market
+13	Main & Poplar
+13	Main & Urbana
+13	Main & Walnut
+13	Main & Webber
+13	Market & Paul
+13	Mattis & Camp
+13	Neil & Eureka
+13	Neil & Healey
+13	Neil & Hessel
+13	Neil & Kenyon
+13	Park & Romine
+13	Park & Wright
+13	Penn & Dorner
+13	Race & Holmes
+13	Race & Meadow
+13	Race & Nevada
+13	Race & Oregon
+13	Romine & Eads
+13	Savoy Walmart
+13	Second & Hill
+13	Second & Park
+13	Stadium & Oak
+13	State & Birch
+13	State & Cedar
+13	State & Clark
+13	State & Maple
+13	State & White
+13	Thompson Park
+13	Transit Plaza
+13	Urbana Meijer
+13	Vine & Harris
+13	Vine & Holmes
+13	Vine & Nevada
+13	Vine & Oregon
+13	Vine & Shurts
+13	Vine & Willis
+13	Walnut & Main
+13	White & First
+13	White & Sixth
+13	Wright & Hill
+14	4th & Chalmers
+14	5th & Chalmers
+14	Anthony & Dale
+14	Beech & Romine
+14	Carroll & Kerr
+14	Church & Edwin
+14	Church & James
+14	Church & State
+14	Coler & Church
+14	Crescent & Ola
+14	Curtis & First
+14	Dover & Balboa
+14	Duncan & Clark
+14	Duncan & Lager
+14	Eastern & Kerr
+14	Fifth & Eureka
+14	First & Armory
+14	First & Daniel
+14	First & Healey
+14	Florida & Race
+14	Florida & Vine
+14	Fourth & Kirby
+14	Garden Village
+14	Goodwin & Hill
+14	Goodwin & Main
+14	Goodwin & Park
+14	Green & Fourth
+14	Green & Locust
+14	Green & Second
+14	Green & Urbana
+14	Green & Webber
+14	Green & Wright
+14	Harris & Maple
+14	John & Chicago
+14	John & Dogwood
+14	John & Jackson
+14	John & Kenwood
+14	John & Prairie
+14	John & Russell
+14	John & Western
+14	Kerr & Carroll
+14	Kirby & Dawson
+14	Kirby & Duncan
+14	Kirby & Mattis
+14	Lincoln & Eads
+14	Lincoln & Hill
+14	Lincoln & Iowa
+14	Lincoln & Ohio
+14	Lincoln & Park
+14	Lincoln Square
+14	Main & Fremont
+14	Main & Lierman
+14	Main & Rt. 150
+14	Market & Logan
+14	Market & Roper
+14	Mattis & Alton
+14	Mattis & Anita
+14	Mattis & Henry
+14	McHenry & Lynn
+14	McHenry & Pond
+14	Neil & Anthony
+14	Neil & Arcadia
+14	Neil & Bradley
+14	Neil & Burwash
+14	Neil & Garwood
+14	Neil & Stadium
+14	Newton & Nobel
+14	Park & Mathews
+14	Paula & Jeanne
+14	Paula & Joanne
+14	Paula & Mattis
+14	Paula & Powers
+14	Penn & Goodwin
+14	Penn & Orchard
+14	Philo & Laurel
+14	Philo & Silver
+14	Race & Indiana
+14	Race & McHenry
+14	Race & Sherwin
+14	Race & Vermont
+14	Roland & Aztec
+14	Romine & Ellis
+14	Sixth & Armory
+14	Slayback & Ira
+14	Smith & Carrie
+14	Staley & Kirby
+14	State & Eureka
+14	State & Healey
+14	State & Hessel
+14	Third & Daniel
+14	Trails & Philo
+14	Urbana Walmart
+14	Vine & McHenry
+14	Vine & Mumford
+14	Vine & Prairie
+14	Vine & Scovill
+14	Vine & Windsor
+14	Walnut & Logan
+14	Westgate Apts.
+14	White & Fourth
+14	White & Second
+14	White & Wright
+14	Windsor & Lynn
+14	Windsor & Neil
+14	Windsor & Race
+14	Wright & Beech
+14	Wright & Clark
+15	Ag. Engineering
+15	Armory & Wright
+15	Beslin & Romine
+15	Bradley & Hagan
+15	Bradley & James
+15	Bradley & State
+15	Bradley at WLRW
+15	Broadway & Kerr
+15	Broadway & Park
+15	Campbell & Curt
+15	Carroll at CACC
+15	Champaign House
+15	Chester & Water
+15	Christie Clinic
+15	Church & Carson
+15	Church & Draper
+15	Church & Mattis
+15	Church & Miller
+15	Church & Victor
+15	Church & Willis
+15	Columbia & Neil
+15	Crescent & John
+15	Dodson & Nevada
+15	Farber & Newton
+15	Fifth & Bradley
+15	Fifth & Tremont
+15	First & Chester
+15	First & Gregory
+15	First & Peabody
+15	First & Stadium
+15	First & Windsor
+15	Florida & Adams
+15	Florida & Busey
+15	Florida & Grove
+15	Florida & Kinch
+15	Florida & Maple
+15	Florida & Philo
+15	Florida & Smith
+15	Florida & Wiley
+15	Fourth & Armory
+15	Fox & Knollwood
+15	Galen & Newbury
+15	Galen & Windsor
+15	Goodwin & Clark
+15	Green & Goodwin
+15	Green & Gregory
+15	Green & Johnson
+15	Green & Lincoln
+15	Green & Mathews
+15	Green & Orchard
+15	Green & Prairie
+15	Hagan & Pioneer
+15	Hazelwood & Oak
+15	Hunter & Austin
+15	Hunter & Lanore
+15	John & Garfield
+15	John & Highland
+15	John & McKinley
+15	John & Prospect
+15	John & Ridgeway
+15	John & Westlawn
+15	Kirby & Carolyn
+15	Kirby & Kenwood
+15	Kirby & Mayfair
+15	Kirby & Waverly
+15	Kirby & Western
+15	Main & Broadway
+15	Main & Chestnut
+15	Market & Kenyon
+15	Market & Wilbur
+15	Mattis & Meadow
+15	Maynard & Kirby
+15	McHenry & Philo
+15	Neil & Columbia
+15	Neil & Marshall
+15	Paula & Cynthia
+15	Paula & Melanie
+15	Penn & Anderson
+15	Penn & Broadway
+15	Penn & Maryland
+15	Philo & Harding
+15	Philo & Mumford
+15	Philo & Scovill
+15	Philo & Windsor
+15	Prosepct & Vine
+15	Prospect & Hill
+15	Prospect & Kent
+15	Prospect & Vine
+15	Race & Delaware
+15	Race & High St.
+15	Race & Illinois
+15	Race & Michigan
+15	Randolph & Ells
+15	Randolph & Hill
+15	Randolph & John
+15	Randolph & Vine
+15	Romine & Eureka
+15	Second & Church
+15	Silver & Vawter
+15	Sixth & Bradley
+15	Sixth & Gregory
+15	Sixth & Peabody
+15	Social Security
+15	State & Charles
+15	State & Stanage
+15	State & Tremont
+15	State & William
+15	Sunnycrest Mall
+15	U.S. 150 & Dale
+15	Vermont & Kinch
+15	Vine & Brookens
+15	Vine & Colorado
+15	Vine & Fairlawn
+15	Vine & Illinois
+15	Vine & McKinley
+15	Walnut & Bailey
+15	Walnut & Taylor
+15	Willard Airport
+15	Wright & Beslin
+15	Wright & Church
+15	Wright & Dublin
+15	Wright & Healey
+16	5th & Washington
+16	Anderson & Eliot
+16	Anthony & Mattis
+16	Bradley & Carver
+16	Bradley & Duncan
+16	Bradley & Mattis
+16	Bradley & Walnut
+16	Bradley & Willis
+16	Broadway & Water
+16	Butzow & Lierman
+16	Campbell & Aztec
+16	Church & Orchard
+16	Church & Prairie
+16	Church & Russell
+16	Clayton & Irvine
+16	Clayton & Pomona
+16	Coler & Fairview
+16	Colorado & Larch
+16	Coronado & Dover
+16	Dorner & Peabody
+16	Duncan & Clayton
+16	Fairview & Busey
+16	Fifth & Columbia
+16	First & Lot E-14
+16	Florida & Linden
+16	Fourth & Gregory
+16	Fourth & Peabody
+16	Fox & Devonshire
+16	Galen & Plymouth
+16	Galen & Theodore
+16	Goodwin & Church
+16	Goodwin & Nevada
+16	Grainger Library
+16	Green & Anderson
+16	Green & Prospect
+16	Green & Randolph
+16	Gregory & Dorner
+16	Gregory & Second
+16	Hagan & Dennison
+16	Harris & Alabama
+16	Harris & Bradley
+16	Harris & Harvard
+16	Highcross & Kyle
+16	Illinois & Glenn
+16	John & Castleton
+16	John & Teal Cove
+16	Kirby & Coronado
+16	Kirby & Crescent
+16	Kirby & Rosewood
+16	Lierman & Hunter
+16	Lincoln & Church
+16	Lincoln & Oregon
+16	Lincoln & Sunset
+16	MacArthur & High
+16	Market & Bradley
+16	Market & Garwood
+16	Market & Mercury
+16	Market & Wallace
+16	Mattis & Cypress
+16	Mattis & William
+16	Mattis & Windsor
+16	McHenry & Combes
+16	McHenry & Vawter
+16	McKinley & Maple
+16	Meadowbrook Park
+16	Mercury & Apollo
+16	Mercury & Gemini
+16	Mercury at FedEx
+16	Michigan & Kinch
+16	Michigan & Smith
+16	Mullikin & Villa
+16	Neil & Beardsley
+16	Neil & Edgebrook
+16	Nevada & Lincoln
+16	Newton & Leggett
+16	Newton & Newmark
+16	Parkland College
+16	Paula & Kirk Ln.
+16	Paula & Larkspur
+16	Paula & McKinley
+16	Pennsylvania Ct.
+16	Philo & Colorado
+16	Philo & Fairlawn
+16	Philo & Michigan
+16	Pomona & Bradley
+16	Prospect & Galen
+16	Prospect & Kirby
+16	Prospect & Maple
+16	Race & Montclair
+16	Randolph & Clark
+16	Randolph & Maple
+16	Randolph & White
+16	Roland & Dobbins
+16	Roland & Walters
+16	Romine & Bradley
+16	Romine & Tremont
+16	Round Barn Manor
+16	Sixth & Chalmers
+16	Slayback & McGee
+16	Slayback & Smith
+16	Smith & U.S. 150
+16	St. Mary's & Oak
+16	Staley & Amherst
+16	State & Avondale
+16	State & Columbia
+16	Trails & Baronry
+16	Trails & Chatham
+16	University & Ash
+16	University & Elm
+16	University & New
+16	Vine & Montclair
+16	Vine & Pell Cir.
+16	Washington & Ash
+16	William & Duncan
+16	Windsor & Duncan
+16	Windsor & Fields
+16	Windsor & Jordan
+16	Windsor & Staley
+17	Anderson & Silver
+17	Anthony & Walters
+17	Balboa & Prospect
+17	Bardeen & Toalson
+17	Bradley & Clayton
+17	Bradley & Crispus
+17	Bradley & Hickory
+17	Bradley & Redwood
+17	Broadmoor & David
+17	Broadmoor & Galen
+17	Broadway & Bailey
+17	Broadway & Chapin
+17	Campbell & Roland
+17	Central High East
+17	Church & Garfield
+17	Church & McKinley
+17	Church & Prospect
+17	Church & Randolph
+17	Country Fair West
+17	Crescent & Rodney
+17	Curtis & Wynstone
+17	Dodson & Illinois
+17	Fairlawn & Patton
+17	Fairview & Harvey
+17	Fifth & Beardsley
+17	First & Hazelwood
+17	Florida & Curtiss
+17	Florida & Lincoln
+17	Florida & Orchard
+17	Foothill & Robert
+17	Fourth & Chalmers
+17	Goodwin & Gregory
+17	Halifax & Maynard
+17	Harris & Sherwood
+17	Hessel & Randolph
+17	Illinois Terminal
+17	John & Goldenview
+17	Kerr & Cunningham
+17	Kirby & Bellepark
+17	Kirby & Cambridge
+17	Kirby & Grandview
+17	Kirby & Stratford
+17	Kirby & Westfield
+17	Leggett & Bardeen
+17	Lincoln & Bradley
+17	Lincoln & Florida
+17	Lincoln & Indiana
+17	Lincoln & Vermont
+17	Lincoln & Wascher
+17	Main & Scottswood
+17	Maplepark & Alton
+17	Market Place West
+17	Mattis & Sangamon
+17	Mattis & Sheridan
+17	Mattis & Springer
+17	Maynard & Cameron
+17	McKinley & Eureka
+17	Neil & Center Dr.
+17	Neil & Interstate
+17	Neil & Marketview
+17	Neil & Walingford
+17	Neil & Washington
+17	Newton & Research
+17	Perkins & Carroll
+17	Perkins & Eastern
+17	Perkins & Ivanhoe
+17	Perkins & Richard
+17	Pomona & Heritage
+17	Prospect & Eureka
+17	Prospect at Lowes
+17	Race & California
+17	Randolph & Eureka
+17	Randolph & Healey
+17	Roland & Comanche
+17	Silver & Fletcher
+17	Slayback & Carrie
+17	Springfield & Elm
+17	Springfield & New
+17	St. Mary's & Neil
+17	State & Beardsley
+17	U.S. 150 & Dodson
+17	University & Fair
+17	University & Lake
+17	University & Lynn
+17	University & Neil
+17	University & Race
+17	University & Vine
+17	University at MTD
+17	Viking at Hobbico
+17	Vine & California
+17	Vine & Sunnycrest
+17	Vine & Washington
+17	Walnut & Columbia
+17	Washington School
+17	Westfield & Alton
+17	William & Dogwood
+17	William & Kenwood
+17	Windsor & Bel Air
+17	Windsor & Melrose
+17	Windsor & Phinney
+17	Windsor West Apts
+17	Wright & Chalmers
+17	Wright & Columbia
+18	Amber & Myra Ridge
+18	Anderson & Harding
+18	Anderson & Mumford
+18	Anthony & Campbell
+18	Anthony & Kankakee
+18	Bentbrook & Staley
+18	Bradley & McKinley
+18	Bradley & Prospect
+18	Bradley & Randolph
+18	Broadmoor & Robert
+18	Broadway & Oakland
+18	Burwash & Lynhurst
+18	Campbell & Dobbins
+18	Columbia & Hancock
+18	Columbia & Hickory
+18	Coronado & Ventura
+18	Country Squire Ct.
+18	Coventry & Halifax
+18	Coventry & Roxford
+18	Crescent & William
+18	Devonshire & Peach
+18	Duncan & Heathwood
+18	Fairlawn & Eastern
+18	Fairview & Goodwin
+18	Fairview & Gregory
+18	Fairview & Lincoln
+18	Fairview & Linview
+18	Fifth & Washington
+18	First & St. Mary's
+18	Florida & Anderson
+18	Florida & Broadway
+18	Florida & Pleasant
+18	Florida & Rutledge
+18	Galen & Devonshire
+18	Galen & Harrington
+18	George Huff & Race
+18	Green & McCullough
+18	Gregory at Library
+18	Hancock & Hamilton
+18	Harris & Beardsley
+18	Harris & Louisiana
+18	Independent Living
+18	Kirby & Greencroft
+18	Kirby & Park Haven
+18	Kirby & Scottsdale
+18	Kirby & Valley Rd.
+18	Kirby and Mullikin
+18	Lincoln & Delaware
+18	Lincoln & Illinois
+18	Lincoln & Michigan
+18	Lyndhurst & Arbour
+18	Main & Art Bartell
+18	Market Place South
+18	Marketview at Sams
+18	Mattis & Broadmoor
+18	Mattis & Princeton
+18	Mattis & Southwood
+18	Mattis & Stonegate
+18	Mattis at Schnucks
+18	Mayfair & Old Farm
+18	Mayfair & Theodore
+18	Maynard & Coventry
+18	McHenry & Anderson
+18	McHenry & Fletcher
+18	McKinley & Harvard
+18	McKinley & Tremont
+18	Neil & Springfield
+18	One Illinois North
+18	One Illinois South
+18	Perkins & Cherokee
+18	Perkins & Raintree
+18	Personnel Services
+18	Philo & Briarcliff
+18	Pinecrest & Staley
+18	Plant Sciences Lab
+18	Pomona & Deske Ct.
+18	Pomona & Santa Ana
+18	Prospect & Baytown
+18	Prospect & Francis
+18	Prospect & Harvard
+18	Prospect & Pioneer
+18	Prospect & Tremont
+18	Prospect & Ventura
+18	Prospect at Meijer
+18	Queensway & Roland
+18	Randolph & Bradley
+18	Randolph & Charles
+18	Randolph & Stanage
+18	Randolph & Tremont
+18	Randolph & William
+18	Romine & Beardsley
+18	Springfield & Fair
+18	Springfield & Lynn
+18	Springfield & Pine
+18	Staley & Turnberry
+18	State & University
+18	State & Washington
+18	Susan Stone & Moss
+18	Town Center & Neil
+18	Trails & Fawn Hill
+18	University & Coler
+18	University & Fifth
+18	University & First
+18	University & James
+18	University & Maple
+18	University & Sabin
+18	University & Sixth
+18	University & Third
+18	Urbana High School
+18	Vine & George Huff
+18	WIndsor & Carlisle
+18	Washington & Kinch
+18	Washington & Smith
+18	Washington & Third
+18	William & Fairoaks
+18	Winchester & Aspen
+18	Winchester & Sumac
+18	Windsor & Carlisle
+18	Windsor & Imperial
+18	Windsor & Lakewood
+18	Windsor & Monterey
+18	Windsor & Mullikin
+18	Windsor & Prospect
+18	Windsor & Windward
+18	Woodfield & Curtis
+18	Wright & Stoughton
+19	Airport & Highcross
+19	Anderson & Brighton
+19	Anderson & Burkwood
+19	Anderson & Colorado
+19	Anderson & Fairlawn
+19	Anderson & Michigan
+19	Baytown & Boardwalk
+19	Bloomington & Hagan
+19	Bradley & Champaign
+19	Broadmoor & Bellamy
+19	Broadmoor & Lynwood
+19	Broadway & Franklin
+19	Broadway & Thompson
+19	Brownfield & Arlene
+19	Brownfield & Donald
+19	Burwash & Woodfield
+19	Campbell & Comanche
+19	Columbia & Randolph
+19	Copper Ridge & Sand
+19	County Nursing Home
+19	Crescent & Lawndale
+19	Crescent & Parkdale
+19	Crescent & Sangamon
+19	Crestwood & Bradley
+19	Dodson & Washington
+19	First & Springfield
+19	Florida & Hillcrest
+19	Fourth & St. Mary's
+19	I.E.T.C. and Mattis
+19	Illinois & Broadway
+19	Interstate & Farber
+19	John & Mitchell Ct.
+19	Kettering & Linview
+19	Kirby & Lincoln Rd.
+19	Krannert Art Museum
+19	Lakeshore & Maynard
+19	Lawndale & Bellpark
+19	Lincoln & Killarney
+19	Lincoln & St. Marys
+19	Linview & Killarney
+19	Lyndhurst & Arbours
+19	Lyndhurst & Bedford
+19	Lyndhurst & Burwash
+19	Lyndhurst & Park Ln
+19	Maplepark & William
+19	Market & Marketview
+19	Market & Peach Tree
+19	Market & Tulip Tree
+19	Market & University
+19	Mattis & Devonshire
+19	Mattis & Glenn Park
+19	Mattis & Interstate
+19	Mayfair & Broadmoor
+19	Mayfair & Sandpiper
+19	Mullikin & Ironwood
+19	Myra Ridge & Trails
+19	Paula & Honeysuckle
+19	Pennsylvania at PAR
+19	Perkins & Cooks Ln.
+19	Perkins & Highcross
+19	Pomona & Ed Hoffman
+19	Prospect & Ayrshire
+19	Prospect & Columbia
+19	Prospect & Dennison
+19	Prospect & Park Ln.
+19	Randolph & Avondale
+19	Randolph & Columbia
+19	Research at Hobbico
+19	Scottswood & Nevada
+19	Scottswood & Oregon
+19	Second & University
+19	Sherwin & Persimmon
+19	Sixth & Lorado Taft
+19	Smith & Rainbowview
+19	Springfield & Birch
+19	Springfield & Busey
+19	Springfield & Edwin
+19	Springfield & Flora
+19	Springfield & James
+19	State & Buena Vista
+19	State & Springfield
+19	U of I Credit Union
+19	University & Draper
+19	University & Fourth
+19	University & Market
+19	University & Mattis
+19	University & Second
+19	University & Victor
+19	University & Walnut
+19	University & Willis
+19	University & Wright
+19	Vine & Burkwood Ct.
+19	Walnut & University
+19	Walnut & Washington
+19	Washington & Fourth
+19	Washington & Lanore
+19	Washington & Second
+19	Westfield & William
+19	William & Brentwood
+19	William & Scotsdale
+19	Winchester & Branch
+19	Windsor & Lyndhurst
+19	Windsor & Scotsdale
+19	Windsor & Valleybrk
+19	Wright & Washington
+20	Anderson & Evergreen
+20	Anderson & Hawthorne
+20	Barnes & Noble Books
+20	Bloomington & Sunset
+20	Bloomington & Willis
+20	Broadmoor & Crescent
+20	Broadmoor & Lakeside
+20	Broadmoor & McDonald
+20	Brownfield & Airport
+20	Brownfield & Clifton
+20	Brownfield & Johnson
+20	Brownfield & Perkins
+20	Brownfield & Sharlyn
+20	Campbell & Queensway
+20	Cottage Grove & Penn
+20	Crescent & Greendale
+20	Crescent & Southwood
+20	Crossgate & Charwick
+20	Cunningham & Oakland
+20	Cunningham & Perkins
+20	Devonshire & Mayfair
+20	Duncan & Stoneybrook
+20	Duncan & Valleybrook
+20	Edison Middle School
+20	Fairlawn & Grant Pl.
+20	Hamilton & Jefferson
+20	Harris & Bloomington
+20	Highcross & Nordland
+20	Interstate & Newmark
+20	Kinch & Lantern Hill
+20	Kinch & Rainbow View
+20	Kirby & Carriage Way
+20	Lakeview & Wedgewood
+20	Lincoln & California
+20	Lyndhurst & Magnolia
+20	MacArthur & Illinois
+20	Main & Cottage Grove
+20	Maplepark & Lawndale
+20	Maplepark & Sangamon
+20	Marketview & Anthony
+20	Mattis & Bloomington
+20	Mattis & Chevy Chase
+20	McHenry & Lynn St. 1
+20	McKinley & Beardsley
+20	Meijer Dr. at Meijer
+20	Moraine & Lake Shore
+20	Mullikin & Crossgate
+20	Neil & Bellefontaine
+20	Nevada & Gregory Pl.
+20	Paula & Garden Hills
+20	Philo & Pennsylvania
+20	Prospect & Beardsley
+20	Prospect & Broadmoor
+20	Race & Washington #1
+20	Race & Washington #2
+20	Race & Whitehall Ct.
+20	Randolph & Beardsley
+20	Sherwin & Pond Ridge
+20	Springfield & Draper
+20	Springfield & Duncan
+20	Springfield & Harvey
+20	Springfield & Mattis
+20	Springfield & Willis
+20	Sprngfield & Russell
+20	Susan Stone & Galena
+20	Susan Stone & Summit
+20	Toalson & Interstate
+20	Town & Country Apts.
+20	University & Central
+20	University & Chester
+20	University & Goodwin
+20	University & Hickory
+20	University & Lierman
+20	University & Prairie
+20	University & Russell
+20	Urbana Middle School
+20	Vine & Evergreen Ct.
+20	Washington & Hickory
+20	Washington & Lierman
+20	Westfield & Lawndale
+20	Westfield & Sangamon
+20	Westfield & Sheridan
+20	William & Goldenview
+20	Winchester & Belmore
+20	Winchester & Cypress
+20	Winchester & Glenoak
+20	Windsor & Brookshire
+20	Windsor & Donnybrook
+20	Windsor & Myra Ridge
+20	Windsor & Stillwater
+20	Windsor & Winchester
+20	Wright & Springfield
+21	Anderson & Sunnycrest
+21	Anthony at Rural King
+21	Bentbrook & Pinecrest
+21	Bloomington & Alabama
+21	Bluegrass & Tallgrass
+21	Broadway & University
+21	Brownfield & Columbia
+21	Brownfield & Mary Lou
+21	Cherry Hills & Curtis
+21	Clark Lindsey Village
+21	Copper Ridge & Copper
+21	Cottage Grove & Green
+21	Cottage Grove & Philo
+21	Country Club & Willow
+21	County Satellite Jail
+21	Crescent & Round Barn
+21	Cunningham & Thompson
+21	Curtis & Paddock West
+21	Devonshire & Lakeside
+21	Duncan & Crossing Ct.
+21	Florida & Florida Ct.
+21	Florida & Florida Dr.
+21	Florida & Lincolnwood
+21	Fourth & Pennsylvania
+21	Goodwin & Springfield
+21	Guardian Dr. & Butzow
+21	Institute of Aviation
+21	Interstate & Research
+21	Lawndale & Centennial
+21	Lincoln & College Ct.
+21	Maplepark & Carrelton
+21	Maplepark & Maplewood
+21	Maryland & College Ct
+21	Mattis at Post Office
+21	Mayfair & Weathervane
+21	McHenry & Lynn St. #2
+21	Mullikin & Doverbrook
+21	Mullikin & Graves Ct.
+21	Mullikin & Trostshire
+21	Orchard & George Huff
+21	Paddock East & Curtis
+21	Pennsylvania & Fourth
+21	Prospect & Devonshire
+21	Prospect & Interstate
+21	Prospect & Marketview
+21	Prospect & Washington
+21	Randolph & University
+21	Randolph & Washington
+21	Scottswood & Illinois
+21	Springfield & Chicago
+21	Springfield & Elmwood
+21	Springfield & Kenwood
+21	Springfield & Prairie
+21	Springfield & Russell
+21	Springfield & Wheaton
+21	Springhill & Glenhill
+21	St. Mary's & Griffith
+21	Stoneybrook & Moraine
+21	Town Center & Menards
+21	Town Center at Meijer
+21	Town Center at Target
+21	U.S. 150 & University
+21	University & Chestnut
+21	University & McKinley
+21	University & Prospect
+21	University & Randolph
+21	University & Sycamore
+21	Washington & Phillips
+21	Westfield & Carrelton
+21	Williamsburg & Mattis
+21	Winchester & Barberry
+21	Winchester & Tamarack
+21	Windsor & Susan Stone
+21	Windsor & Willowbrook
+21	Winfeld Village Lot D
+21	Woodfield at Savoy 16
+22	Balboa & Southwest Dr.
+22	Bentbrook & Golf Creek
+22	Bloomington & Highland
+22	Bloomington & McKinley
+22	Bloomington & Prospect
+22	Bluegrass & Sedgegrass
+22	Bluegrass & Summersage
+22	Boardwalk & Meijer Dr.
+22	Bradley & Garden Hills
+22	Bradley & Williamsburg
+22	Brentwood & Goldenview
+22	Broadmoor & Georgetown
+22	Carrol Fire Department
+22	College Ct. & Virginia
+22	Cottage Grove & Oregon
+22	Country Squire & Kinch
+22	Curtis Meadow & Staley
+22	Devonshire & Sandpiper
+22	Dodson East & Slayback
+22	Florida & James Cherry
+22	Franklin Middle School
+22	Jefferson and Columbia
+22	Lakeview & Worthington
+22	Lincoln & Pennsylvania
+22	MacArthur & California
+22	Maplepark & Willowpark
+22	Market & Bellefontaine
+22	Market Place NorthEast
+22	Market Place Southeast
+22	Maryland & College Ct.
+22	Mullikin & Stonebridge
+22	Mullikin & Westborough
+22	Parkland Ct. & Bradley
+22	Prospect & Floral Park
+22	Randolph & Springfield
+22	Sherwin & Sherwin Cir.
+22	Sherwin & Yankee Ridge
+22	Silver & Cottage Grove
+22	Slayback & Dodson West
+22	Springfield & Garfield
+22	Springfield & Highland
+22	Springfield & McKinley
+22	Springfield & Prospect
+22	Springfield & Ridgeway
+22	Springfield & VanDoren
+22	Springfield & Westlawn
+22	Switchgrass & Daffodil
+22	Switchgrass & Trailway
+22	Timbergate & Pinehurst
+22	Town Center & Moreland
+22	Town Center & Prospect
+22	Virginia & College Ct.
+22	Washington & MacArthur
+22	Wedgewood & Timbergate
+22	Williamsburg & Winston
+22	Winchester & Broadmoor
+22	Winchester & Southmoor
+22	Windsor & Cherry Hills
+22	Windsor & Crossing Ct.
+22	Winfield Village Lot B
+22	Winfield Village Lot G
+22	Winfield Village Lot K
+22	Winfield Village Lot M
+22	Woodfield & Arbor Town
+23	Armed Forces Recruiting
+23	Bloomington & Clearlake
+23	Bloomington & Louisiana
+23	Boardwalk & Town Center
+23	Broadmoor & Lincoln Pl.
+23	Broadway & Country Club
+23	Broadway & Crystal Lake
+23	Broadway & Crystal View
+23	Butzow at Guardian West
+23	Cherry Hills & Bay Hill
+23	Cherry Hills & Lakeview
+23	Colorado at Steer Place
+23	Copper Ridge & Ironwood
+23	Copper Ridge & Mullikin
+23	Cottage Grove & Eastern
+23	Cottage Grove & Harding
+23	Cottage Grove & Mitchem
+23	Country Club & Division
+23	Country Club & Golfview
+23	Country Fair Dr. & Camp
+23	Country Fair Dr. & Cone
+23	Country Fair Dr. & Park
+23	Countyr Fair Dr. & Camp
+23	Crossgate & Ironwood Ln
+23	Duncan & Prairie Meadow
+23	Florida & Cottage Grove
+23	Gregory at Mumford Hall
+23	Highcross & Bruce Acres
+23	Hunter & Country Squire
+23	Jefferson Middle School
+23	Lincolnshire & Foothill
+23	McHenry & Cottage Grove
+23	McHenry and Lynn - East
+23	Meijer Drive & Prospect
+23	Mullikin & Copper Ridge
+23	Myra Ridge & Ridge Park
+23	Orchard Downs Mid-North
+23	Orchard Downs Mid-South
+23	Pinecrest & Porterfield
+23	Prospect & Lincolnshire
+23	Prospect & Sherwood Tr.
+23	Race at Urbana Assembly
+23	Scottswood & Calif. Ct.
+23	Sherwin & Sherwin Cir 2
+23	Springer & Parkland Ct.
+23	Springfield & Kelly Ct.
+23	Springfield & Royal Ct.
+23	Tallgrass & Switchgrass
+23	University & McCullough
+23	Washington & Rainbow Vw
+23	Washington & Scottswood
+23	Williamsburg & Thornton
+23	Winchester & Blackthorn
+23	Winchester & Brookhaven
+24	Bloomington & Mittendorf
+24	Brownfield & Prairieview
+24	Chemical & Life Sciences
+24	Cherry Hills & Applewood
+24	Convenience Dr. & Market
+24	Copper Ridge & Blackhawk
+24	Cottage Grove & Brighton
+24	Cottage Grove & Burkwood
+24	Cottage Grove & Colorado
+24	Cottage Grove & Delaware
+24	Cottage Grove & Illinois
+24	Curtis Meadow & Brighton
+24	Fairlawn & Cottage Grove
+24	Insterstate & First Step
+24	John & English Creek Ct.
+24	Lincoln & Kettering Park
+24	Mullikin & Curtis Meadow
+24	Mullikin & Remington Way
+24	Myra Ridge & Silver Hill
+24	Prospect & Ayrshire Cir.
+24	State & Trade Center Dr.
+24	Susan Stone & Myra Ridge
+24	Susan Stone & Plains Ct.
+24	Switchgrass & Wildflower
+24	Timbergate & Willow Bend
+24	University Ave Mid Block
+24	Washington & Timothy Tr.
+24	Wedgewood & Cherry Creek
+24	Williamsburg & Summerlin
+24	Windsor & Morrissey Park
+25	Bloomington at Home Depot
+25	Brittany Trail & Mullikin
+25	Cherry Hills & Coppertree
+25	Cottage Grove & Crestwood
+25	Country Bend & Springhill
+25	Country Bend & Summerhill
+25	Country Club Rd. at Apts.
+25	Country Fair Dr. & Church
+25	Crossgate & Crossgate Ct.
+25	Fox at Community Elements
+25	MacArthur & MacArthur Ct.
+25	Myra Ridge & Autumn Ridge
+25	Springfield & Gregory St.
+25	Timbergate & Cherry Hills
+25	U of I Personnel Services
+26	Bradley & Country Fair Dr.
+26	Brittany Trail & Southford
+26	Cherry Hills & Pine Valley
+26	Cottage Grove & California
+26	Cottage Grove & Sunnycrest
+26	Cottage Grove & Washington
+26	Country Fair West Entrance
+26	Curtis Meadow & Foxborough
+26	Lyndhurst & Old Maple Lane
+26	Market Place & Convenience
+26	University & Cottage Grove
+27	Country Fair Dr. at Hundman
+27	Development Services Center
+27	Devonshire & Devonshire Ct.
+27	Devonshire Corporate Center
+27	Florida at Sunnycrest Apts.
+27	Lincoln Square Garage South
+27	Market Place North Entrance
+27	Mkt Plc North Ent. & Market
+27	Orchard Downs North Shelter
+27	Orchard Downs South Shelter
+27	Springer & Country Fair Dr.
+27	Springfield at Country Fair
+27	Washington & Country Squire
+27	Williamsburg & Garden Hills
+27	Williamsburg & Summit Ridge
+28	Champaign County Court House
+28	Cherry Hills & Cypress Creek
+28	Goodwin at Ceramics Building
+28	Gregory at Ikenberry Commons
+28	Lyndhurst & Evergreen Circle
+28	Mattis & Gentry Square South
+28	Pennsylvania at Law Building
+29	Bloomington  at Pioneer Plaza
+29	Brady at Grace Baptist Church
+29	Cottage Grove & Glenwood Oaks
+29	Country Fair Dr. & University
+29	Goodwin at Materials Research
+29	Illini Union Engineering Side
+29	Round Barn & Country Fair Dr.
+30	Curtis Rd. at Winfield Village
+30	Market Place & Convenience Dr.
+30	Springfield & Country Fair Dr.
+31	Country Fair Dr. at Hobby Lobby
+31	Marketview at Marketview Center
+33	Brittany Trail & Kensington Knoll
+33	Highcross & Apostalic Life Church
+33	Lyndhurst & Lyndhurst Village Ct.
+33	Springfield at Phillips Rec. Ctr.
+34	Country Fair Dr. at Hundman Lumber
+36	Springfield & Southwest Country Fair
+37	Brittany Trail & Southford Trace West

@@ -35,7 +35,7 @@ except IOError, e:
 try:
 	stops = json.loads(in_file.read())
 except ValueError, e:
-	print >> sys.stderr, "transform_stops.py: error parsing JSON. "
+	print >> sys.stderr, "transform_stops.py: error parsing JSON."
 	print >> sys.stderr, e
 	sys.exit(1)
 

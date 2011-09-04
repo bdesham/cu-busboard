@@ -625,7 +625,17 @@ function clear_message()
 
 function set_title(text)
 {
-	document.getElementById("top_text").innerText = text;
+	var title = text.replace(/  +/g, " ");
+	var top_text = document.getElementById("top_text");
+
+	if (title.length >= 34)
+		top_text.style.setProperty("font-size", "10pt");
+	else if (title.length >= 29)
+		top_text.style.setProperty("font-size", "11pt");
+	else
+		top_text.style.setProperty("font-size", "13pt");
+
+	top_text.innerText = title;
 }
 
 function set_status(text)
