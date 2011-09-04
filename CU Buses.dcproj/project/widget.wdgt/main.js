@@ -74,6 +74,15 @@ function contain_same_elements(array1, array2)
 	return (array1.sort().join(',') == array2.sort().join(','));
 }
 
+// return the version of OS X in an array, e.g. a[0] = 10, a[1] = 6, a[2] = 8
+
+function get_macosx_version()
+{
+	var re = new RegExp(".+Mac OS X (\\d+)_(\\d+)_(\\d+)\\).+");
+	var match = re.exec(navigator.appVersion);
+	return [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])];
+}
+
 //
 // ## Network stuff
 //
@@ -298,15 +307,32 @@ function prettify_route_name(name)
 {
 	debug('prettify_route_name: got name "' + name + '"');
 	
-	// uppercase the route name and remove the initial "12E " or whatever
-	var upper = name.toUpperCase().replace(/^\S+ (.+?)\s*$/, "$1");
+	var osx_version = get_macosx_version();
 	
-	var result = name.replace(/^(\S+ ).+/, "$1");
-	if (upper in formatted_route_names)
-		result += formatted_route_names[upper];
+	// separate the pieces
+	
+	var re = new RegExp("^(\\S+) (.+?)\\s*$");
+	var matches = re.exec(name);
+	
+	var route_number = matches[1];
+	var route_name = matches[2].toUpperCase();
+	
+	// construct the formatted route name
+	
+	var result = "";
+	
+	if (route_number == "27S" || route_number == "270S")
+		result += "&#x2708; ";
+	//else if (route_name == "TRANSPORT" && osx_version[1] >= 7)
+	//	result += "&#xe42b; ";
+	
+	result += route_number + " ";
+	
+	if (route_name in formatted_route_names)
+		result += formatted_route_names[route_name];
 	else {
-		debug('prettify_route_name: "' + upper + '" not found in formatted_route_names');
-		result += upper;
+		debug('prettify_route_name: "' + route_name + '" not found in formatted_route_names');
+		result += route_name;
 	}
 	
 	debug('prettify_route_name: returning "' + result + '"');

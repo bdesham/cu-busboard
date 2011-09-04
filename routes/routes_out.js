@@ -1,8 +1,8 @@
 var formatted_route_names = {
-	"AIR BUS": "&#x2708; Air Bus",
+	"AIR BUS": "Air Bus",
 	"AIR BUS CAMPUS": "Air Bus <span style='font-weight: normal; font-size: 80%'>Campus</span>",
-	"AIR BUS EXPRESS": "&#x2708; Air Bus <span style='font-size: 85%'>EXP.</span>",
-	"AIR BUS IT": "&#x2708; Air Bus <span style='font-weight: normal; font-size: 80%'>I.T.</span>",
+	"AIR BUS EXPRESS": "Air Bus <span style='font-size: 85%'>EXP.</span>",
+	"AIR BUS IT": "Air Bus <span style='font-weight: normal; font-size: 80%'>I.T.</span>",
 	"AIR BUS PLAZA": "Air Bus <span style='font-weight: normal; font-size: 80%'>Plaza</span>",
 	"BLUE": "Blue",
 	"BLUE ALTERNATE": "Blue <span style='font-size: 85%'>ALT.</span>",

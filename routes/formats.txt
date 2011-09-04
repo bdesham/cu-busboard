@@ -1,7 +1,7 @@
-AIR BUS,&#x2708; Air Bus
+AIR BUS,Air Bus
 AIR BUS CAMPUS,Air Bus @Campus@
-AIR BUS EXPRESS,&#x2708; Air Bus *EXP.*
-AIR BUS IT,&#x2708; Air Bus @I.T.@
+AIR BUS EXPRESS,Air Bus *EXP.*
+AIR BUS IT,Air Bus @I.T.@
 AIR BUS PLAZA,Air Bus @Plaza@
 BLUE,Blue
 BLUE ALTERNATE,Blue *ALT.*
