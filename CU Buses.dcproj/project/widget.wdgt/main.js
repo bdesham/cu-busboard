@@ -132,7 +132,8 @@ function update_data()
 	
 	// uncomment this to simulate an error
 	
-	/*var fake_data_not_okay = {
+	/*
+	var fake_data_not_okay = {
 		"stat": "server is on fire"
 	};
 	
@@ -141,19 +142,17 @@ function update_data()
 		"departures": []
 	};
 	
-	json_success_callback(fake_data_not_okay);*/
+	json_success_callback(fake_data_not_okay);
+	*/
 	
 	// uncomment this to fake an entire departure list
 	
-	/*refresh_ui_from_data({"stop": "whatever", "departures": [
-		{'route': '9B BROWN', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
-		{'route': '9B BROWN ALTERNATE', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
-		{'route': '9A BROWN ALTERNATE', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
-		{'route': '9A BROWN', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
-		{'route': '9A BROWN IT', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
-		{'route': '9A BROWN ALT', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
-		{'route': '8W BRONZE YANKEE RIDGE', 'ending': 'IT:1', 'time_millis': 1000*60*3, 'time': 3},
-		]});*/
+	/*
+	refresh_ui_from_data({"stop": "whatever", "departures": [
+		{'route': '9B BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
+		{'route': '9A BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
+		]});
+	*/
 }
 
 function check_json_success()
@@ -166,19 +165,32 @@ function process_json(json)
 {
 	var result = {"stop": config.stop_verbose, "departures": []};
 	var departures = json['departures'];
+
 	var now = Date.now();
+
+	var date_regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
 	
 	for (var i = 0; i < departures.length; i++) {
 		var depart = departures[i];
+
+		// parse the "expected" date/time
+
+		var pieces = date_regex.exec(depart.expected);
+		var date = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " "
+				+ pieces[4] + " GMT-0500");
+
+		// calculate the time difference
+	
+		var time_diff_ms = date.getTime() - now;
 		
-		var expected = convert_date(depart.expected);
-		var time = Math.floor((expected - now)/(1000*60));
-		
+		// load up the object
+
 		result["departures"][i] = {
 			"route": depart.route,
 			"ending": depart.destination.stop_id,
-			"time_millis": expected - now,
-			"time": time
+			"wait_time_ms": time_diff_ms,
+			"wait_time_min": Math.floor(time_diff_ms/(1000*60)),
+			"time_string": date.toLocaleTimeString()
 		};
 	}
 	
@@ -230,19 +242,9 @@ function get_current_time()
 		return (hour - 12) + ":" + minutes + " PM";
 }
 
-function convert_date(date)
-{
-	var regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
-	var pieces = regex.exec(date);
-	var result = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " "
-			+ pieces[4] + " GMT-0500");
-	
-	return result.getTime();
-}
-
 function sort_departures(a, b)
 {
-	return a.time_millis - b.time_millis;
+	return a.wait_time_ms - b.wait_time_ms;
 }
 
 //
@@ -557,8 +559,7 @@ function refresh_ui_from_data(data)
 	for (i = 0; i < departures.length; i++) {
 		var row = list.rows[i].object;
 		var departure = departures[i];
-		var time = departure.time;
-		
+		var time = departure.wait_time_min;
 		
 		row.templateElements.route_text.innerHTML = prettify_route_name(departure.route);
 		
@@ -567,9 +568,12 @@ function refresh_ui_from_data(data)
 		else
 			row.templateElements.arrival_time_text.innerText = "DUE";
 			
+		row.templateElements.arrival_time_text.setAttribute("title",
+				"Bus expected at " + departure.time_string);
+			
 		var terminus = get_verbose_stop_name_from_id(departure.ending);
-		row.templateElements.route_text.setAttribute("title", "Route ends at "
-				+ terminus);
+		row.templateElements.route_text.setAttribute("title",
+				"Route ends at " + terminus);
 
 		var time_style = row.templateElements.arrival_time_text.style;
 		
@@ -902,3 +906,4 @@ if (window.widget) {
 }
 
 // vim: tw=80 cc=+1
+
