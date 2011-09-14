@@ -57,7 +57,7 @@ var formatted_route_names = {
 	"TEAL": "Teal",
 	"TEAL ORCHARD DOWNS": "Teal <span style='font-weight: normal; font-size: 80%'>Orch. Downs</span>",
 	"TEAL PAR": "Teal <span style='font-weight: normal; font-size: 80%'>PAR</span>",
-	"TRANSPORT": "TranSPORT",
+	"TRANSPORT": "Tran<span style='font-size: 85%'>SPORT</span>",
 	"YELLOW": "Yellow",
 	"YELLOW ALTERNATE": "Yellow <span style='font-size: 85%'>ALT.</span>",
 	"YELLOW CAMPUS": "Yellow <span style='font-weight: normal; font-size: 80%'>Campus</span>",

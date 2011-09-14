@@ -325,8 +325,8 @@ function prettify_route_name(name)
 	
 	if (route_number == "27S" || route_number == "270S")
 		result += "&#x2708; ";
-	//else if (route_name == "TRANSPORT" && osx_version[1] >= 7)
-	//	result += "&#xe42b; ";
+	else if (route_name == "TRANSPORT" && osx_version[1] >= 7)
+		result += "&#x1f3c8;&nbsp; ";
 	
 	result += route_number + " ";
 	
