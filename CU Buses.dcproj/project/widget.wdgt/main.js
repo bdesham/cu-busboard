@@ -190,7 +190,7 @@ function process_json(json)
 			"ending": depart.destination.stop_id,
 			"wait_time_ms": time_diff_ms,
 			"wait_time_min": Math.floor(time_diff_ms/(1000*60)),
-			"time_string": date.toLocaleTimeString()
+			"time_string": date.toLocaleTimeString().replace(/ C[DS]T$/, "")
 		};
 	}
 	
