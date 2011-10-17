@@ -74,14 +74,6 @@ function contain_same_elements(array1, array2)
 	return (array1.sort().join(',') == array2.sort().join(','));
 }
 
-// return the version of OS X in an array, e.g. a[0] = 10, a[1] = 6, a[2] = 8
-
-function get_macosx_version()
-{
-	var re = new RegExp(".+Mac OS X (\\d+)_(\\d+)_(\\d+)\\).+");
-	var match = re.exec(navigator.appVersion);
-	return [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])];
-}
 
 //
 // ## Network stuff
@@ -309,8 +301,6 @@ function prettify_route_name(name)
 {
 	debug('prettify_route_name: got name "' + name + '"');
 	
-	var osx_version = get_macosx_version();
-	
 	// separate the pieces
 	
 	var re = new RegExp("^(\\S+) (.+?)\\s*$");
@@ -325,8 +315,6 @@ function prettify_route_name(name)
 	
 	if (route_number == "27S" || route_number == "270S")
 		result += "&#x2708; ";
-	else if (route_name == "TRANSPORT" && osx_version[1] >= 7)
-		result += "&#x1f3c8;&nbsp; ";
 	
 	result += route_number + " ";
 	
@@ -341,6 +329,7 @@ function prettify_route_name(name)
 	
 	return result;
 }
+
 
 //
 // # Preference handling
@@ -449,6 +438,7 @@ function read_preferences()
 		return 1;
 	}
 }
+
 
 //
 // # Updating
@@ -906,4 +896,3 @@ if (window.widget) {
 }
 
 // vim: tw=80 cc=+1
-
