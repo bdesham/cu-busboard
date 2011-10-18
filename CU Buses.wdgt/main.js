@@ -24,7 +24,7 @@ var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 var api_key = "afea17046e244cda8f56b5e1fe5f2019";
 
 var widget_version_major = 1;
-var widget_version_minor = 5;
+var widget_version_minor = 6;
 var widget_version = widget_version_major + "." + widget_version_minor;
 
 // time between refreshes (in milliseconds)
@@ -74,6 +74,7 @@ function contain_same_elements(array1, array2)
 	return (array1.sort().join(',') == array2.sort().join(','));
 }
 
+
 //
 // ## Network stuff
 //
@@ -121,9 +122,10 @@ function update_data()
 	setTimeout(check_json_success, 1000*5);
 	
 	
-	// set and pass some fake data for testing
+	// uncomment this to simulate an error
 	
-	/*var fake_data_not_okay = {
+	/*
+	var fake_data_not_okay = {
 		"stat": "server is on fire"
 	};
 	
@@ -133,13 +135,16 @@ function update_data()
 	};
 	
 	json_success_callback(fake_data_not_okay);
+	*/
 	
+	// uncomment this to fake an entire departure list
+	
+	/*
 	refresh_ui_from_data({"stop": "whatever", "departures": [
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3},
-		{"route": "5W GreenHOPPER", "ending": "IT:1", "time_millis": 1000*60*3, "time": 3}
-		]});*/
+		{'route': '9B BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
+		{'route': '9A BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
+		]});
+	*/
 }
 
 function check_json_success()
@@ -152,19 +157,32 @@ function process_json(json)
 {
 	var result = {"stop": config.stop_verbose, "departures": []};
 	var departures = json['departures'];
+
 	var now = Date.now();
+
+	var date_regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
 	
 	for (var i = 0; i < departures.length; i++) {
 		var depart = departures[i];
+
+		// parse the "expected" date/time
+
+		var pieces = date_regex.exec(depart.expected);
+		var date = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " "
+				+ pieces[4] + " GMT-0500");
+
+		// calculate the time difference
+	
+		var time_diff_ms = date.getTime() - now;
 		
-		var expected = convert_date(depart.expected);
-		var time = Math.floor((expected - now)/(1000*60));
-		
+		// load up the object
+
 		result["departures"][i] = {
 			"route": depart.route,
 			"ending": depart.destination.stop_id,
-			"time_millis": expected - now,
-			"time": time
+			"wait_time_ms": time_diff_ms,
+			"wait_time_min": Math.floor(time_diff_ms/(1000*60)),
+			"time_string": date.toLocaleTimeString().replace(/ C[DS]T$/, "")
 		};
 	}
 	
@@ -216,19 +234,9 @@ function get_current_time()
 		return (hour - 12) + ":" + minutes + " PM";
 }
 
-function convert_date(date)
-{
-	var regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
-	var pieces = regex.exec(date);
-	var result = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " "
-			+ pieces[4] + " GMT-0500");
-	
-	return result.getTime();
-}
-
 function sort_departures(a, b)
 {
-	return a.time_millis - b.time_millis;
+	return a.wait_time_ms - b.wait_time_ms;
 }
 
 //
@@ -291,30 +299,37 @@ function get_verbose_stop_name_from_id(id)
 
 function prettify_route_name(name)
 {
-	name = wrap_in_span(name, "Limited", "font-size: 85%; text-transform: uppercase");
-	name = wrap_in_span(name, "Express", "font-size: 85%; text-transform: uppercase");
-	name = wrap_in_span(name, "Lsq", "font-size: 85%; text-transform: uppercase");
+	debug('prettify_route_name: got name "' + name + '"');
 	
-	if (name.match(/YellowHOPPER Gerty/i)) {
-		name = name.replace(/HOPPER Gerty/,
-			"H<span style='font-size: 85%'>OP.</span>"
-			+ " <span style='font-weight: normal; font-size: 80%'>Gerty</span>");
-	} else if (name.match(/YellowHOPPER E-14/i)) {
-		name = name.replace(/HOPPER E-14/,
-			"H<span style='font-size: 85%'>OP</span>. E-14");
-	} else if (name.match(/HOPPER/))
-		name = wrap_in_span(name, "OPPER", "font-size: 85%");
+	// separate the pieces
 	
-	if (name.match(/Air Bus/))
-		name = "&#x2708; " + name;
+	var re = new RegExp("^(\\S+) (.+?)\\s*$");
+	var matches = re.exec(name);
 	
-	if (name.match(/Teal Orchard Downs/i)) {
-		name = name.replace(/^(.+ Teal) Orchard Downs/,
-			"$1 <span style='font-weight: normal; font-size: 80%'>Orch. Downs</span>");
+	var route_number = matches[1];
+	var route_name = matches[2].toUpperCase();
+	
+	// construct the formatted route name
+	
+	var result = "";
+	
+	if (route_number == "27S" || route_number == "270S")
+		result += "&#x2708; ";
+	
+	result += route_number + " ";
+	
+	if (route_name in formatted_route_names)
+		result += formatted_route_names[route_name];
+	else {
+		debug('prettify_route_name: "' + route_name + '" not found in formatted_route_names');
+		result += route_name;
 	}
 	
-	return name;
+	debug('prettify_route_name: returning "' + result + '"');
+	
+	return result;
 }
+
 
 //
 // # Preference handling
@@ -423,6 +438,7 @@ function read_preferences()
 		return 1;
 	}
 }
+
 
 //
 // # Updating
@@ -533,8 +549,7 @@ function refresh_ui_from_data(data)
 	for (i = 0; i < departures.length; i++) {
 		var row = list.rows[i].object;
 		var departure = departures[i];
-		var time = departure.time;
-		
+		var time = departure.wait_time_min;
 		
 		row.templateElements.route_text.innerHTML = prettify_route_name(departure.route);
 		
@@ -543,9 +558,12 @@ function refresh_ui_from_data(data)
 		else
 			row.templateElements.arrival_time_text.innerText = "DUE";
 			
+		row.templateElements.arrival_time_text.setAttribute("title",
+				"Bus expected at " + departure.time_string);
+			
 		var terminus = get_verbose_stop_name_from_id(departure.ending);
-		row.templateElements.route_text.setAttribute("title", "Route ends at "
-				+ terminus);
+		row.templateElements.route_text.setAttribute("title",
+				"Route ends at " + terminus);
 
 		var time_style = row.templateElements.arrival_time_text.style;
 		
@@ -601,7 +619,17 @@ function clear_message()
 
 function set_title(text)
 {
-	document.getElementById("top_text").innerText = text;
+	var title = text.replace(/  +/g, " ");
+	var top_text = document.getElementById("top_text");
+
+	if (title.length >= 34)
+		top_text.style.setProperty("font-size", "10pt");
+	else if (title.length >= 29)
+		top_text.style.setProperty("font-size", "11pt");
+	else
+		top_text.style.setProperty("font-size", "13pt");
+
+	top_text.innerText = title;
 }
 
 function set_status(text)
@@ -627,12 +655,6 @@ function update_routes_checkboxes_from_list(routes)
 //
 // ## Miscellaneous UI utility functions
 //
-
-function wrap_in_span(text, words, style)
-{
-	return text.replace(words, "<span style='" + style + "'>" + words
-			+ "</span>");
-}
 
 function array_of_spaces(len)
 {
