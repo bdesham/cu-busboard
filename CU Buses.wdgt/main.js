@@ -24,7 +24,7 @@ var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 var api_key = "afea17046e244cda8f56b5e1fe5f2019";
 
 var widget_version_major = 1;
-var widget_version_minor = 6;
+var widget_version_minor = 7;
 var widget_version = widget_version_major + "." + widget_version_minor;
 
 // time between refreshes (in milliseconds)
@@ -169,7 +169,7 @@ function process_json(json)
 
 		var pieces = date_regex.exec(depart.expected);
 		var date = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " "
-				+ pieces[4] + " GMT-0500");
+				+ pieces[4] + " GMT-0600");
 
 		// calculate the time difference
 	
