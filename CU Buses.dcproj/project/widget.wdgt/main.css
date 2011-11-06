@@ -47,11 +47,11 @@ body {
 
 #done {
     position: absolute;
-    right: 21px;
     margin-left: auto;
     margin-top: auto;
     width: 50px;
     left: auto;
+    right: 21px;
     top: auto;
     bottom: 21px;
 }
@@ -905,4 +905,39 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     top: 244px;
     left: 106px;
+}
+
+#box_prefs {
+    border-width: 1px;
+    position: absolute;
+    border-color: rgb(236, 239, 109);
+    bottom: auto;
+    margin-top: 0px;
+    width: 292px;
+    height: 286px;
+    left: -16px;
+    top: -16px;
+}
+
+#box_routes {
+    border-width: 1px;
+    position: absolute;
+    border-color: rgb(236, 239, 109);
+    bottom: auto;
+    margin-top: 0px;
+    width: 292px;
+    height: 286px;
+    left: -16px;
+    top: -16px;
+}
+
+#box_clipper {
+    border-color: black;
+    border-width: 1px;
+    position: absolute;
+    margin-top: 0px;
+    left: 15px;
+    top: 14px;
+    height: 255px;
+    width: 261px;
 }

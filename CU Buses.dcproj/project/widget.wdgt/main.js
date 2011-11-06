@@ -690,7 +690,14 @@ function load()
 	version.innerText = "CU Buses v" + widget_version;
 	version.style.setProperty("text-decoration", "underline");
 	version.style.setProperty("cursor", "pointer");
-
+	
+	//var box_routes = document.getElementById('box_routes');
+	//box_routes.style.setProperty('opacity', 0.0);
+	//box_routes.style.setProperty('visibility', 'visible');
+	$('#box_routes').hide();
+	
+	$('#box_clipper').css({'overflow': 'hidden'});
+	
 	document.getElementById("text_version").title = "Click to visit the CU Buses website";
 
 	document.getElementById("text_thanks").title = "They provide the buses too.";
@@ -798,15 +805,20 @@ function animate_back_to_front(event)
 
 function animate_back_to_routes(event)
 {
-	$("#back").fadeOut(500);
-	$("#route_selection").fadeIn(500);
+	// the routes box starts out having the same position as the prefs box, so
+	// we need to move it out of the way before we do anything else
+	$('#box_routes').show().animate({top: 286}, 0);
+	
+	$('#box_prefs').animate({top: -286}, 250);
+	$('#box_routes').animate({top: -16}, 250);
 }
 
 function animate_routes_to_back(event)
 {
 	debug('animate_routes_to_back: config.routes is ' + config.routes.join(','));
-	$("#route_selection").fadeOut(500);
-	$("#back").fadeIn(500);
+	
+	$('#box_prefs').animate({top: -16}, 250);
+	$('#box_routes').animate({top: 286}, 250);
 }
 
 // 
