@@ -21,11 +21,11 @@ var debugging = false;
 var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 	22, 27, 180, 190, 280];
 
-var api_key = "afea17046e244cda8f56b5e1fe5f2019";
+var api_key = 'afea17046e244cda8f56b5e1fe5f2019';
 
 var widget_version_major = 1;
 var widget_version_minor = 7;
-var widget_version = widget_version_major + "." + widget_version_minor;
+var widget_version = widget_version_major + '.' + widget_version_minor;
 
 // time between refreshes (in milliseconds)
 
@@ -41,7 +41,7 @@ var latest_json = {};
 
 var refresh_interval;
 
-var bad_stop_code = "";
+var bad_stop_code = '';
 
 var json_success;
 
@@ -66,7 +66,7 @@ function debug(text)
 
 function id_basename(id)
 {
-	return id.replace(/:.+/, "");
+	return id.replace(/:.+/, '');
 }
 
 function contain_same_elements(array1, array2)
@@ -84,21 +84,21 @@ function json_success_callback(json)
 	json_success = true;
 	latest_json = json;
 	
-	if (json.stat == "ok") {
+	if (json.stat == 'ok') {
 		var data = process_json(json);
 		refresh_ui_from_data(data);
-	} else if (json.stat == "fail") {
-		display_message("Sorry, but the CUMTD server seems to be having problems.");
+	} else if (json.stat == 'fail') {
+		display_message('Sorry, but the CUMTD server seems to be having problems.');
 		window.console.log('API error ' + json.err.code + ': "' + json.err.msg + '"');
 	} else {
-		display_message("Sorry, but the CUMTD server seems to be having problems.");
+		display_message('Sorry, but the CUMTD server seems to be having problems.');
 		window.console.log('API error, stat = "' + json.stat + '"');
 	}
 }
 
 function update_data()
 {
-	if (!config.stop_code || config.stop_code == "")
+	if (!config.stop_code || config.stop_code == '')
 		return;
 
 	var args = {
@@ -126,12 +126,12 @@ function update_data()
 	
 	/*
 	var fake_data_not_okay = {
-		"stat": "server is on fire"
+		'stat': 'server is on fire'
 	};
 	
 	var fake_data_no_buses = {
-		"stat": "ok",
-		"departures": []
+		'stat': 'ok',
+		'departures': []
 	};
 	
 	json_success_callback(fake_data_not_okay);
@@ -140,7 +140,7 @@ function update_data()
 	// uncomment this to fake an entire departure list
 	
 	/*
-	refresh_ui_from_data({"stop": "whatever", "departures": [
+	refresh_ui_from_data({'stop': 'whatever', 'departures': [
 		{'route': '9B BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
 		{'route': '9A BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
 		]});
@@ -150,12 +150,12 @@ function update_data()
 function check_json_success()
 {
 	if (json_success == false)
-		display_message("There was an error getting information from the CUMTD server.");
+		display_message('There was an error getting information from the CUMTD server.');
 }	
 
 function process_json(json)
 {
-	var result = {"stop": config.stop_verbose, "departures": []};
+	var result = {'stop': config.stop_verbose, 'departures': []};
 	var departures = json['departures'];
 
 	var now = Date.now();
@@ -168,8 +168,8 @@ function process_json(json)
 		// parse the "expected" date/time
 
 		var pieces = date_regex.exec(depart.expected);
-		var date = new Date(pieces[2] + "/" + pieces[3] + "/" + pieces[1] + " "
-				+ pieces[4] + " GMT-0600");
+		var date = new Date(pieces[2] + '/' + pieces[3] + '/' + pieces[1] + ' '
+				+ pieces[4] + ' GMT-0600');
 
 		// calculate the time difference
 	
@@ -177,12 +177,12 @@ function process_json(json)
 		
 		// load up the object
 
-		result["departures"][i] = {
-			"route": depart.route,
-			"ending": depart.destination.stop_id,
-			"wait_time_ms": time_diff_ms,
-			"wait_time_min": Math.floor(time_diff_ms/(1000*60)),
-			"time_string": date.toLocaleTimeString().replace(/ C[DS]T$/, "")
+		result['departures'][i] = {
+			'route': depart.route,
+			'ending': depart.destination.stop_id,
+			'wait_time_ms': time_diff_ms,
+			'wait_time_min': Math.floor(time_diff_ms/(1000*60)),
+			'time_string': date.toLocaleTimeString().replace(/ C[DS]T$/, '')
 		};
 	}
 	
@@ -204,7 +204,7 @@ function get_canonical_route_number(n)
 	else if (n % 10 == 0 && all_routes.indexOf(n/10) > -1)
 		return n/10;
 	else {
-		window.console.log("Unrecognized route number: " + n);
+		window.console.log('Unrecognized route number: ' + n);
 		return n;
 	}
 }
@@ -222,16 +222,16 @@ function get_current_time()
 	var minutes = now.getMinutes();
 	
 	if (minutes < 10)
-		minutes = "0" + minutes;
+		minutes = '0' + minutes;
 	
 	if (hour == 0)
-		return "12:" + minutes + " AM";
+		return '12:' + minutes + ' AM';
 	else if (hour <= 11)
-		return hour + ":" + minutes + " AM";
+		return hour + ':' + minutes + ' AM';
 	else if (hour == 12)
-		return "12:" + minutes + " PM";
+		return '12:' + minutes + ' PM';
 	else
-		return (hour - 12) + ":" + minutes + " PM";
+		return (hour - 12) + ':' + minutes + ' PM';
 }
 
 function sort_departures(a, b)
@@ -246,38 +246,38 @@ function sort_departures(a, b)
 function get_stop_id(stop)
 {
 	if (stop in stops)
-		return stops[stop]["id"];
+		return stops[stop]['id'];
 	else {
 		debug('No stop_id found for code "' + stop + '"');
-		return "";
+		return '';
 	}
 }
 
 function get_intersection_id(stop)
 {
 	if (stop in stops)
-		return id_basename(stops[stop]["id"]);
+		return id_basename(stops[stop]['id']);
 	else {
 		debug('No intersection id found for code "' + stop + '"');
-		return "";
+		return '';
 	}
 }
 
 function get_verbose_stop_name_from_code(stop)
 {
 	if (stop in stops)
-		return stops[stop]["verbose"];
+		return stops[stop]['verbose'];
 	else {
 		debug('No verbose name found for code "' + stop + '"');
-		return "";
+		return '';
 	}
 }
 
 function get_verbose_stop_name_from_id(id)
 {
 	for (key in stops) {
-		if (stops[key]["id"] == id)
-			return stops[key]["verbose"];
+		if (stops[key]['id'] == id)
+			return stops[key]['verbose'];
 	}
 	
 	// if that didn't work, try to match the base of the id (the part before
@@ -285,12 +285,12 @@ function get_verbose_stop_name_from_id(id)
 	id = id_basename(id);
 	
 	for (key in stops) {
-		if (id_basename(stops[key]["id"]) == id)
-			return stops[key]["verbose"];
+		if (id_basename(stops[key]['id']) == id)
+			return stops[key]['verbose'];
 	}
 	
 	debug('No verbose name found for id "' + id + '"');	
-	return "";
+	return '';
 }
 
 //
@@ -303,7 +303,7 @@ function prettify_route_name(name)
 	
 	// separate the pieces
 	
-	var re = new RegExp("^(\\S+) (.+?)\\s*$");
+	var re = new RegExp('^(\\S+) (.+?)\\s*$');
 	var matches = re.exec(name);
 	
 	var route_number = matches[1];
@@ -311,12 +311,12 @@ function prettify_route_name(name)
 	
 	// construct the formatted route name
 	
-	var result = "";
+	var result = '';
 	
-	if (route_number == "27S" || route_number == "270S")
-		result += "&#x2708; ";
+	if (route_number == '27S' || route_number == '270S')
+		result += '&#x2708; ';
 	
-	result += route_number + " ";
+	result += route_number + ' ';
 	
 	if (route_name in formatted_route_names)
 		result += formatted_route_names[route_name];
@@ -348,9 +348,9 @@ function set_preference(name, value)
 function update_preferences()
 {
 	debug('update_preferences: config.routes is ' + config.routes.toString());
-	set_preference("time", document.getElementById("popup_lookahead").value);
-	set_preference("routes", '[' + config.routes.join(",") + ']');
-	set_preference("stop_code", document.getElementById("field_stop").value);
+	set_preference('time', document.getElementById('popup_lookahead').value);
+	set_preference('routes', '[' + config.routes.join(',') + ']');
+	set_preference('stop_code', document.getElementById('field_stop').value);
 
 	return read_preferences();
 }
@@ -364,7 +364,7 @@ function read_preferences()
 {
 	// time
 	
-	var time = get_preference("time");
+	var time = get_preference('time');
 	var time_int = parseInt(time);
 	
 	if (time && [15, 30, 45, 60].indexOf(time_int) > -1)
@@ -372,14 +372,14 @@ function read_preferences()
 	else
 		config.time = 45;
 	
-	document.getElementById("popup_lookahead").setAttribute("value", config.time);
+	document.getElementById('popup_lookahead').setAttribute('value', config.time);
 
 	// routes
 
-	var routes = get_preference("routes");
+	var routes = get_preference('routes');
 	
 	if (routes) {
-		var routes_arr = routes.replace(/\[(.+)\]/g, "$1").split(',');
+		var routes_arr = routes.replace(/\[(.+)\]/g, '$1').split(',');
 
 		routes_arr = routes_arr.map(function(e) {
 			return parseInt(e);
@@ -398,31 +398,31 @@ function read_preferences()
 
 	// stop code
 
-	var stop_code = get_preference("stop_code");
+	var stop_code = get_preference('stop_code');
 	
 	if (stop_code) {
 		if (!(stop_code in stops)) {
 			bad_stop_code = stop_code;
 
-			set_title("CU Buses");
-			display_message("&ldquo;" + bad_stop_code +
-					"&rdquo; isn&rsquo;t a stop. Please double-check your code.");
+			set_title('CU Buses');
+			display_message('&ldquo;' + bad_stop_code +
+					'&rdquo; isn&rsquo;t a stop. Please double-check your code.');
 					
-			config.stop_code = "";
-			config.stop_id = "";
-			config.stop_verbose = "";
+			config.stop_code = '';
+			config.stop_id = '';
+			config.stop_verbose = '';
 				
-			document.getElementById("field_stop").setAttribute("value", stop_code);
+			document.getElementById('field_stop').setAttribute('value', stop_code);
 				
 			return 2;
 		} else {
-			bad_stop_code = "";
+			bad_stop_code = '';
 
 			config.stop_code = stop_code;
 			config.stop_id = get_intersection_id(stop_code);
 			config.stop_verbose = get_verbose_stop_name_from_code(stop_code);
 					
-			document.getElementById("field_stop").setAttribute("value", stop_code);
+			document.getElementById('field_stop').setAttribute('value', stop_code);
 
 			return 0;
 		}
@@ -431,9 +431,9 @@ function read_preferences()
 				+ " <span style='font-style: italic; font-family: \"Times New Roman\"; font-weight: bold'>i</span>"
 				+ " button at the bottom-right of this widget and enter a stop code.");
 				
-		config.stop_code = "";
-		config.stop_id = "";
-		config.stop_verbose = "";
+		config.stop_code = '';
+		config.stop_id = '';
+		config.stop_verbose = '';
 
 		return 1;
 	}
@@ -452,11 +452,11 @@ function check_for_updates()
 
 function check_for_updates_callback(json)
 {
-	if (!("latest_version_major" in json
-				&& "latest_version_minor" in json)) {
+	if (!('latest_version_major' in json
+				&& 'latest_version_minor' in json)) {
 		window.console.log('In check_for_updates_callback but got bad JSON');
 
-		document.getElementById('button_update').style.visibility = "hidden";
+		document.getElementById('button_update').style.visibility = 'hidden';
 		new_version_available = false;
 
 		return;
@@ -468,11 +468,11 @@ function check_for_updates_callback(json)
 	if ((major > widget_version_major) ||
 			((major == widget_version_major) && (minor > widget_version_minor))) {
 		debug('New version available: ' + major + '.' + minor);
-		document.getElementById('button_update').style.visibility = "visible";
+		document.getElementById('button_update').style.visibility = 'visible';
 		new_version_available = true;
 	} else {
 		debug('We have the newest version: ' + major + '.' + minor);
-		document.getElementById('button_update').style.visibility = "hidden";
+		document.getElementById('button_update').style.visibility = 'hidden';
 		new_version_available = false;
 	}
 }
@@ -487,13 +487,13 @@ function check_for_updates_callback(json)
 //
 
 var colors = {
-	"black": "#1b1d1e",
-	"red_bg": "#d10000",
-	"red_fg": "#ffffff",
-	"yellow_bg": "#ffc400",
-	"yellow_fg": "#000000",
-	"green_bg": "#007f00",
-	"green_fg": "#ffffff"
+	'black': '#1b1d1e',
+	'red_bg': '#d10000',
+	'red_fg': '#ffffff',
+	'yellow_bg': '#ffc400',
+	'yellow_fg': '#000000',
+	'green_bg': '#007f00',
+	'green_fg': '#ffffff'
 };
 
 //
@@ -505,7 +505,7 @@ function refresh_ui_from_data(data)
 	if (bad_stop_code)
 		return;
 	
-	var list = document.getElementById("list").object;
+	var list = document.getElementById('list').object;
 
 	var departures = data.departures;
 	list.setDataArray(array_of_spaces(departures.length));
@@ -514,14 +514,14 @@ function refresh_ui_from_data(data)
 	// top and bottom labels
 	//
 	
-	set_title(config["stop_verbose"]);
-	set_status("Updated at " + get_current_time());
+	set_title(config['stop_verbose']);
+	set_status('Updated at ' + get_current_time());
 	
 	// find out how many of these departures we're actually going to show
 	
 	var is_desired_route = function(departure) {
-		//debug("is_desired_route: route: " + departure.route);
-		var raw_route = departure.route.replace(/(\d+).+/, "$1");
+		//debug('is_desired_route: route: ' + departure.route);
+		var raw_route = departure.route.replace(/(\d+).+/, '$1');
 		var canonical_route = get_canonical_route_number(parseInt(raw_route))
 		return (config.routes.indexOf(canonical_route) > -1);
 	}
@@ -535,8 +535,8 @@ function refresh_ui_from_data(data)
 	// else.)
 	
 	if (departures.length == 0) {
-		display_message("There are no buses coming in the next " + config.time +
-				" minutes.");
+		display_message('There are no buses coming in the next ' + config.time +
+				' minutes.');
 		return;
 	}
 	
@@ -554,28 +554,28 @@ function refresh_ui_from_data(data)
 		row.templateElements.route_text.innerHTML = prettify_route_name(departure.route);
 		
 		if (time > 0)
-			row.templateElements.arrival_time_text.innerText = time + " min";
+			row.templateElements.arrival_time_text.innerText = time + ' min';
 		else
-			row.templateElements.arrival_time_text.innerText = "DUE";
+			row.templateElements.arrival_time_text.innerText = 'DUE';
 			
-		row.templateElements.arrival_time_text.setAttribute("title",
-				"Bus expected at " + departure.time_string);
+		row.templateElements.arrival_time_text.setAttribute('title',
+				'Bus expected at ' + departure.time_string);
 			
 		var terminus = get_verbose_stop_name_from_id(departure.ending);
-		row.templateElements.route_text.setAttribute("title",
-				"Route ends at " + terminus);
+		row.templateElements.route_text.setAttribute('title',
+				'Route ends at ' + terminus);
 
 		var time_style = row.templateElements.arrival_time_text.style;
 		
 		if (time <= 5) {
-			time_style.setProperty("background-color", colors["red_bg"]);
-			time_style.setProperty("color", colors["red_fg"]);
+			time_style.setProperty('background-color', colors['red_bg']);
+			time_style.setProperty('color', colors['red_fg']);
 		} else if (time > 5 && time <= 10) {
-			time_style.setProperty("background-color", colors["yellow_bg"]);
-			time_style.setProperty("color", colors["yellow_fg"]);
+			time_style.setProperty('background-color', colors['yellow_bg']);
+			time_style.setProperty('color', colors['yellow_fg']);
 		} else {
-			time_style.setProperty("background-color", colors["green_bg"]);
-			time_style.setProperty("color", colors["green_fg"]);
+			time_style.setProperty('background-color', colors['green_bg']);
+			time_style.setProperty('color', colors['green_fg']);
 		}
 	}
 }
@@ -607,37 +607,38 @@ function stop_timer()
 function display_message(html)
 {
 	// clear all departures--probably not necessary here (?)
-	document.getElementById("list").object.setDataArray([]);
+	document.getElementById('list').object.setDataArray([]);
 	
-	document.getElementById("text_message").innerHTML = html;
+	document.getElementById('text_message').innerHTML = html;
 }
 
 function clear_message()
 {
-	document.getElementById("text_message").innerHTML = "";
+	document.getElementById('text_message').innerHTML = '';
 }
 
 function set_title(text)
 {
-	var title = text.replace(/  +/g, " ");
-	var top_text = document.getElementById("top_text");
+	var title = text.replace(/  +/g, ' ');
+	var top_text = document.getElementById('top_text');
 
 	if (title.length >= 34)
-		top_text.style.setProperty("font-size", "10pt");
+		top_text.style.setProperty('font-size', '10pt');
 	else if (title.length >= 29)
-		top_text.style.setProperty("font-size", "11pt");
+		top_text.style.setProperty('font-size', '11pt');
 	else
-		top_text.style.setProperty("font-size", "13pt");
+		top_text.style.setProperty('font-size', '13pt');
 
 	top_text.innerText = title;
 }
 
 function set_status(text)
 {
-	if (new_version_available)
-		document.getElementById("status_text").innerText = "Flip to the back for a software update!";
-	else
-		document.getElementById("status_text").innerText = text;
+	if (new_version_available) {
+		document.getElementById('status_text').innerText
+				= 'Flip to the back for a software update!';
+	} else
+		document.getElementById('status_text').innerText = text;
 }
 
 function update_routes_checkboxes_from_list(routes)
@@ -645,9 +646,9 @@ function update_routes_checkboxes_from_list(routes)
 	all_routes.forEach(function(val, idx) {
 		var route = parseInt(val);
 		if (routes.indexOf(route) > -1)
-			document.getElementById("input_" + route).checked = true;
+			document.getElementById('input_' + route).checked = true;
 		else 
-			document.getElementById("input_" + route).checked = false;
+			document.getElementById('input_' + route).checked = false;
 	});
 }
 
@@ -660,7 +661,7 @@ function array_of_spaces(len)
 {
 	var arr = [];
 	for (var i = 0; i < len; i++)
-		arr[i] = " ";
+		arr[i] = ' ';
 	
 	return arr;
 }
@@ -686,10 +687,10 @@ function load()
 	
 	// things that have to be done programatically
 
-	var version = document.getElementById("text_version");
-	version.innerText = "CU Buses v" + widget_version;
-	version.style.setProperty("text-decoration", "underline");
-	version.style.setProperty("cursor", "pointer");
+	var version = document.getElementById('text_version');
+	version.innerText = 'CU Buses v' + widget_version;
+	version.style.setProperty('text-decoration', 'underline');
+	version.style.setProperty('cursor', 'pointer');
 	
 	//var box_routes = document.getElementById('box_routes');
 	//box_routes.style.setProperty('opacity', 0.0);
@@ -698,13 +699,13 @@ function load()
 	
 	$('#box_clipper').css({'overflow': 'hidden'});
 	
-	document.getElementById("text_version").title = "Click to visit the CU Buses website";
+	document.getElementById('text_version').title = 'Click to visit the CU Buses website';
 
-	document.getElementById("text_thanks").title = "They provide the buses too.";
+	document.getElementById('text_thanks').title = 'They provide the buses too.';
 			
 	// clear the list to avoid the unsightly flash of example content
 	
-	document.getElementById("list").object.setDataArray([]);
+	document.getElementById('list').object.setDataArray([]);
 
 	// check to see whether this is a new instance of this widget
 
@@ -720,9 +721,9 @@ function load()
 
 function remove()
 {
-	set_preference("time", null);
-	set_preference("routes", null);
-	set_preference("stop_code", null);
+	set_preference('time', null);
+	set_preference('routes', null);
+	set_preference('stop_code', null);
 	
 	stop_timer();
 }
@@ -761,13 +762,13 @@ function animate_front_to_back(event)
 
 	// do the actual animation
 	
-    var front = document.getElementById("front");
-    var back = document.getElementById("back");
+    var front = document.getElementById('front');
+    var back = document.getElementById('back');
 
-	widget.prepareForTransition("ToBack");
+	widget.prepareForTransition('ToBack');
 
-    front.style.display = "none";
-    back.style.display = "block";
+    front.style.display = 'none';
+    back.style.display = 'block';
 
 	setTimeout('widget.performTransition();', 0);
 }
@@ -781,7 +782,7 @@ function animate_back_to_front(event)
 		debug('animate_back_to_front back: new routes are ' + config.routes.toString());
 
 		if (config.stop_code != old_config.stop_code) {
-			display_message("Loading&hellip;");
+			display_message('Loading&hellip;');
 			set_title(get_verbose_stop_name_from_code(config.stop_code));
 			update_data();
 		} else if ((config.time != old_config.time)
@@ -792,13 +793,13 @@ function animate_back_to_front(event)
 
 	// do the actual animation
 	
-    var front = document.getElementById("front");
-    var back = document.getElementById("back");
+    var front = document.getElementById('front');
+    var back = document.getElementById('back');
 
-	widget.prepareForTransition("ToFront");
+	widget.prepareForTransition('ToFront');
 
-    front.style.display = "block";
-    back.style.display = "none";
+    front.style.display = 'block';
+    back.style.display = 'none';
 
 	setTimeout('widget.performTransition();', 0);
 }
@@ -827,33 +828,33 @@ function animate_routes_to_back(event)
 
 function button_look_up_code_handler(event)
 {
-    widget.openURL("http://www.cumtd.com/maps-and-schedules/bus-stops");
+    widget.openURL('http://www.cumtd.com/maps-and-schedules/bus-stops');
 	return;
 }
 
 function button_update_handler(event)
 {
-    widget.openURL("http://bdesham.github.com/cu-buses/index.html#download");
+    widget.openURL('http://bdesham.github.com/cu-buses/index.html#download');
 	return;
 }
 
 function lookahead_change_handler(event)
 {
-	var time = parseInt(document.getElementById("popup_lookahead").value);
+	var time = parseInt(document.getElementById('popup_lookahead').value);
     config.time = time;
-	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey("time"));
+	widget.setPreferenceForKey(time, dashcode.createInstancePreferenceKey('time'));
 	return;
 }
 
 function text_version_handler(event)
 {
-    widget.openURL("http://bdesham.github.com/cu-buses/");
+    widget.openURL('http://bdesham.github.com/cu-buses/');
 	return;
 }
 
 function checkbox_change_handler(event)
 {
-	var route = parseInt(event.target.id.replace(/.+_/, ""));
+	var route = parseInt(event.target.id.replace(/.+_/, ''));
 	var state = document.getElementById(event.target.id).checked;
 	var index = config.routes.indexOf(route);
 	
@@ -864,36 +865,38 @@ function checkbox_change_handler(event)
 	else if (index == -1 && state == true)
 		config.routes.push(route);
 	else if (index > -1 && state == true)
-		window.console.log("Trying to add route " + route + " to config.routes but already present");
+		window.console.log('Trying to add route ' + route
+				+ ' to config.routes but already present');
 	else if (index == -1 && state == false)
-		window.console.log("Trying to remove route " + route + " from config.routes but not present");
+		window.console.log('Trying to remove route ' + route
+				+ ' from config.routes but not present');
 	else
-		window.console.log("Something weird happened in checkbox_change_handler");
+		window.console.log('Something weird happened in checkbox_change_handler');
 	
 	debug('config.routes is ' + config.routes.join(','));
 }
 
 function checkbox_text_handler(event)
 {
-    var route = event.toElement.innerText.replace(/ .+/, "");
-	$("#input_" + route).click();
+    var route = event.toElement.innerText.replace(/ .+/, '');
+	$('#input_' + route).click();
 }
 
 function button_selectall_handler(event)
 {
 	all_routes.forEach(function(route, idx) {
-		var state = document.getElementById("input_" + route).checked;
+		var state = document.getElementById('input_' + route).checked;
 		if (!state)
-			$("#input_" + route).click();
+			$('#input_' + route).click();
 	});
 }
 
 function button_deselectall_handler(event)
 {
 	all_routes.forEach(function(route, idx) {
-		var state = document.getElementById("input_" + route).checked;
+		var state = document.getElementById('input_' + route).checked;
 		if (state)
-			$("#input_" + route).click();
+			$('#input_' + route).click();
 	});
 }
 
