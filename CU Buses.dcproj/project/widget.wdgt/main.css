@@ -194,7 +194,6 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     text-shadow: rgb(0, 0, 0) 1px 1px 1px;
     height: 15px;
     font-size: 10px;
-    font-family: Helvetica;
     font-weight: bold;
     cursor: default;
     -khtml-user-select: none;
@@ -202,6 +201,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     left: 39px;
     bottom: 12px;
     margin-top: auto;
+    font-family: 'Helvetica Neue';
 }
 
 .selected #status_text {
@@ -414,15 +414,6 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     min-height: 100px;
     display: none;
     position: relative;
-}
-
-#backImg1 {
-    position: absolute;
-    display: block;
-    width: 292px;
-    height: 286px;
-    left: 0px;
-    top: 0px;
 }
 
 #text_stop_label1 {

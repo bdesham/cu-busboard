@@ -170,8 +170,6 @@
 		<array>
 			<array>
 				<integer>0</integer>
-				<integer>1</integer>
-				<integer>1</integer>
 				<integer>0</integer>
 			</array>
 		</array>
@@ -187,7 +185,8 @@
 		<key>Visible StackLayout Views</key>
 		<array>
 			<string>view1</string>
-			<string>back</string>
+			<string>route_selection</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>
