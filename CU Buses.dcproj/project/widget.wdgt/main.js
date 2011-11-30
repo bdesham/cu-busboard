@@ -16,7 +16,7 @@
 // ## Constants
 //
 
-var debugging = false;
+var debugging = true;
 
 var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 	22, 27, 180, 190, 280];
@@ -84,15 +84,15 @@ function json_success_callback(json)
 	json_success = true;
 	latest_json = json;
 	
-	if (json.stat == 'ok') {
+	if (json.status.code == 200) {
 		var data = process_json(json);
 		refresh_ui_from_data(data);
-	} else if (json.stat == 'fail') {
+	} else if (json.status) {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
-		window.console.log('API error ' + json.err.code + ': "' + json.err.msg + '"');
+		window.console.log('API error ' + json.status.code + ': "' + json.status.msg + '"');
 	} else {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
-		window.console.log('API error, stat = "' + json.stat + '"');
+		window.console.log('API error, stat = "' + json + '"');
 	}
 }
 
@@ -109,7 +109,7 @@ function update_data()
 	
 	json_success = false;
 	
-	$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
+	$.getJSON('http://developer.cumtd.com/api/v2.0/json/GetDeparturesByStop',
 		args, json_success_callback);
 	
 	// give the request five seconds to complete and show an error if it's not
@@ -158,27 +158,23 @@ function process_json(json)
 	var result = {'stop': config.stop_verbose, 'departures': []};
 	var departures = json['departures'];
 
-	var now = Date.now();
+	var now = new Date(json.time);
 
 	var date_regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
 	
 	for (var i = 0; i < departures.length; i++) {
 		var depart = departures[i];
 
-		// parse the "expected" date/time
-
-		var pieces = date_regex.exec(depart.expected);
-		var date = new Date(pieces[2] + '/' + pieces[3] + '/' + pieces[1] + ' '
-				+ pieces[4] + ' GMT-0600');
-
 		// calculate the time difference
 	
+		var date = new Date(depart.expected);
 		var time_diff_ms = date.getTime() - now;
 		
 		// load up the object
 
 		result['departures'][i] = {
 			'route': depart.route,
+			'headsign': depart.headsign,
 			'ending': depart.destination.stop_id,
 			'wait_time_ms': time_diff_ms,
 			'wait_time_min': Math.floor(time_diff_ms/(1000*60)),
@@ -521,7 +517,8 @@ function refresh_ui_from_data(data)
 	
 	var is_desired_route = function(departure) {
 		//debug('is_desired_route: route: ' + departure.route);
-		var raw_route = departure.route.replace(/(\d+).+/, '$1');
+		//var raw_route = departure.route.route_id.replace(/(\d+).+/, '$1');
+		var raw_route = departure.route.route_short_name;
 		var canonical_route = get_canonical_route_number(parseInt(raw_route))
 		return (config.routes.indexOf(canonical_route) > -1);
 	}
@@ -551,7 +548,7 @@ function refresh_ui_from_data(data)
 		var departure = departures[i];
 		var time = departure.wait_time_min;
 		
-		row.templateElements.route_text.innerHTML = prettify_route_name(departure.route);
+		row.templateElements.route_text.innerHTML = prettify_route_name(departure.headsign);
 		
 		if (time > 0)
 			row.templateElements.arrival_time_text.innerText = time + ' min';
