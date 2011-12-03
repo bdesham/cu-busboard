@@ -49,12 +49,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {244, 1007}}</string>
-			<string>{{245, 0}, {1013, 1007}}</string>
+			<string>{{0, 0}, {244, 379}}</string>
+			<string>{{245, 0}, {452, 379}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>118 0 1257 1028 0 0 1680 1028 </string>
+	<string>1398 632 696 400 0 0 1680 1028 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
