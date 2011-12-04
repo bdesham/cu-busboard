@@ -5,7 +5,7 @@
 	<key>Breakpoints</key>
 	<dict/>
 	<key>CYLastWindowPosition</key>
-	<string>{1384, 455}</string>
+	<string>{1258, 248}</string>
 	<key>ContentSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -16,8 +16,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1012, 313}}</string>
-			<string>{{0, 323}, {1012, 663}}</string>
+			<string>{{0, 0}, {1035, 344}}</string>
+			<string>{{0, 354}, {1035, 630}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -49,12 +49,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {244, 379}}</string>
-			<string>{{245, 0}, {452, 379}}</string>
+			<string>{{0, 0}, {244, 1005}}</string>
+			<string>{{245, 0}, {1036, 1005}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>1398 632 696 400 0 0 1680 1028 </string>
+	<string>90 2 1280 1026 0 0 1680 1028 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -65,8 +65,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {246, 564}}</string>
-			<string>{{0, 574}, {246, 412}}</string>
+			<string>{{0, 0}, {246, 563}}</string>
+			<string>{{0, 573}, {246, 411}}</string>
 		</array>
 	</dict>
 	<key>Widget</key>
@@ -165,14 +165,35 @@
 				<integer>1</integer>
 				<integer>1</integer>
 			</array>
-		</array>
-		<key>Objects view last selections</key>
-		<array>
 			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>4</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>4</integer>
+				<integer>0</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>4</integer>
+				<integer>0</integer>
+				<integer>0</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>0</integer>
+				<integer>4</integer>
+				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
 			</array>
 		</array>
+		<key>Objects view last selections</key>
+		<array/>
 		<key>Opened Steps</key>
 		<array>
 			<integer>0</integer>

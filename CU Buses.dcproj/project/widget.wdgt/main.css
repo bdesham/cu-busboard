@@ -136,8 +136,7 @@ body {
     right: 0px;
     width: auto;
     color: rgb(214, 214, 214);
-    font-style: normal;
-    font-family: Helvetica;
+    font-family: 'Helvetica Neue';
 }
 
 .listRowTemplate_template.selected {
