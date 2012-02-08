@@ -1,9 +1,9 @@
-# License for CU Buses
+# License for CU BusBoard
 
 *Except for any portions of the project which may be the property of Apple, all
-files in the CU Buses project are released under the following terms.*
+files in the CU BusBoard project are released under the following terms.*
 
-Copyright © 2011 by Benjamin Esham (www.bdesham.info).
+Copyright © 2011–2012 by Benjamin Esham (www.bdesham.info).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the “Software”), to deal in
