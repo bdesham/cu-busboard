@@ -1,6 +1,6 @@
 /*
  * main.js
- * CU Buses
+ * CU BusBoard
  *
  * Copyright (c) 2011 by Benjamin Esham (www.bdesham.info)
  *
@@ -404,7 +404,7 @@ function read_preferences()
 		if (!(stop_code in stops)) {
 			bad_stop_code = stop_code;
 
-			set_title('CU Buses');
+			set_title('CU BusBoard');
 			display_message('&ldquo;' + bad_stop_code +
 					'&rdquo; isn&rsquo;t a stop. Please double-check your code.');
 					
@@ -688,7 +688,7 @@ function load()
 	// things that have to be done programatically
 
 	var version = document.getElementById('text_version');
-	version.innerText = 'CU Buses v' + widget_version;
+	version.innerText = 'CU BusBoard v' + widget_version;
 	version.style.setProperty('text-decoration', 'underline');
 	version.style.setProperty('cursor', 'pointer');
 	
@@ -699,7 +699,7 @@ function load()
 	
 	$('#box_clipper').css({'overflow': 'hidden'});
 	
-	document.getElementById('text_version').title = 'Click to visit the CU Buses website';
+	document.getElementById('text_version').title = 'Click to visit the CU BusBoard website';
 
 	document.getElementById('text_thanks').title = 'They provide the buses too.';
 			

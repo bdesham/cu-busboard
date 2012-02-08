@@ -27,10 +27,10 @@ gawk "
 	/CFBundleShortVersionString/ || /CFBundleVersion/ {
 		found = 1
 	}
-" "CU Buses.dcproj/project/widget.wdgt/Info.plist" > $temp \
-	&& mv $temp "CU Buses.dcproj/project/widget.wdgt/Info.plist"
+" "CU BusBoard.dcproj/project/widget.wdgt/Info.plist" > $temp \
+	&& mv $temp "CU BusBoard.dcproj/project/widget.wdgt/Info.plist"
 
 sed -E -e "s/(widget_version_major = )[0-9]+;/\\1$1;/" \
 	-e "s/(widget_version_minor = )[0-9]+;/\\1$2;/" \
-	"CU Buses.dcproj/project/widget.wdgt/main.js" > $temp \
-	&& mv $temp "CU Buses.dcproj/project/widget.wdgt/main.js"
+	"CU BusBoard.dcproj/project/widget.wdgt/main.js" > $temp \
+	&& mv $temp "CU BusBoard.dcproj/project/widget.wdgt/main.js"

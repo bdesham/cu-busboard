@@ -23,7 +23,7 @@
 		<key>Destination</key>
 		<string>localhost.default</string>
 		<key>SavePath</key>
-		<string>/Users/dashcode/Desktop/CU Buses</string>
+		<string>/Users/dashcode/Desktop/CU BusBoard</string>
 		<key>enableSimulation</key>
 		<true/>
 		<key>simulatedHost</key>

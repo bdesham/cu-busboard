@@ -16,12 +16,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1012, 313}}</string>
-			<string>{{0, 323}, {1012, 663}}</string>
+			<string>{{0, 0}, {1079, 315}}</string>
+			<string>{{0, 325}, {1079, 661}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
-	<integer>0</integer>
+	<integer>5</integer>
 	<key>DeploymentOptions</key>
 	<dict>
 		<key>Destination</key>
@@ -33,9 +33,9 @@
 		<key>Save</key>
 		<true/>
 		<key>SavePath</key>
-		<string>/Users/bdesham/Sites/CU Buses</string>
+		<string>/Users/bdesham/Documents/Development/CU BusBoard</string>
 		<key>WidgetDeployName</key>
-		<string>CU Buses.wdgt</string>
+		<string>CU BusBoard.wdgt</string>
 		<key>enableSimulation</key>
 		<true/>
 		<key>simulatedHost</key>
@@ -49,12 +49,12 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {244, 379}}</string>
-			<string>{{245, 0}, {452, 379}}</string>
+			<string>{{0, 0}, {244, 1007}}</string>
+			<string>{{245, 0}, {1080, 1007}}</string>
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>1398 632 696 400 0 0 1680 1028 </string>
+	<string>68 0 1324 1028 0 0 1680 1028 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -169,8 +169,7 @@
 		<key>Objects view last selections</key>
 		<array>
 			<array>
-				<integer>0</integer>
-				<integer>0</integer>
+				<integer>5</integer>
 			</array>
 		</array>
 		<key>Opened Steps</key>

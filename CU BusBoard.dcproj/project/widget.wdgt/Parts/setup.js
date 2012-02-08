@@ -26,8 +26,8 @@ var dashcodePartSpecs = {
     "text_stop_label": { "text": "Your bus stop:", "view": "DC.Text" },
     "text_stop_label1": { "text": "Routes to show:", "view": "DC.Text" },
     "text_thanks": { "text": "Data provided by CUMTD", "view": "DC.Text" },
-    "text_version": { "text": "CU Buses <version>", "view": "DC.Text" },
-    "top_text": { "text": "CU Buses", "view": "DC.Text" }
+    "text_version": { "text": "CU BusBoard <version>", "view": "DC.Text" },
+    "top_text": { "text": "CU BusBoard", "view": "DC.Text" }
 };
 
 
