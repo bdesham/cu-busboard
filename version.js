@@ -1,1 +1,1 @@
-{"latest_version_major": 1, "latest_version_minor": 7}
+{"latest_version_major": 1, "latest_version_minor": 8}
