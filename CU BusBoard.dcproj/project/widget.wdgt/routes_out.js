@@ -28,6 +28,7 @@ var formatted_route_names = {
 	"GREEN IT": "Green <span style='font-weight: normal; font-size: 80%'>I.T.</span>",
 	"GREEN LSQ": "Green <span style='font-weight: normal; font-size: 80%'>LSQ</span>",
 	"GREEN UNION": "Green <span style='font-weight: normal; font-size: 80%'>Union</span>",
+	"GREEN ILLINI UNION": "Green <span style='font-weight: normal; font-size: 80%'>Illini Union</span>",
 	"GREENHOPPER": "GreenH<span style='font-size: 85%'>OPPER</span>",
 	"GREENHOPPER I.T.": "GreenH<span style='font-size: 85%'>OP</span>. <span style='font-weight: normal; font-size: 80%'>I.T.</span>",
 	"GREY": "Grey",
