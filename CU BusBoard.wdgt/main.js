@@ -446,7 +446,7 @@ function read_preferences()
 
 function check_for_updates()
 {
-	$.getJSON('http://bdesham.github.com/cu-buses/version.js',
+	$.getJSON('http://bdesham.github.com/cu-busboard/version.js',
 			{}, check_for_updates_callback);
 }
 
@@ -834,7 +834,7 @@ function button_look_up_code_handler(event)
 
 function button_update_handler(event)
 {
-    widget.openURL('http://bdesham.github.com/cu-buses/index.html#download');
+    widget.openURL('http://bdesham.github.com/cu-busboard/index.html#download');
 	return;
 }
 
@@ -848,7 +848,7 @@ function lookahead_change_handler(event)
 
 function text_version_handler(event)
 {
-    widget.openURL('http://bdesham.github.com/cu-buses/');
+    widget.openURL('http://bdesham.github.com/cu-busboard/');
 	return;
 }
 
