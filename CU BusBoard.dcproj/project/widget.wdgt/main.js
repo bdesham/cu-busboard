@@ -21,7 +21,7 @@
 //   1: notices and errors
 //   2: just errors
 
-var debug_level = 1;
+var debug_level = 2;
 
 var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 	22, 27, 180, 190, 280];

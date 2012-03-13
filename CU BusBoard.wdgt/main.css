@@ -125,19 +125,18 @@ body {
 
 .route_text_template {
     position: absolute;
-    height: 17px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     font-size: 16px;
     font-weight: bold;
     left: 64px;
-    top: 4px;
+    color: rgb(214, 214, 214);
+    font-family: 'Helvetica Neue';
+    height: 21px;
+    top: 2px;
     right: 0px;
     width: auto;
-    color: rgb(214, 214, 214);
-    font-style: normal;
-    font-family: Helvetica;
 }
 
 .listRowTemplate_template.selected {
@@ -173,10 +172,10 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-size: 16px;
     border-width: 1px !important;
     color: rgb(255, 255, 255);
-    border-top-left-radius: 6px 6px;
-    border-top-right-radius: 6px 6px;
-    border-bottom-left-radius: 6px 6px;
-    border-bottom-right-radius: 6px 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .selected .arrival_time_text_template {
@@ -263,9 +262,9 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     left: 23px;
     font-size: 12px;
     top: 231px;
-    right: 133px;
+    right: 109px;
     width: auto;
-    bottom: 41px;
+    bottom: 42px;
     height: auto;
 }
 

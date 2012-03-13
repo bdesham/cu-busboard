@@ -15,10 +15,10 @@ var dashcodePartSpecs = {
     "glassButton": { "creationFunction": "CreateGlassButton", "onclick": "animate_routes_to_back", "text": "Back" },
     "info": { "backgroundStyle": "black", "creationFunction": "CreateInfoButton", "foregroundStyle": "white", "frontID": "front", "onclick": "animate_front_to_back" },
     "list": { "allowsEmptySelection": true, "dataArray": ["Item 8"], "dataSourceName": "test_data", "labelElementId": "route_text", "listStyle": "List.DESKTOP_LIST", "sampleRows": 3, "view": "DC.List" },
-    "route_text": { "text": "Item", "view": "DC.Text" },
+    "route_text": { "text": "Item g", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "hasVerticalScrollbar": true, "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
     "status_text": { "text": "Data provided by CUMTD", "view": "DC.Text" },
-    "text_author": { "text": "Benjamin Esham, © 2011", "view": "DC.Text" },
+    "text_author": { "text": "Benjamin Esham, © 2011–12", "view": "DC.Text" },
     "text_code_explanation": { "text": "Enter the four-digit code for your stop.", "view": "DC.Text" },
     "text_lookahead": { "text": "Look ahead:", "view": "DC.Text" },
     "text_lookahead1": { "text": "Show only certain routes:", "view": "DC.Text" },
@@ -29,6 +29,7 @@ var dashcodePartSpecs = {
     "text_version": { "text": "CU BusBoard <version>", "view": "DC.Text" },
     "top_text": { "text": "CU BusBoard", "view": "DC.Text" }
 };
+
 
 
 
