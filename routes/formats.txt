@@ -26,6 +26,8 @@ GREEN EX ALT,Green *EXP.* *ALT.*
 GREEN EXPRESS,Green *EXP.*
 GREEN IT,Green @I.T.@
 GREEN LSQ,Green @LSQ@
+GREEN SAVANNAH,Green @Savannah@
+GREEN SUNNYCREST,Green @Sunnycrest@
 GREEN UNION,Green @Union@
 GREENHOPPER,GreenH*OPPER*
 GREENHOPPER I.T.,GreenH*OP*. @I.T.@
