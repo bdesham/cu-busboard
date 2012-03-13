@@ -1,4 +1,1 @@
-# Things to implement
-
-* note the user's offset from UTC or whatever and store the value
-* make sure we handle daylight saving correctly
+# TODO

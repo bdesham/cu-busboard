@@ -2,7 +2,7 @@
 
 # get_stops.py
 #
-# Copyright (c) 2011 by Benjamin Esham (www.bdesham.info)
+# Copyright (c) 2011-12 by Benjamin Esham (www.bdesham.info)
 # 
 # This project is released under the terms found in the "LICENSE.md" file.
 #
@@ -22,7 +22,7 @@ args = sys.argv[1:]
 api_key = args[0]
 
 try:
-	url = 'http://developer.cumtd.com/api/v1.0/json/stops.getList?key=%s' % api_key
+	url = 'http://developer.cumtd.com/api/v2.1/json/GetStops?key=%s' % api_key
 	api_result_text = urllib2.urlopen(url).read()
 except urllib2.HTTPError, e:
 	print >> sys.stderr, "get_stops.py: got an HTTP error while trying to get data from CUMTD."
