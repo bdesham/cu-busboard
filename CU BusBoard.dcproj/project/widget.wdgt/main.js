@@ -16,7 +16,12 @@
 // ## Constants
 //
 
-var debugging = false;
+// how much debugging information should we dump into the console?
+//   0: ALL of it
+//   1: notices and errors
+//   2: just errors
+
+var debug_level = 1;
 
 var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
 	22, 27, 180, 190, 280];
@@ -58,10 +63,16 @@ var old_config = {};
 // ## Miscellaneous utility functions
 //
 
-function debug(text)
+function debug(level, text)
 {
-	if (debugging)
-		window.console.log(text);
+	if (level >= debug_level) {
+		if (level == 0)
+			window.console.log("[info] " + text);
+		else if (level == 1)
+			window.console.log("[notice] " + text);
+		else if (level == 2)
+			window.console.log("[error] " + text);
+	}
 }
 
 function id_basename(id)
@@ -84,15 +95,15 @@ function json_success_callback(json)
 	json_success = true;
 	latest_json = json;
 	
-	if (json.stat == 'ok') {
+	if (json.status.code == 200) {
 		var data = process_json(json);
 		refresh_ui_from_data(data);
-	} else if (json.stat == 'fail') {
+	} else if (json.status) {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
-		window.console.log('API error ' + json.err.code + ': "' + json.err.msg + '"');
+		debug(2, 'API error ' + json.status.code + ': "' + json.status.msg + '"');
 	} else {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
-		window.console.log('API error, stat = "' + json.stat + '"');
+		debug(2, 'API error; JSON is "' + json + '"');
 	}
 }
 
@@ -109,7 +120,7 @@ function update_data()
 	
 	json_success = false;
 	
-	$.getJSON('http://developer.cumtd.com/api/v1.0/json/departures.getListByStop',
+	$.getJSON('http://developer.cumtd.com/api/v2.0/json/GetDeparturesByStop',
 		args, json_success_callback);
 	
 	// give the request five seconds to complete and show an error if it's not
@@ -158,27 +169,23 @@ function process_json(json)
 	var result = {'stop': config.stop_verbose, 'departures': []};
 	var departures = json['departures'];
 
-	var now = Date.now();
+	var now = new Date(json.time);
 
 	var date_regex = /(\d\d\d\d)-(\d\d)-(\d\d) (\d\d:\d\d:\d\d)/;
 	
 	for (var i = 0; i < departures.length; i++) {
 		var depart = departures[i];
 
-		// parse the "expected" date/time
-
-		var pieces = date_regex.exec(depart.expected);
-		var date = new Date(pieces[2] + '/' + pieces[3] + '/' + pieces[1] + ' '
-				+ pieces[4] + ' GMT-0600');
-
 		// calculate the time difference
 	
+		var date = new Date(depart.expected);
 		var time_diff_ms = date.getTime() - now;
 		
 		// load up the object
 
 		result['departures'][i] = {
 			'route': depart.route,
+			'headsign': depart.headsign,
 			'ending': depart.destination.stop_id,
 			'wait_time_ms': time_diff_ms,
 			'wait_time_min': Math.floor(time_diff_ms/(1000*60)),
@@ -204,7 +211,7 @@ function get_canonical_route_number(n)
 	else if (n % 10 == 0 && all_routes.indexOf(n/10) > -1)
 		return n/10;
 	else {
-		window.console.log('Unrecognized route number: ' + n);
+		debug(2, 'Unrecognized route number: ' + n);
 		return n;
 	}
 }
@@ -248,7 +255,7 @@ function get_stop_id(stop)
 	if (stop in stops)
 		return stops[stop]['id'];
 	else {
-		debug('No stop_id found for code "' + stop + '"');
+		debug(1, 'No stop_id found for code "' + stop + '"');
 		return '';
 	}
 }
@@ -258,7 +265,7 @@ function get_intersection_id(stop)
 	if (stop in stops)
 		return id_basename(stops[stop]['id']);
 	else {
-		debug('No intersection id found for code "' + stop + '"');
+		debug(1, 'No intersection id found for code "' + stop + '"');
 		return '';
 	}
 }
@@ -268,7 +275,7 @@ function get_verbose_stop_name_from_code(stop)
 	if (stop in stops)
 		return stops[stop]['verbose'];
 	else {
-		debug('No verbose name found for code "' + stop + '"');
+		debug(1, 'No verbose name found for code "' + stop + '"');
 		return '';
 	}
 }
@@ -289,7 +296,7 @@ function get_verbose_stop_name_from_id(id)
 			return stops[key]['verbose'];
 	}
 	
-	debug('No verbose name found for id "' + id + '"');	
+	debug(1, 'No verbose name found for id "' + id + '"');	
 	return '';
 }
 
@@ -299,7 +306,7 @@ function get_verbose_stop_name_from_id(id)
 
 function prettify_route_name(name)
 {
-	debug('prettify_route_name: got name "' + name + '"');
+	debug(0, 'prettify_route_name: got name "' + name + '"');
 	
 	// separate the pieces
 	
@@ -321,11 +328,11 @@ function prettify_route_name(name)
 	if (route_name in formatted_route_names)
 		result += formatted_route_names[route_name];
 	else {
-		debug('prettify_route_name: "' + route_name + '" not found in formatted_route_names');
+		debug(0, 'prettify_route_name: "' + route_name + '" not found in formatted_route_names');
 		result += route_name;
 	}
 	
-	debug('prettify_route_name: returning "' + result + '"');
+	debug(0, 'prettify_route_name: returning "' + result + '"');
 	
 	return result;
 }
@@ -347,7 +354,7 @@ function set_preference(name, value)
 
 function update_preferences()
 {
-	debug('update_preferences: config.routes is ' + config.routes.toString());
+	debug(0, 'update_preferences: config.routes is ' + config.routes.toString());
 	set_preference('time', document.getElementById('popup_lookahead').value);
 	set_preference('routes', '[' + config.routes.join(',') + ']');
 	set_preference('stop_code', document.getElementById('field_stop').value);
@@ -388,8 +395,6 @@ function read_preferences()
 			return (all_routes.indexOf(e) > -1);
 		});
 		
-		debug('read_preferences: in "if (routes)" and routes_arr = ' + routes_arr.toString());
-
 		config.routes = routes_arr;
 	} else
 		config.routes = all_routes.slice();
@@ -454,7 +459,7 @@ function check_for_updates_callback(json)
 {
 	if (!('latest_version_major' in json
 				&& 'latest_version_minor' in json)) {
-		window.console.log('In check_for_updates_callback but got bad JSON');
+		debug(2, 'check_for_updates_callback: got bad JSON');
 
 		document.getElementById('button_update').style.visibility = 'hidden';
 		new_version_available = false;
@@ -465,13 +470,14 @@ function check_for_updates_callback(json)
 	var major = parseInt(json.latest_version_major);
 	var minor = parseInt(json.latest_version_minor);
 
+	debug(1, 'check_for_updates_callback: Latest version is ' + major + '.' + minor
+			+ '; we have ' + widget_version_major + '.' + widget_version_minor);
+
 	if ((major > widget_version_major) ||
 			((major == widget_version_major) && (minor > widget_version_minor))) {
-		debug('New version available: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = 'visible';
 		new_version_available = true;
 	} else {
-		debug('We have the newest version: ' + major + '.' + minor);
 		document.getElementById('button_update').style.visibility = 'hidden';
 		new_version_available = false;
 	}
@@ -520,8 +526,7 @@ function refresh_ui_from_data(data)
 	// find out how many of these departures we're actually going to show
 	
 	var is_desired_route = function(departure) {
-		//debug('is_desired_route: route: ' + departure.route);
-		var raw_route = departure.route.replace(/(\d+).+/, '$1');
+		var raw_route = departure.route.route_short_name;
 		var canonical_route = get_canonical_route_number(parseInt(raw_route))
 		return (config.routes.indexOf(canonical_route) > -1);
 	}
@@ -551,7 +556,7 @@ function refresh_ui_from_data(data)
 		var departure = departures[i];
 		var time = departure.wait_time_min;
 		
-		row.templateElements.route_text.innerHTML = prettify_route_name(departure.route);
+		row.templateElements.route_text.innerHTML = prettify_route_name(departure.headsign);
 		
 		if (time > 0)
 			row.templateElements.arrival_time_text.innerText = time + ' min';
@@ -757,8 +762,8 @@ function animate_front_to_back(event)
 	old_config.time = config.time;
 	old_config.routes = config.routes.slice();
 	
-	debug('animate_front_to_back: old stop code is "' + old_config.stop_code + '"');
-	debug('animate_front_to back: old routes were ' + old_config.routes.toString());
+	debug(0, 'animate_front_to_back: old stop code is "' + old_config.stop_code + '"');
+	debug(0, 'animate_front_to back: old routes were ' + old_config.routes.toString());
 
 	// do the actual animation
 	
@@ -778,8 +783,8 @@ function animate_back_to_front(event)
 	// my stuff
 
 	if (update_preferences() == 0) {
-		debug('animate_back_to_front: new stop code is "' + config.stop_code + '"');
-		debug('animate_back_to_front back: new routes are ' + config.routes.toString());
+		debug(0, 'animate_back_to_front: new stop code is "' + config.stop_code + '"');
+		debug(0, 'animate_back_to_front back: new routes are ' + config.routes.toString());
 
 		if (config.stop_code != old_config.stop_code) {
 			display_message('Loading&hellip;');
@@ -816,7 +821,7 @@ function animate_back_to_routes(event)
 
 function animate_routes_to_back(event)
 {
-	debug('animate_routes_to_back: config.routes is ' + config.routes.join(','));
+	debug(0, 'animate_routes_to_back: config.routes is ' + config.routes.join(','));
 	
 	$('#box_prefs').animate({top: -16}, 250);
 	$('#box_routes').animate({top: 286}, 250);
@@ -858,22 +863,20 @@ function checkbox_change_handler(event)
 	var state = document.getElementById(event.target.id).checked;
 	var index = config.routes.indexOf(route);
 	
-	debug('checkbox_change_handler: toggling ' + route);
+	debug(0, 'checkbox_change_handler: toggling ' + route);
 	
 	if (index > -1 && state == false)
 		config.routes.splice(index, 1);
 	else if (index == -1 && state == true)
 		config.routes.push(route);
 	else if (index > -1 && state == true)
-		window.console.log('Trying to add route ' + route
-				+ ' to config.routes but already present');
+		debug(2, 'Trying to add route ' + route + ' to config.routes but already present');
 	else if (index == -1 && state == false)
-		window.console.log('Trying to remove route ' + route
-				+ ' from config.routes but not present');
+		debug(2, 'Trying to remove route ' + route + ' from config.routes but not present');
 	else
-		window.console.log('Something weird happened in checkbox_change_handler');
+		debug(2, 'Something weird happened in checkbox_change_handler');
 	
-	debug('config.routes is ' + config.routes.join(','));
+	debug(0, 'config.routes is ' + config.routes.join(','));
 }
 
 function checkbox_text_handler(event)
@@ -910,4 +913,4 @@ if (window.widget) {
     widget.onshow = show;
 }
 
-// vim: tw=80 cc=+1
+// vim: tw=102 cc=+1
