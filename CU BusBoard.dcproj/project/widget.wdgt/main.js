@@ -2,7 +2,7 @@
  * main.js
  * CU BusBoard
  *
- * Copyright (c) 2011 by Benjamin Esham (www.bdesham.info)
+ * Copyright (c) 2011-12 by Benjamin Esham (www.bdesham.info)
  *
  * This project is released under the terms found in the "LICENSE.md" file.
  */
@@ -100,9 +100,11 @@ function json_success_callback(json)
 		refresh_ui_from_data(data);
 	} else if (json.status) {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
+		set_status('');
 		debug(2, 'API error ' + json.status.code + ': "' + json.status.msg + '"');
 	} else {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
+		set_status('');
 		debug(2, 'API error; JSON is "' + json + '"');
 	}
 }
@@ -160,8 +162,10 @@ function update_data()
 
 function check_json_success()
 {
-	if (json_success == false)
+	if (json_success == false) {
 		display_message('There was an error getting information from the CUMTD server.');
+		set_status('');
+	}
 }	
 
 function process_json(json)
