@@ -23,7 +23,7 @@
 
 var debug_level = 2;
 
-var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
+var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 	22, 27, 180, 190, 280];
 
 var api_key = 'afea17046e244cda8f56b5e1fe5f2019';

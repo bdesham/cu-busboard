@@ -16,8 +16,8 @@
 		<integer>0</integer>
 		<key>sizes</key>
 		<array>
-			<string>{{0, 0}, {1079, 315}}</string>
-			<string>{{0, 325}, {1079, 661}}</string>
+			<string>{{0, 0}, {1079, 345}}</string>
+			<string>{{0, 355}, {1079, 631}}</string>
 		</array>
 	</dict>
 	<key>ContentViewType</key>
@@ -162,23 +162,6 @@
 			</array>
 			<array>
 				<integer>0</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-			</array>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>1</integer>
-				<integer>0</integer>
-			</array>
-			<array>
-				<integer>0</integer>
 				<integer>0</integer>
 				<integer>4</integer>
 			</array>
@@ -202,6 +185,17 @@
 				<integer>0</integer>
 				<integer>0</integer>
 				<integer>0</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+			</array>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>1</integer>
+				<integer>1</integer>
 			</array>
 		</array>
 		<key>Objects view last selections</key>
@@ -219,7 +213,7 @@
 		<array>
 			<string>view1</string>
 			<string>route_selection</string>
-			<string>front</string>
+			<string>back</string>
 		</array>
 	</dict>
 </dict>
