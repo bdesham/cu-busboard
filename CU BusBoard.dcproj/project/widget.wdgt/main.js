@@ -122,7 +122,7 @@ function update_data()
 	
 	json_success = false;
 	
-	$.getJSON('http://developer.cumtd.com/api/v2.0/json/GetDeparturesByStop',
+	$.getJSON('http://developer.cumtd.com/api/v2.1/json/GetDeparturesByStop',
 		args, json_success_callback);
 	
 	// give the request five seconds to complete and show an error if it's not
