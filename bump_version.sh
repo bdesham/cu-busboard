@@ -18,7 +18,7 @@ gawk "
 
 	{
 		if (found == 1) {
-			print \"\t<string>\" $new_version \"</string>\"
+			print \"\t<string>$new_version</string>\"
 			found = 0
 		} else
 			print
