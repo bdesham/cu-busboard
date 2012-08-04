@@ -69,24 +69,14 @@ body {
         line-height: 1.3em; }
         body div#content div#main-content p strong, body div#content div#main-content ul li strong {
           font-weight: normal; }
-      body div#content div#main-content ul.slideshow {
-        list-style: none;
-        width: 294px;
-        height: 286px;
+      body div#content div#main-content div#screenshot img {
         float: right;
-        overflow: hidden;
-        position: relative;
-        margin: 0;
-        padding: 0;
-        padding-left: 0.5em; }
-        body div#content div#main-content ul.slideshow li {
-          position: absolute;
-          left: 0;
-          right: 0;
-          opacity: 0.0; }
-        body div#content div#main-content ul.slideshow li.show {
-          z-index: 500;
-          opacity: 1.0; }
+        margin-left: 2em; }
+        @media screen and (max-width: 600px) {
+          body div#content div#main-content div#screenshot img {
+            float: none;
+            clear: both;
+            margin: 0em auto; } }
       body div#content div#main-content ul.tips {
         list-style: none;
         padding-left: 1.8em; }

@@ -163,27 +163,16 @@ body {
 				}
 			}
 
-			ul.slideshow {
-				list-style: none;
-				width: 294px;
-				height: 286px;
-				float: right;
-				overflow: hidden;
-				position: relative;
-				margin: 0;
-				padding: 0;
-				padding-left: 0.5em;
+			div#screenshot {
+				img {
+					float: right;
+					margin-left: 2em;
 
-				li {
-					position: absolute;
-					left: 0;
-					right: 0;
-					opacity: 0.0;
-				}
-
-				li.show {
-					z-index: 500;
-					opacity: 1.0;
+					@media screen and (max-width: 600px) {
+						float: none;
+						clear: both;
+						margin: 0em auto;
+					}
 				}
 			}
 
