@@ -1,9 +1,9 @@
-#!/sw/bin/gawk -f
+#!/usr/local/bin/gawk -f
 
-# generate_javascript.awk
+# generate_javascript
 # Convert the list of formatted route names to a JavaScript array
 #
-# usage: generate_javascript.awk input.txt > output.txt
+# usage: generate_javascript formats.txt > routes_out.js
 #
 # Syntax for replacements:
 #   *foo*: small text

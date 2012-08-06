@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# generate_fake_data
+# generate fake departure data from the full list of route names
+#
+# usage: generate_fake_data routes_raw.txt
+
+cat <<EOF
+{
+    "status": {
+        "msg": "ok", 
+        "code": 200
+    }, 
+    "time": "2012-08-06T13:04:43-05:00",
+	"departures": [
+EOF
+
+while read line ; do
+	new_line=`echo "$line" | sed -e 's/.$//'`
+	cat <<EOF
+	{	"route": { "route_short_name": "1" },
+		"expected": "2012-08-06T13:04:50-05:00",
+		"headsign": "$new_line",
+		"destination": { "stop_id": "ODSS:1" } },
+EOF
+done < $1
+
+cat <<EOF
+	]
+}
+EOF
