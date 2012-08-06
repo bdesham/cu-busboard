@@ -166,11 +166,14 @@ body {
 			div#screenshot {
 				img {
 					float: right;
+					padding: 1em 0em;
 					margin-left: 2em;
 
 					@media screen and (max-width: 600px) {
 						float: none;
 						clear: both;
+						padding: 0em;
+						width: 292px;
 						margin: 0em auto;
 					}
 				}

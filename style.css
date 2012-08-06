@@ -71,11 +71,14 @@ body {
           font-weight: normal; }
       body div#content div#main-content div#screenshot img {
         float: right;
+        padding: 1em 0em;
         margin-left: 2em; }
         @media screen and (max-width: 600px) {
           body div#content div#main-content div#screenshot img {
             float: none;
             clear: both;
+            padding: 0em;
+            width: 292px;
             margin: 0em auto; } }
       body div#content div#main-content ul.tips {
         list-style: none;
