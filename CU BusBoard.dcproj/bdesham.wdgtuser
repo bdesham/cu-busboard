@@ -54,7 +54,7 @@
 		</array>
 	</dict>
 	<key>MainWindowFrame</key>
-	<string>111 0 1324 1028 0 0 1680 1028 </string>
+	<string>356 0 1324 1028 0 0 1680 1028 </string>
 	<key>NavigatorSplitViewGeometry</key>
 	<dict>
 		<key>ContentSplitViewConfig</key>
@@ -199,11 +199,7 @@
 			</array>
 		</array>
 		<key>Objects view last selections</key>
-		<array>
-			<array>
-				<integer>0</integer>
-			</array>
-		</array>
+		<array/>
 		<key>Opened Steps</key>
 		<array>
 			<integer>0</integer>
@@ -217,7 +213,7 @@
 		<array>
 			<string>view1</string>
 			<string>route_selection</string>
-			<string>back</string>
+			<string>front</string>
 		</array>
 	</dict>
 </dict>

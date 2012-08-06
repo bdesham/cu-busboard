@@ -102,7 +102,7 @@ body {
     margin-top: 0px;
     left: 0px;
     top: 0px;
-    width: 217px;
+    width: 246px;
 }
 
 .listRowTemplate_template {
@@ -155,10 +155,6 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     top: 0px;
     left: 0px;
-    right: 160px;
-    width: auto;
-    bottom: -1px;
-    height: auto;
     text-align: center;
     padding: 2px;
     letter-spacing: 0px;
@@ -173,6 +169,10 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     border-top-right-radius: 6px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    right: 189px;
+    width: auto;
+    bottom: -1px;
+    height: auto;
 }
 
 .selected .arrival_time_text_template {

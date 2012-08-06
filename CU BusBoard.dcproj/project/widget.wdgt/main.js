@@ -153,10 +153,9 @@ function update_data()
 	// uncomment this to fake an entire departure list
 	
 	/*
-	refresh_ui_from_data({'stop': 'whatever', 'departures': [
-		{'route': '9B BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
-		{'route': '9A BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
-		]});
+	json_success_callback(
+		// insert the contents of routes/fake_data.js here
+	);
 	*/
 }
 
