@@ -317,7 +317,7 @@ function prettify_route_name(name)
 	var matches = re.exec(name);
 	
 	var route_number = matches[1];
-	var route_name = matches[2].toUpperCase();
+	var route_name = matches[2].toUpperCase().replace(/\s{2,}/g, " ");
 	
 	// construct the formatted route name
 	

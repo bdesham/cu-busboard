@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# list_new_routes
+# Given an old formats.txt and a new routes list, show which routes are new.
+# If applicable, routes that were removed are listed afterward.
+#
+# usage: list_new_routes formats.txt routes.txt
+
+temp=`mktemp` || exit 1
+cut -f1 -d, $1 > $temp
+comm -13 $temp $2
+
+removed=`comm -23 $temp $2`
+if [ ! -z "$removed" ] ; then
+    echo
+    echo "Removed routes:"
+    echo $removed
+fi
+
+rm $temp

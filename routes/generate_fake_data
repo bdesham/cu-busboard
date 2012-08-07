@@ -3,7 +3,7 @@
 # generate_fake_data
 # generate fake departure data from the full list of route names
 #
-# usage: generate_fake_data routes_raw.txt
+# usage: generate_fake_data headsigns.txt
 
 cat <<EOF
 {

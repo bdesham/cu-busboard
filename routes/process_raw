@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # process_raw
-# take a "raw" list of routes, strip the numbers, and run it through `uniq`
+# take a "raw" list of routes, strip the numbers, normalize the names, and run it through `uniq`
 #
 # usage: process_raw input.txt output.txt
 
-(cut -d " " -f 1 --complement $1 | sed -Ee 's/[[:space:]]+$//' | sort -u) > $2
+(cut -d " " -f 1 --complement $1 | sed -Ee 's/[[:space:]]+$//' | sed -Ee 's/[[:space:]]{2,}/ /' | sort -u) > $2
