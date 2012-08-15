@@ -28,6 +28,8 @@ var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 
 var api_key = 'afea17046e244cda8f56b5e1fe5f2019';
 
+var last_updated = new Date("January 1, 1970 00:00:00");
+
 var widget_version_major = 1;
 var widget_version_minor = 10;
 var widget_version = widget_version_major + '.' + widget_version_minor;
@@ -96,8 +98,8 @@ function json_success_callback(json)
 	latest_json = json;
 	
 	if (json.status.code == 200) {
-		var data = process_json(json);
-		refresh_ui_from_data(data);
+		last_updated_time = new Date();
+		refresh_ui_from_data(process_json(json));
 	} else if (json.status) {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
 		set_status('');
@@ -225,11 +227,10 @@ function get_canonical_route_number(n)
 
 // returns the time in the format "1:46 PM"
 
-function get_current_time()
+function get_formatted_time(date)
 {
-	var now = new Date();
-	var hour = now.getHours();
-	var minutes = now.getMinutes();
+	var hour = date.getHours();
+	var minutes = date.getMinutes();
 	
 	if (minutes < 10)
 		minutes = '0' + minutes;
@@ -524,7 +525,7 @@ function refresh_ui_from_data(data)
 	//
 	
 	set_title(config['stop_verbose']);
-	set_status('Updated at ' + get_current_time());
+	set_status('Updated at ' + get_formatted_time(last_updated_time));
 	
 	// find out how many of these departures we're actually going to show
 	
@@ -586,6 +587,13 @@ function refresh_ui_from_data(data)
 			time_style.setProperty('color', colors['green_fg']);
 		}
 	}
+}
+
+function reset_to_blank_display()
+{
+	document.getElementById('list').object.setDataArray([]);
+	display_message('Loading&hellip;');
+	set_status('Data provided by CUMTD');
 }
 
 //
@@ -747,8 +755,13 @@ function hide()
 
 function show()
 {
-	if (read_preferences() == 0)
-		start_timer();
+	if (read_preferences() == 0) {
+		var now = new Date();
+		if (now - last_updated_time > 30*60*1000)
+			reset_to_blank_display();
+
+		start_timer();		
+	}
 }
 
 //
