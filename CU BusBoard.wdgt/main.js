@@ -23,13 +23,15 @@
 
 var debug_level = 2;
 
-var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14,
+var all_routes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 	22, 27, 180, 190, 280];
 
 var api_key = 'afea17046e244cda8f56b5e1fe5f2019';
 
+var last_updated = new Date("January 1, 1970 00:00:00");
+
 var widget_version_major = 1;
-var widget_version_minor = 9;
+var widget_version_minor = 10;
 var widget_version = widget_version_major + '.' + widget_version_minor;
 
 // time between refreshes (in milliseconds)
@@ -96,8 +98,8 @@ function json_success_callback(json)
 	latest_json = json;
 	
 	if (json.status.code == 200) {
-		var data = process_json(json);
-		refresh_ui_from_data(data);
+		last_updated_time = new Date();
+		refresh_ui_from_data(process_json(json));
 	} else if (json.status) {
 		display_message('Sorry, but the CUMTD server seems to be having problems.');
 		set_status('');
@@ -122,7 +124,7 @@ function update_data()
 	
 	json_success = false;
 	
-	$.getJSON('http://developer.cumtd.com/api/v2.0/json/GetDeparturesByStop',
+	$.getJSON('http://developer.cumtd.com/api/v2.1/json/GetDeparturesByStop',
 		args, json_success_callback);
 	
 	// give the request five seconds to complete and show an error if it's not
@@ -153,10 +155,9 @@ function update_data()
 	// uncomment this to fake an entire departure list
 	
 	/*
-	refresh_ui_from_data({'stop': 'whatever', 'departures': [
-		{'route': '9B BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
-		{'route': '9A BROWN', 'ending': 'IT:1', 'wait_time_ms': 1000*60*3, 'wait_time_min': 3},
-		]});
+	json_success_callback(
+		// insert the contents of routes/fake_data.js here
+	);
 	*/
 }
 
@@ -212,6 +213,8 @@ function get_canonical_route_number(n)
 		return n;
 	else if (n == 100) // stupid yellow
 		return 1;
+	else if (n == 111) // special-case for bad (?) ruby number
+		return 11;
 	else if (n % 10 == 0 && all_routes.indexOf(n/10) > -1)
 		return n/10;
 	else {
@@ -226,11 +229,10 @@ function get_canonical_route_number(n)
 
 // returns the time in the format "1:46 PM"
 
-function get_current_time()
+function get_formatted_time(date)
 {
-	var now = new Date();
-	var hour = now.getHours();
-	var minutes = now.getMinutes();
+	var hour = date.getHours();
+	var minutes = date.getMinutes();
 	
 	if (minutes < 10)
 		minutes = '0' + minutes;
@@ -318,7 +320,7 @@ function prettify_route_name(name)
 	var matches = re.exec(name);
 	
 	var route_number = matches[1];
-	var route_name = matches[2].toUpperCase();
+	var route_name = matches[2].toUpperCase().replace(/\s{2,}/g, " ");
 	
 	// construct the formatted route name
 	
@@ -525,7 +527,7 @@ function refresh_ui_from_data(data)
 	//
 	
 	set_title(config['stop_verbose']);
-	set_status('Updated at ' + get_current_time());
+	set_status('Updated at ' + get_formatted_time(last_updated_time));
 	
 	// find out how many of these departures we're actually going to show
 	
@@ -587,6 +589,13 @@ function refresh_ui_from_data(data)
 			time_style.setProperty('color', colors['green_fg']);
 		}
 	}
+}
+
+function reset_to_blank_display()
+{
+	document.getElementById('list').object.setDataArray([]);
+	display_message('Loading&hellip;');
+	set_status('Data provided by CUMTD');
 }
 
 //
@@ -748,8 +757,13 @@ function hide()
 
 function show()
 {
-	if (read_preferences() == 0)
-		start_timer();
+	if (read_preferences() == 0) {
+		var now = new Date();
+		if (now - last_updated_time > 30*60*1000)
+			reset_to_blank_display();
+
+		start_timer();		
+	}
 }
 
 //

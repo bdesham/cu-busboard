@@ -213,6 +213,8 @@ function get_canonical_route_number(n)
 		return n;
 	else if (n == 100) // stupid yellow
 		return 1;
+	else if (n == 111) // special-case for bad (?) ruby number
+		return 11;
 	else if (n % 10 == 0 && all_routes.indexOf(n/10) > -1)
 		return n/10;
 	else {

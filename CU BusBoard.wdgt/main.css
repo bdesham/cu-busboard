@@ -15,8 +15,8 @@ body {
     left: 0px;
     opacity: 1;
     right: 0px;
-    width: auto;
     bottom: 0px;
+    width: auto;
     height: auto;
 }
 
@@ -27,7 +27,7 @@ body {
     width: 13px;
     height: 13px;
     left: 255px;
-    top: 253px;
+    top: 272px;
 }
 
 #back {
@@ -40,20 +40,17 @@ body {
     top: 0px;
     left: 0px;
     right: 0px;
-    width: auto;
     bottom: 0px;
+    width: auto;
     height: auto;
 }
 
 #done {
     position: absolute;
-    margin-left: auto;
-    margin-top: auto;
-    width: 50px;
-    left: auto;
     right: 21px;
-    top: auto;
-    bottom: 21px;
+    margin-left: auto;
+    bottom: 6px;
+    margin-top: auto;
 }
 
 #top_text {
@@ -82,15 +79,15 @@ body {
     font-size: 10pt;
     position: absolute;
     width: 246px;
-    height: 203px;
     right: 24px;
     margin-left: auto;
     left: 22px;
     margin-right: auto;
-    top: 41px;
     margin-bottom: auto;
-    bottom: 42px;
+    bottom: 31px;
     margin-top: auto;
+    top: 42px;
+    height: 224px;
 }
 
 #list {
@@ -105,7 +102,7 @@ body {
     margin-top: 0px;
     left: 0px;
     top: 0px;
-    width: 217px;
+    width: 246px;
 }
 
 .listRowTemplate_template {
@@ -158,10 +155,6 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     top: 0px;
     left: 0px;
-    right: 160px;
-    width: auto;
-    bottom: -1px;
-    height: auto;
     text-align: center;
     padding: 2px;
     letter-spacing: 0px;
@@ -176,6 +169,10 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     border-top-right-radius: 6px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    right: 189px;
+    width: auto;
+    bottom: -1px;
+    height: auto;
 }
 
 .selected .arrival_time_text_template {
@@ -222,11 +219,12 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
     left: 23px;
     font-size: 12px;
-    top: 213px;
     font-family: HelveticaNeue-Medium;
+    margin-bottom: 0px;
+    top: 230px;
     right: 133px;
     width: auto;
-    bottom: 59px;
+    bottom: 42px;
     height: auto;
 }
 
@@ -242,10 +240,11 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     color: rgb(255, 255, 255);
     font-family: 'Helvetica Neue';
     left: 23px;
-    top: 249px;
+    font-size: 12px;
+    margin-bottom: 0px;
+    top: 266px;
     width: auto;
     height: auto;
-    font-size: 12px;
 }
 
 .selected #text_thanks {
@@ -261,10 +260,11 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     font-family: 'Helvetica Neue';
     left: 23px;
     font-size: 12px;
-    top: 231px;
+    margin-bottom: 0px;
+    top: 248px;
     right: 109px;
     width: auto;
-    bottom: 42px;
+    bottom: 25px;
     height: auto;
 }
 
@@ -487,7 +487,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 32px;
-    top: 90px;
+    top: 89px;
 }
 
 #div_3 {
@@ -509,7 +509,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 32px;
-    top: 111px;
+    top: 110px;
 }
 
 #div_4 {
@@ -531,7 +531,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 32px;
-    top: 133px;
+    top: 131px;
 }
 
 #div_5 {
@@ -553,7 +553,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 32px;
-    top: 155px;
+    top: 152px;
 }
 
 #div_6 {
@@ -575,7 +575,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 32px;
-    top: 176px;
+    top: 173px;
 }
 
 #div_7 {
@@ -597,7 +597,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 32px;
-    top: 198px;
+    top: 194px;
 }
 
 #div_8 {
@@ -619,7 +619,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 32px;
-    top: 220px;
+    top: 215px;
 }
 
 #div_9 {
@@ -641,7 +641,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 152px;
-    top: 90px;
+    top: 89px;
 }
 
 #div_13 {
@@ -663,7 +663,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 152px;
-    top: 133px;
+    top: 131px;
 }
 
 #div_22 {
@@ -685,7 +685,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 152px;
-    top: 220px;
+    top: 215px;
 }
 
 #div_280 {
@@ -707,7 +707,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 152px;
-    top: 155px;
+    top: 152px;
 }
 
 #div_27 {
@@ -729,7 +729,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 152px;
-    top: 176px;
+    top: 173px;
 }
 
 #div_180 {
@@ -772,8 +772,8 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     bottom: auto;
     margin-top: 0px;
     width: 119px;
-    left: 152px;
-    top: 47px;
+    left: 32px;
+    top: 236px;
 }
 
 #div_10 {
@@ -795,7 +795,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 152px;
-    top: 111px;
+    top: 110px;
 }
 
 #div_14 {
@@ -817,7 +817,7 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     width: 119px;
     left: 152px;
-    top: 198px;
+    top: 194px;
 }
 
 #div_190 {
@@ -882,8 +882,8 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     right: auto;
     bottom: auto;
     margin-top: 0px;
-    top: 244px;
     left: 23px;
+    top: 259px;
 }
 
 #button_deselectall {
@@ -893,8 +893,8 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     right: auto;
     bottom: auto;
     margin-top: 0px;
-    top: 244px;
-    left: 106px;
+    left: 105px;
+    top: 259px;
 }
 
 #box_prefs {
@@ -904,9 +904,10 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     bottom: auto;
     margin-top: 0px;
     width: 292px;
-    height: 286px;
     left: -16px;
     top: -16px;
+    height: 286px;
+    visibility: visible;
 }
 
 #box_routes {
@@ -916,9 +917,9 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     bottom: auto;
     margin-top: 0px;
     width: 292px;
-    height: 286px;
     left: -16px;
     top: -16px;
+    height: 292px;
 }
 
 #box_clipper {
@@ -928,6 +929,28 @@ body.DC_windowInactive .listRowTemplate_template.selected {
     margin-top: 0px;
     left: 15px;
     top: 14px;
-    height: 255px;
     width: 261px;
+    height: 270px;
+}
+
+#checkbox_11 {
+    font-family: HelveticaNeue;
+    font-size: 10pt;
+    height: 18px;
+    position: absolute;
+    right: auto;
+    bottom: auto;
+    margin-top: 0px;
+    width: 119px;
+    top: 47px;
+    left: 152px;
+}
+
+#div_11 {
+    position: absolute;
+    top: 2px;
+    left: 18px;
+    text-align: left;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
 }
