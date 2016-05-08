@@ -1,27 +1,11 @@
-# License for CU BusBoard
+# The Unlicense
 
-*Except for any portions of the project which may be the property of Apple, all
-files in the CU BusBoard project are released under the following terms.*
+This is free and unencumbered software released into the public domain.
 
-Copyright © 2011–2012 by Benjamin Esham (www.bdesham.info).
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the “Software”), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
+In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.
 
-1. The above copyright notice and this permission notice shall be included in
-   all copies or substantial portions of the Software.
-2. The CUMTD API key (the value stored within the “api_key” variable in the file
-   “main.js”) is tied to and usable only by Benjamin Esham, the original creator
-   of this software. Anyone who modifies this software for any reason must
-   obtain his or her own separate API key.
+**The software is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.**
 
-**The software is provided “as is”, without warranty of any kind, express or
-implied, including but not limited to the warranties of merchantability, fitness
-for a particular purpose and noninfringement. In no event shall the authors or
-copyright holders be liable for any claim, damages or other liability, whether
-in an action of contract, tort or otherwise, arising from, out of or in
-connection with the software or the use or other dealings in the software.**
+For more information, please refer to [the Unlicense website](http://unlicense.org/).
