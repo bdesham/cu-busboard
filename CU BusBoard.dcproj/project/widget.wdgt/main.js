@@ -2,7 +2,7 @@
  * main.js
  * CU BusBoard
  *
- * Copyright (c) 2011-2012, 2017 by Benjamin Esham (www.bdesham.info)
+ * Copyright (c) 2011-2012, 2017 by Benjamin Esham (https://esham.io)
  *
  * This project is released under the terms found in the "LICENSE.md" file.
  */

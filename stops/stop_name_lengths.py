@@ -2,7 +2,7 @@
 
 # stop_name_lengths
 # 
-# Copyright (c) 2011 by Benjamin Esham (www.bdesham.info)
+# Copyright (c) 2011 by Benjamin Esham (https://esham.io)
 #
 # This project is released under the terms found in the "LICENSE.md" file.
 #
