@@ -31,7 +31,7 @@ var api_key = 'afea17046e244cda8f56b5e1fe5f2019';
 var last_updated = new Date("January 1, 1970 00:00:00");
 
 var widget_version_major = 1;
-var widget_version_minor = 10;
+var widget_version_minor = 11;
 var widget_version = widget_version_major + '.' + widget_version_minor;
 
 // time between refreshes (in milliseconds)
