@@ -14,14 +14,14 @@
 	<title>CU BusBoard</title>
 
 	<link rel="icon" type="image/png" sizes="16x16 32x32" href="/cu-busboard/favicon.png"/>
-	<link rel="canonical" href="http://bdesham.github.com/cu-busboard/"/>
+	<link rel="canonical" href="https://bdesham.github.com/cu-busboard/"/>
 
 	<script type="text/javascript">
 		var _gaq = [['_setAccount', 'UA-24697270-1'], ['_trackPageview']];
 
 		(function() {
 		var ga = document.createElement('script');
-		ga.src ='http://www.google-analytics.com/ga.js';
+		ga.src ='//www.google-analytics.com/ga.js';
 		var s = document.getElementsByTagName('script')[0];
 		s.parentNode.insertBefore(ga, s);
 		})();
@@ -58,6 +58,8 @@
 
 <p>CU BusBoard is a small application that tells you when buses will be arriving at a certain stop on the Champaign–Urbana Mass Transit District (<abbr>CUMTD</abbr>) bus system. CU BusBoard runs in Dashboard, which is part of <span itemprop="operatingSystem">Mac OS X</span>—you’ll need a Mac to use this widget.</p>
 
+<p><strong><em>Like Dashboard itself, this widget is no longer supported or actively developed.</em></strong></p>
+
 </section>
 
 <section id="installation">
@@ -92,7 +94,7 @@
 
 <h2>Download</h2>
 
-<p>The newest version, <span itemprop="softwareVersion">1.10</span>, was released on <span itemprop="dateModified">August 19, 2012</span>.</p>
+<p>The newest version, <span itemprop="softwareVersion">1.11</span>, was released on <span itemprop="dateModified">May 7, 2017</span>.</p>
 
 <p class="download-button"><a href="https://github.com/downloads/bdesham/cu-busboard/CU_BusBoard.zip" itemprop="downloadUrl">Download Now</a></p>
 
@@ -103,8 +105,14 @@
 <h2>Version history</h2>
 
 <dl class="versions">
-	<dt>Version 1.10 (August 19, 2012)</dt>
+	<dt>Version 1.11 (May 7, 2017)</dt>
 	<dd><ul itemprop="releaseNotes">
+		<li class="fixed">Updated to the latest version of the <abbr>CUMTD</abbr> <abbr>API</abbr> to fix the “error in getting information”</li>
+		<li class="changed">Updated the internal list of bus stops</li>
+	</ul></dd>
+
+	<dt>Version 1.10 (August 19, 2012)</dt>
+	<dd><ul>
 		<li class="changed">Added support for the upcoming new Ruby route</li>
 		<li class="changed">Made the scrollbar invisible to fit in with recent Mac OS X versions</li>
 		<li class="fixed">Improved the widget’s behavior when data hasn’t been loaded in a while</li>
@@ -155,24 +163,11 @@
 
 <h2>About</h2>
 
-<p>CU BusBoard is developed by <a href="http://www.bdesham.info">Benjamin Esham</a>; please <a href="mailto:&#x63;&#x75;&#x62;&#x75;&#x73;&#x62;&#x6f;&#x61;&#x72;&#x64;&#x40;&#x62;&#x64;&#x65;&#x73;&#x68;&#x61;&#x6d;&#x2e;&#x69;&#x6e;&#x66;&#x6f;">e-mail him</a> with any questions, comments, or bug reports. Development is <a href="https://github.com/bdesham/cu-busboard">hosted on GitHub</a>—feel free to fork the project and to open a pull request if you make any exciting changes.</p>
+<p>CU BusBoard is developed by <a href="https://esham.io">Benjamin Esham</a>; please <a href="mailto:&#x63;&#x75;&#x62;&#x75;&#x73;&#x62;&#x6f;&#x61;&#x72;&#x64;&#x40;&#x62;&#x64;&#x65;&#x73;&#x68;&#x61;&#x6d;&#x2e;&#x69;&#x6e;&#x66;&#x6f;">e-mail him</a> with any questions, comments, or bug reports. Development is <a href="https://github.com/bdesham/cu-busboard">hosted on GitHub</a>—feel free to fork the project and to open a pull request if you make any exciting changes.</p>
 
 <p>The widget is developed using Apple’s Dashcode, and is made possible by the <a href="http://developer.cumtd.com/"><abbr>CUMTD</abbr> <abbr>API</abbr></a>. Thanks to the <abbr>CUMTD</abbr> for offering this great service!</p>
 
-<p>Except for any portions of the project which may be the property of Apple, all files in the CU BusBoard project are released under the following version of the <abbr>MIT</abbr> license, which can also be found as “LICENSE.md” within the project’s source tree. (In short, this widget is completely free to use, and you may modify its source code however you’d like, subject to a couple of conditions.)</p>
-
-<h3>License</h3>
-
-<p>Copyright © 2011&ndash;2012 by <span itemprop="author">Benjamin Esham</span> (www.bdesham.info).</p>
-
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-
-<ol>
-	<li><p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p></li>
-	<li><p>The <abbr>CUMTD</abbr> <abbr>API</abbr> key (the value stored within the “api_key” variable in the file “main.js”) is tied to and usable only by Benjamin Esham, the original creator of this software. Anyone who modifies this software for any reason must obtain his or her own separate API key.</p></li>
-</ol>
-
-<p><strong>The software is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.</strong></p>
+<p>Except for any portions of the project which may be the property of Apple, all files in the CU BusBoard project are released under the <a href="http://unlicense.org">Unlicense</a>, which can be found as “LICENSE.md” within the project’s source tree. This widget is completely free to use, and you may modify its source code however you’d like, subject to one condition: the <abbr>CUMTD</abbr> <abbr>API</abbr> key (the value stored within the “api_key” variable in the file “main.js”) is tied to and usable only by Benjamin Esham, the original creator of this software. Anyone who modifies this software for any reason must obtain his or her own separate API key.</p>
 
 </section>
 
@@ -180,7 +175,7 @@
 
 <footer>
 
-<p>CU BusBoard © 2011&ndash;2012, Benjamin Esham. The departure information for CU BusBoard is provided by the Champaign–Urbana Mass Transit District, with which CU BusBoard is unaffiliated. Not to be used as a flotation device.</p>
+<p>CU BusBoard © 2011&ndash;2012, 2017, Benjamin Esham. The departure information for CU BusBoard is provided by the Champaign–Urbana Mass Transit District, with which CU BusBoard is unaffiliated. Not to be used as a flotation device.</p>
 
 </footer>
 
