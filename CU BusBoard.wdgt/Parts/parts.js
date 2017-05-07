@@ -26,7 +26,7 @@ var dashcodePartSpecs = {
     "route_text": { "text": "Item g", "view": "DC.Text" },
     "scrollArea": { "autoHideScrollbars": true, "creationFunction": "CreateScrollArea", "scrollbarDivSize": 18, "scrollbarMargin": 6, "spacing": 4 },
     "status_text": { "text": "Data provided by CUMTD", "view": "DC.Text" },
-    "text_author": { "text": "Benjamin Esham, © 2011–12", "view": "DC.Text" },
+    "text_author": { "text": "© 2017 Benjamin Esham", "view": "DC.Text" },
     "text_code_explanation": { "text": "Enter the four-digit code for your stop.", "view": "DC.Text" },
     "text_lookahead": { "text": "Look ahead:", "view": "DC.Text" },
     "text_lookahead1": { "text": "Show only certain routes:", "view": "DC.Text" },
