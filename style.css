@@ -95,12 +95,6 @@ body {
         body div#content div#main-content p.download-button a:visited,
         body div#content div#main-content p.download-button a:hover {
           background: #00bd00;
-          background: -moz-linear-gradient(top, #00bd00 0%, #007f00 100%);
-          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #00bd00), color-stop(100%, #007f00));
-          background: -webkit-linear-gradient(top, #00bd00 0%, #007f00 100%);
-          background: -o-linear-gradient(top, #00bd00 0%, #007f00 100%);
-          background: -ms-linear-gradient(top, #00bd00 0%, #007f00 100%);
-          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00bd00', endColorstr='#007f00', GradientType=0);
           background: linear-gradient(top, #00bd00 0%, #007f00 100%);
           color: #fdf6e3;
           padding: 1em;
