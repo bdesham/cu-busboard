@@ -457,7 +457,7 @@ function read_preferences()
 
 function check_for_updates()
 {
-	$.getJSON('http://bdesham.github.io/cu-busboard/version.js',
+	$.getJSON('https://bdesham.github.io/cu-busboard/version.js',
 			{}, check_for_updates_callback);
 }
 
@@ -851,13 +851,13 @@ function animate_routes_to_back(event)
 
 function button_look_up_code_handler(event)
 {
-    widget.openURL('http://www.cumtd.com/maps-and-schedules/bus-stops');
+    widget.openURL('https://www.cumtd.com/maps-and-schedules/bus-stops');
 	return;
 }
 
 function button_update_handler(event)
 {
-    widget.openURL('http://bdesham.github.io/cu-busboard/index.html#download');
+    widget.openURL('https://bdesham.github.io/cu-busboard/index.html#download');
 	return;
 }
 
@@ -871,7 +871,7 @@ function lookahead_change_handler(event)
 
 function text_version_handler(event)
 {
-    widget.openURL('http://bdesham.github.io/cu-busboard/');
+    widget.openURL('https://bdesham.github.io/cu-busboard/');
 	return;
 }
 
