@@ -53,10 +53,10 @@ body {
       margin: 0px;
       padding: 2em;
       /*> section:target > h2:after {
-      		content: "\0020\2190";
-      		font-family: "Lucida Grande", sans-serif;
-      		color: $orange;
-      }*/ }
+					content: "\0020\2190";
+					font-family: "Lucida Grande", sans-serif;
+					color: $orange;
+			}*/ }
       body div#content div#main-content > section > h2 {
         text-shadow: black 1px 1px 2px;
         font-weight: 400; }
@@ -100,7 +100,7 @@ body {
           background: -webkit-linear-gradient(top, #00bd00 0%, #007f00 100%);
           background: -o-linear-gradient(top, #00bd00 0%, #007f00 100%);
           background: -ms-linear-gradient(top, #00bd00 0%, #007f00 100%);
-          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00bd00', 		endColorstr='#007f00', GradientType=0);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00bd00', endColorstr='#007f00', GradientType=0);
           background: linear-gradient(top, #00bd00 0%, #007f00 100%);
           color: #fdf6e3;
           padding: 1em;
@@ -114,8 +114,7 @@ body {
           -moz-border-radius: 4px 4px 4px 4px;
           -webkit-border-radius: 4px 4px 4px 4px;
           border-radius: 4px 4px 4px 4px;
-          border: 3px solid #fdf6e3;
-          text-decoration: underline; }
+          border: 3px solid #fdf6e3; }
       body div#content div#main-content dl.versions dd {
         margin-left: 0em; }
         body div#content div#main-content dl.versions dd ul {

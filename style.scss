@@ -219,7 +219,6 @@ body {
 				a:hover {
 					@include round(4px);
 					border: 3px solid $brighter-text;
-					text-decoration: underline;
 				}
 			}
 
