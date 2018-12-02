@@ -51,12 +51,7 @@ body {
     background-color: #35393c; }
     body div#content div#main-content {
       margin: 0px;
-      padding: 2em;
-      /*> section:target > h2:after {
-					content: "\0020\2190";
-					font-family: "Lucida Grande", sans-serif;
-					color: $orange;
-			}*/ }
+      padding: 2em; }
       body div#content div#main-content > section > h2 {
         text-shadow: black 1px 1px 2px;
         font-weight: 400; }
@@ -69,6 +64,17 @@ body {
         line-height: 1.3em; }
         body div#content div#main-content p strong, body div#content div#main-content ul li strong {
           font-weight: normal; }
+      body div#content div#main-content section#deprecation-warning {
+        background-color: #f15600;
+        padding: 1.4rem;
+        -moz-border-radius: 14px 14px 14px 14px;
+        -webkit-border-radius: 14px 14px 14px 14px;
+        border-radius: 14px 14px 14px 14px; }
+        body div#content div#main-content section#deprecation-warning p {
+          margin: 0;
+          font-weight: normal; }
+          body div#content div#main-content section#deprecation-warning p strong {
+            font-weight: bold; }
       body div#content div#main-content div#screenshot img {
         float: right;
         padding: 1em 0em;
