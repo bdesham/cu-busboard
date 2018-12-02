@@ -118,11 +118,13 @@ body {
       body div#content div#main-content dl.versions dd {
         margin-left: 0em; }
         body div#content div#main-content dl.versions dd ul {
-          list-style-type: none; }
+          list-style-type: none;
+          margin-top: 0.4rem;
+          margin-bottom: 0.4rem; }
           body div#content div#main-content dl.versions dd ul li {
             margin-left: 0em; }
           body div#content div#main-content dl.versions dd ul li + li {
-            margin-top: 0.3em; }
+            margin-top: 0.4rem; }
           body div#content div#main-content dl.versions dd ul li.new:before {
             background-color: #007f00;
             -moz-border-radius: 4px 4px 4px 4px;
